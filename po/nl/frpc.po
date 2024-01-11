@@ -1,14 +1,13 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-01-06 10:10+0000\n"
-"Last-Translator: Hannu Nyman <hannu.nyman@iki.fi>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/openwrt/"
-"luciapplicationsfrpc/fi/>\n"
-"Language: fi\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:214
 msgid "Add new proxy..."
@@ -16,11 +15,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Additional configs"
-msgstr "Lisäasetukset"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
 msgid "Additional settings"
-msgstr "Lisäasetukset"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
 msgid "Admin address"
@@ -106,7 +105,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid "Encryption"
-msgstr "Salaus"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "Environment variable"
@@ -118,7 +117,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "General Settings"
-msgstr "Yleiset asetukset"
+msgstr ""
 
 #: applications/luci-app-frpc/root/usr/share/rpcd/acl.d/luci-app-frpc.json:3
 msgid "Grant access to LuCI app frpc"
@@ -207,7 +206,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid "Log level"
-msgstr "Lokitaso"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid "Log max days"
@@ -269,7 +268,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
 msgid "Protocol"
-msgstr "Protokolla"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
 msgid ""
@@ -334,7 +333,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid "Server address"
-msgstr "Palvelimen osoite"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:71
 msgid "Server name"
@@ -342,7 +341,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid "Server port"
-msgstr "Palvelinportti"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid ""
@@ -427,7 +426,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
 msgid "User"
-msgstr "Käyttäjä"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
 msgid ""
