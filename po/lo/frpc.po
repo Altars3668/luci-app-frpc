@@ -1,52 +1,45 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-04-25 12:14+0000\n"
-"Last-Translator: SnIPeRSnIPeR <snipersniper@users.noreply.hosted.weblate.org>"
-"\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/openwrt/"
-"luciapplicationsfrpc/ru/>\n"
-"Language: ru\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: lo\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17.1-dev\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:214
 msgid "Add new proxy..."
-msgstr "Добавить новый прокси..."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Additional configs"
-msgstr "Дополнительные конфигурации"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
 msgid "Additional settings"
-msgstr "Дополнительные настройки"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
 msgid "Admin address"
-msgstr "Адрес администратора"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
 msgid "Admin password"
-msgstr "Пароль администратора"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
 msgid "Admin port"
-msgstr "Порт администратора"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
 msgid "Admin user"
-msgstr "Пользователь администратора"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
 msgid ""
 "AdminAddr specifies the address that the admin server binds to.<br />By "
 "default, this value is \"0.0.0.0\"."
 msgstr ""
-"AdminAddr указывает адрес, к которому привязывается сервер администратора."
-"<br />По умолчанию это значение равно \"0.0.0.0\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
 msgid ""
@@ -54,30 +47,22 @@ msgid ""
 "value is 0, the admin server will not be started.<br />By default, this "
 "value is 0."
 msgstr ""
-"AdminPort указывает порт, на котором будет прослушиваться сервер "
-"администратора. Если это значение равно 0, сервер администратора не будет "
-"запущен.<br />По умолчанию это значение равно 0."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
 msgid ""
 "AdminPwd specifies the password that the admin server will use for login."
 "<br />By default, this value is \"admin\"."
 msgstr ""
-"AdminPwd указывает пароль, который сервер администраторов будет использовать "
-"для входа в систему.<br />По умолчанию это значение равно \"admin\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
 msgid ""
 "AdminUser specifies the username that the admin server will use for login."
 "<br />By default, this value is \"admin\"."
 msgstr ""
-"AdminUser указывает имя пользователя, которое сервер администраторов будет "
-"использовать для входа в систему.<br />По умолчанию это значение равно "
-"\"admin\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
 msgid "Assets dir"
-msgstr "Каталог ресурсов"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
 msgid ""
@@ -85,88 +70,82 @@ msgid ""
 "resources from. If this value is \"\", assets will be loaded from the "
 "bundled executable using statik.<br />By default, this value is \"\"."
 msgstr ""
-"AssetsDir указывает локальный каталог, из которого сервер администрирования "
-"будет загружать ресурсы. Если это значение равно \"\", то ресурсы будут "
-"загружаться из исполняемого файла fprc с помощью statik (библиотека на Go "
-"для встраивания ресурсов).<br />По умолчанию это значение равно \"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:72
 msgid "Bind addr"
-msgstr "Адрес сервера"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:73
 msgid "Bind port"
-msgstr "Порт сервера"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
 msgid "Collecting data ..."
-msgstr "Сбор данных ..."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:198
 msgid "Common Settings"
-msgstr "Общие настройки"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
 msgid "Compression"
-msgstr "Компрессия"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Config files include in temporary config file"
-msgstr "Конфигурационные настройки записаны во временный конфигурационный файл"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:57
 msgid "Custom domains"
-msgstr "Пользовательские домены"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
 msgid "Disable log color"
-msgstr "Отключить цвета в журнале"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
 msgid ""
 "DisableLogColor disables log colors when LogWay == \"console\" when set to "
 "true."
 msgstr ""
-"DisableLogColor отключает цвета журнала, когда LogWay == \"console\", если "
-"установлено значение true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid "Encryption"
-msgstr "Шифрование"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "Environment variable"
-msgstr "Переменные окружения"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
 msgid "Exit when login fail"
-msgstr "Выход при неудачном входе в систему"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "General Settings"
-msgstr "Основные настройки"
+msgstr ""
 
 #: applications/luci-app-frpc/root/usr/share/rpcd/acl.d/luci-app-frpc.json:3
 msgid "Grant access to LuCI app frpc"
-msgstr "Предоставить доступ к LuCI-приложению frpc"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:219
 msgid "HTTP Settings"
-msgstr "Настройки HTTP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:64
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:80
 msgid "HTTP password"
-msgstr "Пароль HTTP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
 msgid "HTTP proxy"
-msgstr "HTTP-прокси"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:63
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:79
 msgid "HTTP user"
-msgstr "Пользователь HTTP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
 msgid ""
@@ -174,9 +153,6 @@ msgid ""
 "server, in seconds. It is not recommended to change this value.<br />By "
 "default, this value is 30."
 msgstr ""
-"HeartBeatInterval указывает, с каким интервалом в секундах пульс "
-"отправляется на сервер. Не рекомендуется изменять это значение.<br />По "
-"умолчанию это значение равно 30."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
 msgid ""
@@ -184,21 +160,18 @@ msgid ""
 "before the connection is terminated, in seconds. It is not recommended to "
 "change this value.<br />By default, this value is 90."
 msgstr ""
-"HeartBeatTimeout задаёт максимально допустимую задержку ответа heartbeat до "
-"разрыва соединения (в секундах). Не рекомендуется изменять это значение.<br /"
-">По умолчанию: 90 секунд."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
 msgid "Heartbeat interval"
-msgstr "Heartbeat интервал"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
 msgid "Heartbeat timeout"
-msgstr "Heartbeat тайм-аут"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:65
 msgid "Host header rewrite"
-msgstr "Перезапись заголовка хоста"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
 msgid ""
@@ -206,55 +179,52 @@ msgid ""
 "this value is \"\", the server will be connected to directly.<br />By "
 "default, this value is read from the \"http_proxy\" environment variable."
 msgstr ""
-"HttpProxy указывает прокси-адрес для подключения к серверу. Если это "
-"значение равно \"\", сервер будет подключён напрямую.<br />По умолчанию это "
-"значение считывается из переменной окружения \"http_proxy\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
 msgid "If remote_port is 0, frps will assign a random port for you"
-msgstr "Если remote_port равен 0, frps выберет для вас случайный порт"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:224
 msgid "Local IP"
-msgstr "Локальный IP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Local port"
-msgstr "Локальный порт"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
 msgid "LocalIp specifies the IP address or host name to proxy to."
-msgstr "LocalIp указывает IP-адрес или имя хоста для проксирования."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
 msgid "LocalPort specifies the port to proxy to."
-msgstr "LocalPort указывает порт для проксирования."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:62
 msgid "Locations"
-msgstr "Локации"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
 msgid "Log file"
-msgstr "Файл журнала"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid "Log level"
-msgstr "Уровень журналирования"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid "Log max days"
-msgstr "Хранить журнал (дней)"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
-msgstr "Сохранять вывод stderr"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:10
 msgid "Log stdout"
-msgstr "Сохранять вывод stdout"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
 msgid ""
@@ -262,9 +232,6 @@ msgid ""
 "be used if LogWay is set appropriately.<br />By default, this value is "
 "\"console\"."
 msgstr ""
-"LogFile указывает файл, в который будут записываться журналы. Это значение "
-"будет использоваться только в том случае, если LogWay установлен "
-"соответствующим образом.<br />По умолчанию это значение равно \"console\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid ""
@@ -272,9 +239,6 @@ msgid ""
 "\"debug\", \"info\", \"warn\", and \"error\".<br />By default, this value is "
 "\"info\"."
 msgstr ""
-"LogLevel задаёт минимальный уровень журнала. Допустимые значения: \"trace\", "
-"\"debug\", \"info\", \"warn\" и \"error\".<br />По умолчанию это значение "
-"равно \"info\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid ""
@@ -282,9 +246,6 @@ msgid ""
 "before deletion. This is only used if LogWay == \"file\".<br />By default, "
 "this value is 0."
 msgstr ""
-"LogMaxDays определяет максимальное количество дней хранения информации "
-"журнала перед удалением. Это значение используется, только если LogWay == "
-"\"file\".<br />По умолчанию это значение равно 0."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
 msgid ""
@@ -292,30 +253,26 @@ msgid ""
 "login attempt. If false, the client will retry until a login attempt "
 "succeeds.<br />By default, this value is true."
 msgstr ""
-"LoginFailExit контролирует, должен ли клиент завершать работу после "
-"неудачной попытки входа в систему. Если значение равно false, клиент будет "
-"повторять попытки до тех пор, пока попытка входа не увенчается успехом.<br /"
-">По умолчанию это значение равно true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 msgid "NOT RUNNING"
-msgstr "НЕ ЗАПУЩЕНО"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "OS environments pass to frp for config file template, see %s."
-msgstr "Переменные окружения ОС для шаблона конфигурации frp, см. %s."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:78
 msgid "Plugin"
-msgstr "Плагин"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:220
 msgid "Plugin Settings"
-msgstr "Настройки плагина"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
 msgid "Protocol"
-msgstr "Протокол"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
 msgid ""
@@ -323,22 +280,20 @@ msgid ""
 "Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By "
 "default, this value is \"tcp\"."
 msgstr ""
-"Указывает протокол для взаимодействия с сервером. Допустимые значения: "
-"\"tcp\", \"kcp\", \"quic\" и \"websocket\".<br />По умолчанию: \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:210
 msgid "Proxy Settings"
-msgstr "Настройки прокси"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:44
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "Proxy name"
-msgstr "Имя прокси"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:223
 msgid "Proxy type"
-msgstr "Тип прокси"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
 msgid ""
@@ -346,96 +301,90 @@ msgid ""
 "\"udp\", \"http\", \"https\", \"stcp\" and \"xtcp\".<br />By default, this "
 "value is \"tcp\"."
 msgstr ""
-"Указывает тип прокси. Допустимые значения: \"tcp\", \"udp\", \"http\", "
-"\"https\", \"stcp\" и \"xtcp\".<br />По умолчанию: \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
 msgid "RUNNING"
-msgstr "ЗАПУЩЕН"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:226
 msgid "Remote port"
-msgstr "Удалённый порт"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:14
 msgid "Respawn when crashed"
-msgstr "Перезапускаться после вылета"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:70
 msgid "Role"
-msgstr "Роль"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:13
 msgid "Run daemon as group"
-msgstr "Запуск демона от имени группы"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:12
 msgid "Run daemon as user"
-msgstr "Запуск демона от имени пользователя"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:82
 msgid "SOCKS5 password"
-msgstr "SOCKS5-пароль"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:81
 msgid "SOCKS5 user"
-msgstr "SOCKS5-пользователь"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid "Server address"
-msgstr "Адрес сервера"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:71
 msgid "Server name"
-msgstr "Имя сервера"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid "Server port"
-msgstr "Порт сервера"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid ""
 "ServerAddr specifies the address of the server to connect to.<br />By "
 "default, this value is \"127.0.0.1\"."
 msgstr ""
-"ServerAddr указывает адрес сервера для подключения.<br />По умолчанию это "
-"значение равно \"127.0.0.1\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid ""
 "ServerPort specifies the port to connect to the server on.<br />By default, "
 "this value is 7000."
 msgstr ""
-"ServerPort указывает порт для подключения к серверу.<br />По умолчанию это "
-"значение равно 7000."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:74
 msgid "Sk"
-msgstr "Sk"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:199
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:203
 msgid "Startup Settings"
-msgstr "Настройки запуска"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:58
 msgid "Subdomain"
-msgstr "Поддомен"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
 msgid "TCP mux"
-msgstr "TCP мультиплексор"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
 msgid "TLS"
-msgstr "TLS"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
 msgid ""
 "TLS Enable specifies whether or not TLS should be used when communicating "
 "with the server."
-msgstr "Включает использование TLS при взаимодействии с сервером."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
 msgid ""
@@ -444,22 +393,16 @@ msgid ""
 "must have TCP multiplexing enabled as well.<br />By default, this value is "
 "true."
 msgstr ""
-"TcpMux включает мультиплексирование потока TCP. Это позволяет нескольким "
-"запросам от клиента использовать одно TCP-соединение. Если это значение "
-"равно true, на сервере также должно быть включено мультиплексирование TCP."
-"<br />По умолчанию это значение равно true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
 msgid ""
 "This list can be used to specify some additional parameters which have not "
 "been included in this LuCI."
 msgstr ""
-"Этот список может быть использован для указания некоторых дополнительных "
-"параметров, которые не были включены в данный LuCI."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
 msgid "Token"
-msgstr "Токен"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
 msgid ""
@@ -467,21 +410,16 @@ msgid ""
 "the server. The server must have a matching token for authorization to "
 "succeed. <br />By default, this value is \"\"."
 msgstr ""
-"Token указывает маркер авторизации, используемый для создания ключей, "
-"отправляемых на сервер. Для успешной авторизации сервер должен иметь "
-"соответствующий токен. <br />По умолчанию это значение равно \"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:83
 msgid "Unix domain socket path"
-msgstr "Путь к сокету домена Unix"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
 msgid ""
 "UseCompression controls whether or not communication with the server will be "
 "compressed.<br />By default, this value is false."
 msgstr ""
-"UseCompression определяет, будет ли сжиматься трафик при общении с сервером."
-"<br />По умолчанию это значение равно false."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid ""
@@ -489,13 +427,10 @@ msgid ""
 "encrypted. Encryption is done using the tokens supplied in the server and "
 "client configuration.<br />By default, this value is false."
 msgstr ""
-"UseEncryption контролирует, будет ли шифроваться связь с сервером. "
-"Шифрование осуществляется на основе токенов, заданных в настройках сервера и "
-"клиента.<br />По умолчанию это значение равно false."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
 msgid "User"
-msgstr "Пользователь"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
 msgid ""
@@ -503,48 +438,10 @@ msgid ""
 "clients. If this value is not \"\", proxy names will automatically be "
 "changed to \"{user}.{proxy_name}\".<br />By default, this value is \"\"."
 msgstr ""
-"Пользователь указывает префикс для имён прокси, чтобы отличать их от других "
-"клиентов. Если это значение не \"\", имена прокси будут автоматически "
-"изменены на \"{user}.{proxy_name}\".<br />По умолчанию это значение равно "
-"\"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
 #: applications/luci-app-frpc/root/usr/share/luci/menu.d/luci-app-frpc.json:3
 msgid "frp Client"
-msgstr "frp клиент"
-
-#~ msgid ""
-#~ "OS environments pass to frp for config file template, see <a "
-#~ "href=\"https://github.com/fatedier/frp#configuration-file-template\">frp "
-#~ "README</a>"
-#~ msgstr ""
-#~ "Переменные среды, передаваемые frp, используются для подстановки в "
-#~ "шаблоны в файле конфигурации. Подробнее читай в <a href=\"https://"
-#~ "github.com/fatedier/frp#using-environment-variables\">справке frp</a>"
-
-#~ msgid ""
-#~ "Protocol specifies the protocol to use when interacting with the server. "
-#~ "Valid values are \"tcp\", \"kcp\", and \"websocket\".<br />By default, "
-#~ "this value is \"tcp\"."
-#~ msgstr ""
-#~ "Protocol указывает протокол, который будет использоваться при "
-#~ "взаимодействии с сервером. Допустимые значения: \"tcp\", \"kcp\" и "
-#~ "\"websocket\".<br />По умолчанию это значение равно \"tcp\"."
-
-#~ msgid ""
-#~ "ProxyType specifies the type of this proxy. Valid values include \"tcp\", "
-#~ "\"udp\", \"http\", \"https\", \"stcp\", and \"xtcp\".<br />By default, "
-#~ "this value is \"tcp\"."
-#~ msgstr ""
-#~ "ProxyType указывает тип этого прокси. Допустимые значения: \"tcp\", "
-#~ "\"udp\", \"http\", \"https\", \"stcp\" и \"xtcp\".<br />По умолчанию это "
-#~ "значение равно \"tcp\"."
-
-#~ msgid ""
-#~ "TLSEnable specifies whether or not TLS should be used when communicating "
-#~ "with the server."
-#~ msgstr ""
-#~ "TLSEnable определяет, следует ли использовать TLS при взаимодействии с "
-#~ "сервером."
+msgstr ""
