@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-05-03 08:19+0000\n"
-"Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
-"Language-Team: Lao <https://hosted.weblate.org/projects/openwrt/"
-"luciapplicationsfrpc/lo/>\n"
-"Language: lo\n"
+"Project-Id-Version: luci-app-frpc\n"
+"PO-Revision-Date: 2025-12-20 14:35+0000\n"
+"Last-Translator: Ashkan Azoun <ashk4n@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/openwrt/"
+"luciapplicationsfrpc/fa/>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17.1\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1454
 msgid "Add new proxy or visitor..."
@@ -32,7 +34,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:174
 msgid "Additional configs"
-msgstr "ການຕັ້ງຄ່າເພີ່ມເຕີມ"
+msgstr "پیکربندی‌های اضافی"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1060
 msgid "Additional proxy metadata. Use key=value."
@@ -48,7 +50,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1430
 msgid "Advanced"
-msgstr "ຂັ້ນສູງ"
+msgstr "پیشرفته"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:839
 msgid "Allow users"
@@ -64,11 +66,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:464
 msgid "Assets dir"
-msgstr "ໄດເຣັກທໍຣີຊັບສິນ (Assets)"
+msgstr "شاخهٔ دارایی‌ها"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1426
 msgid "Authentication"
-msgstr "ການຢືນຢັນຕົວຕົນ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:231
 msgid "Authentication method"
@@ -92,11 +94,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:861
 msgid "Bind address"
-msgstr "ທີ່ຢູ່ການເຊື່ອມຕໍ່ (Bind address)"
+msgstr "نشانی اتصال"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:865
 msgid "Bind port"
-msgstr "ພອດການເຊື່ອມຕໍ່ (Bind port)"
+msgstr "درگاه اتصال"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:873
 msgid "Bind port is required for visitors."
@@ -116,7 +118,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1417
 msgid "Collecting data ..."
-msgstr "ກຳລັງເກັບຂໍ້ມູນ..."
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:317
 msgid "Command arguments passed to token source exec."
@@ -130,7 +132,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1425
 msgid "Common Settings"
-msgstr "ການຕັ້ງຄ່າທົ່ວໄປ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:832
 msgid ""
@@ -144,7 +146,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:692
 msgid "Compression"
-msgstr "ການບີບອັດ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:348
 msgid "Configuration key: auth.oidc.audience."
@@ -260,7 +262,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:702
 msgid "Custom domains"
-msgstr "ໂດເມນກຳນົດເອງ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:213
 msgid "DNS server"
@@ -288,7 +290,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:395
 msgid "Disable log color"
-msgstr "ປິດການໃຊ້ງານສີໃນ Log"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:396
 msgid "Disable log colors when log output is console."
@@ -299,7 +301,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:786
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:913
 msgid "Disabled"
-msgstr "ປິດໃຊ້ງານ"
+msgstr "غیرفعال"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:888
 msgid "Effective when XTCP keep tunnel open is enabled."
@@ -342,7 +344,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:647
 msgid "Enabled"
-msgstr "ເປີດໃຊ້ງານ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:689
 msgid "Encrypt proxy traffic."
@@ -350,11 +352,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:688
 msgid "Encryption"
-msgstr "ການເຂົ້າລະຫັດ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 msgid "Environment variable"
-msgstr "ຕົວແປສະພາບແວດລ້ອມ (Environment variable)"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1201
 msgid "Environment variable must use KEY=value format."
@@ -409,11 +411,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1460
 msgid "General Settings"
-msgstr "ການຕັ້ງຄ່າທົ່ວໄປ"
+msgstr ""
 
 #: applications/luci-app-frpc/root/usr/share/rpcd/acl.d/luci-app-frpc.json:3
 msgid "Grant access to LuCI app frpc"
-msgstr "ໃຫ້ສິດເຂົ້າເຖິງແອັບ LuCI frpc"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1462
 msgid "HTTP / Domain"
@@ -438,7 +440,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:746
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:935
 msgid "HTTP password"
-msgstr "ລະຫັດຜ່ານ HTTP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1211
 msgid "HTTP path must start with /."
@@ -447,7 +449,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:743
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:931
 msgid "HTTP user"
-msgstr "ຜູ້ໃຊ້ HTTP"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1465
 msgid "Health Check"
@@ -495,7 +497,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:530
 msgid "Heartbeat interval"
-msgstr "ໄລຍະເວລາ Heartbeat"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:531
 msgid "Heartbeat interval in seconds."
@@ -503,7 +505,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:534
 msgid "Heartbeat timeout"
-msgstr "ເວລາໝົດກຳນົດ Heartbeat"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:535
 msgid "Heartbeat timeout in seconds."
@@ -511,7 +513,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:720
 msgid "Host header rewrite"
-msgstr "ຂຽນ Host header ຄືນໃໝ່"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Include config files"
@@ -554,7 +556,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:659
 msgid "Local IP"
-msgstr "IP ພາຍໃນ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:523
 msgid ""
@@ -578,7 +580,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:663
 msgid "Local port"
-msgstr "ພອດພາຍໃນ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:660
 msgid "Local service IP or host."
@@ -590,19 +592,19 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:711
 msgid "Locations"
-msgstr "ຕຳແໜ່ງ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1431
 msgid "Log Settings"
-msgstr "ການຕັ້ງຄ່າບັນທຶກ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:387
 msgid "Log level"
-msgstr "ລະດັບການບັນທຶກ (Log)"
+msgstr "سطح دسترسی لاگ"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:391
 msgid "Log max days"
-msgstr "ຈຳນວນມື້ສູງສຸດຂອງ Log"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:383
 msgid "Log output"
@@ -614,11 +616,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:142
 msgid "Log stderr"
-msgstr "Log stderr"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:132
 msgid "Log stdout"
-msgstr "Log stdout"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:887
 msgid "Max retries per hour"
@@ -650,7 +652,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
 msgid "NOT RUNNING"
-msgstr "ບໍ່ໄດ້ເຮັດວຽກ"
+msgstr "اجرا نمی‌شود"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:359
 msgid "OIDC additional endpoint params"
@@ -749,7 +751,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:909
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1463
 msgid "Plugin"
-msgstr "ປລັກອິນ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1015
 msgid "Plugin HTTP/2"
@@ -825,7 +827,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:640
 msgid "Proxy name"
-msgstr "ຊື່ພຣັອກຊີ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:194
 msgid "Proxy name prefix"
@@ -837,7 +839,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:643
 msgid "Proxy type"
-msgstr "ປະເພດພຣັອກຊີ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:644
 msgid "Proxy type."
@@ -857,11 +859,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
 msgid "RUNNING"
-msgstr "ກຳລັງເຮັດວຽກ"
+msgstr "در حال اجرا"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:667
 msgid "Remote port"
-msgstr "ພອດທາງໄກ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:668
 msgid "Remote port listened by frps. If 0, frps assigns a random port."
@@ -877,7 +879,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:155
 msgid "Respawn when crashed"
-msgstr "ເລີ່ມການເຮັດວຽກໃໝ່ເມື່ອຂັດຂ້ອງ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:732
 msgid "Response headers"
@@ -889,7 +891,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:831
 msgid "Role"
-msgstr "ບົດບາດ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:753
 msgid "Route HTTP or TCPMUX requests by HTTP basic auth user."
@@ -901,19 +903,19 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:153
 msgid "Run daemon as group"
-msgstr "ແລ່ນ daemon ໃນຖານະກຸ່ມ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:152
 msgid "Run daemon as user"
-msgstr "ແລ່ນ daemon ໃນຖານະຜູ້ໃຊ້"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:943
 msgid "SOCKS5 password"
-msgstr "ລະຫັດຜ່ານ SOCKS5"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:939
 msgid "SOCKS5 user"
-msgstr "ຜູ້ໃຊ້ SOCKS5"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1464
 msgid "STCP / XTCP / SUDP"
@@ -933,11 +935,11 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:186
 msgid "Server address"
-msgstr "ທີ່ຢູ່ເຊີເວີ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:847
 msgid "Server name"
-msgstr "ຊື່ເຊີເວີ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:855
 msgid "Server name is required for visitors."
@@ -949,7 +951,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
 msgid "Server port"
-msgstr "ພອດເຊີເວີ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:848
 msgid "Server proxy name to visit."
@@ -987,7 +989,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1432
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1442
 msgid "Startup Settings"
-msgstr "ການຕັ້ງຄ່າເລີ່ມຕົ້ນລະບົບ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:958
 msgid "Static file local path"
@@ -1003,7 +1005,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:706
 msgid "Subdomain"
-msgstr "ໂດເມນຍ່ອຍ"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:487
 msgid "TCP keepalive interval in seconds. Negative value disables keepalive."
@@ -1015,7 +1017,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:498
 msgid "TCP mux"
-msgstr "TCP mux"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:510
 msgid "TCP mux keepalive interval"
@@ -1023,7 +1025,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:540
 msgid "TLS"
-msgstr "TLS"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1428
 msgid "TLS / QUIC"
@@ -1061,7 +1063,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:235
 msgid "Token"
-msgstr "ໂທເຄັນ (Token)"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:244
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:264
@@ -1126,7 +1128,7 @@ msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:947
 msgid "Unix domain socket path"
-msgstr "ເສັ້ນທາງ Unix domain socket"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1032
 msgid "Use Header=Value."
@@ -1215,7 +1217,7 @@ msgstr ""
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1393
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1400
 msgid "frp Client"
-msgstr "ໄຄລ໌ແອນ frp"
+msgstr ""
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
 msgid ""
