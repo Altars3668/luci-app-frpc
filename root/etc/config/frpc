@@ -1,0 +1,43 @@
+### Default UCI configuration for luci-app-frpc
+### Sections:
+###   config conf 'common'  -> Global client settings
+###   config conf '<name>'  -> Proxy definitions (multiple allowed)
+###   config init 'init'    -> Runtime control
+
+config conf 'common'
+	option server_addr '127.0.0.1'
+	option server_port '7000'
+	option protocol 'tcp'          # tcp|kcp|quic|websocket
+	option log_level 'info'
+	option log_max_days '3'
+	option tcp_mux '1'
+	option login_fail_exit '1'
+	option auth_method 'token'     # token|oidc
+	# token mode:
+	# option token 'YourToken'
+	# oidc mode:
+	# option oidc_client_id 'XXXX'
+	# option oidc_client_secret 'YYYY'
+	# option oidc_audience 'https://example-oidc/.default'
+	# option oidc_token_endpoint_url 'https://issuer.example.com/oauth2/token'
+	# option http_proxy 'http://user:pass@proxy:8080'
+	# option admin_addr '0.0.0.0'
+	# option admin_port '7400'
+	# option admin_user 'admin'
+	# option admin_pwd 'admin'
+
+config init 'init'
+	option enabled '0'
+	option stdout '0'
+	option stderr '0'
+	option respawn '1'
+
+# Example proxy
+config conf 'ssh'
+	option name 'ssh'
+	option type 'tcp'
+	option local_ip '127.0.0.1'
+	option local_port '22'
+	option remote_port '6000'
+	# option use_encryption '0'
+	# option use_compression '0'

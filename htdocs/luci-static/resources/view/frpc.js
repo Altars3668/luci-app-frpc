@@ -2,153 +2,14 @@
 'require view';
 'require form';
 'require rpc';
+'require fs';
 'require tools.widgets as widgets';
 
-/*
- * Important:
- *
- * This LuCI page writes UCI options into /etc/config/frpc.
- * UCI option names must not contain ".".
- *
- * Therefore we keep UCI-safe option names here, then let init/generator script
- * convert them to frp TOML keys, for example:
- *
- *   server_addr          -> serverAddr
- *   server_port          -> serverPort
- *   protocol             -> transport.protocol
- *   wire_protocol        -> transport.wireProtocol
- *   tls_enable           -> transport.tls.enable
- *   token                -> auth.token
- *   admin_addr           -> webServer.addr
- *   use_encryption       -> transport.useEncryption
- *   use_compression      -> transport.useCompression
- *   sk                   -> secretKey
- *
- * Do NOT use option names like "transport.protocol" in LuCI form options.
- */
-
-/*
- * Debug-only TOML mapping. Keep these TOML: hints in the JS source for
- * troubleshooting generated configs, but do not show them in LuCI form text
- * and do not wrap them in _().
- *
- * common.client_id -> TOML: clientID
- * common.user -> TOML: user
- * common.server_addr -> TOML: serverAddr
- * common.server_port -> TOML: serverPort
- * common.nat_hole_stun_server -> TOML: natHoleStunServer
- * common.login_fail_exit -> TOML: loginFailExit
- * common.dns_server -> TOML: dnsServer
- * common.start -> TOML: start
- * common.udp_packet_size -> TOML: udpPacketSize
- * common.includes -> TOML: includes
- * common.authentication_method -> TOML: auth.method
- * common.token -> TOML: auth.token
- * common.auth_additional_scopes -> TOML: auth.additionalScopes
- * common.token_source_type -> TOML: auth.tokenSource.type
- * common.token_source_file_path -> TOML: auth.tokenSource.file.path
- * common.token_source_exec_command -> TOML: auth.tokenSource.exec.command
- * common.token_source_exec_args -> TOML: auth.tokenSource.exec.args
- * common.token_source_exec_env -> TOML: auth.tokenSource.exec.env
- * common.oidc_client_id -> TOML: auth.oidc.clientID
- * common.oidc_client_secret -> TOML: auth.oidc.clientSecret
- * common.oidc_audience -> TOML: auth.oidc.audience
- * common.oidc_scope -> TOML: auth.oidc.scope
- * common.oidc_token_endpoint_url -> TOML: auth.oidc.tokenEndpointURL
- * common.oidc_additional_endpoint_params -> TOML: auth.oidc.additionalEndpointParams
- * common.oidc_trusted_ca_file -> TOML: auth.oidc.trustedCaFile
- * common.oidc_insecure_skip_verify -> TOML: auth.oidc.insecureSkipVerify
- * common.oidc_proxy_url -> TOML: auth.oidc.proxyURL
- * common.dial_server_timeout -> TOML: transport.dialServerTimeout
- * common.dial_server_keepalive -> TOML: transport.dialServerKeepalive
- * common.http_proxy -> TOML: transport.proxyURL
- * common.pool_count -> TOML: transport.poolCount
- * common.tcp_mux -> TOML: transport.tcpMux
- * common.tcp_mux_keepalive_interval -> TOML: transport.tcpMuxKeepaliveInterval
- * common.protocol -> TOML: transport.protocol
- * common.wire_protocol -> TOML: transport.wireProtocol
- * common.connect_server_local_ip -> TOML: transport.connectServerLocalIP
- * common.heartbeat_interval -> TOML: transport.heartbeatInterval
- * common.heartbeat_timeout -> TOML: transport.heartbeatTimeout
- * common.tls_enable -> TOML: transport.tls.enable
- * common.tls_cert_file -> TOML: transport.tls.certFile
- * common.tls_key_file -> TOML: transport.tls.keyFile
- * common.tls_trusted_ca_file -> TOML: transport.tls.trustedCaFile
- * common.tls_server_name -> TOML: transport.tls.serverName
- * common.disable_custom_tls_first_byte -> TOML: transport.tls.disableCustomTLSFirstByte
- * common.quic_keepalive_period -> TOML: transport.quic.keepalivePeriod
- * common.quic_max_idle_timeout -> TOML: transport.quic.maxIdleTimeout
- * common.quic_max_incoming_streams -> TOML: transport.quic.maxIncomingStreams
- * common.admin_addr -> TOML: webServer.addr
- * common.admin_port -> TOML: webServer.port
- * common.admin_user -> TOML: webServer.user
- * common.admin_pwd -> TOML: webServer.password
- * common.admin_tls_cert_file -> TOML: webServer.tls.certFile
- * common.admin_tls_key_file -> TOML: webServer.tls.keyFile
- * common.assets_dir -> TOML: webServer.assetsDir
- * common.pprof_enable -> TOML: webServer.pprofEnable
- * common.feature_gates -> TOML: featureGates
- * common.virtual_net_address -> TOML: virtualNet.address
- * common.store_path -> TOML: store.path
- * common.metadatas -> TOML: metadatas
- * common.log_file -> TOML: log.to
- * common.log_level -> TOML: log.level
- * common.log_max_days -> TOML: log.maxDays
- * common.disable_log_color -> TOML: log.disablePrintColor
- * conf.name -> TOML: proxies[].name / visitors[].name
- * conf.type -> TOML: proxies[].type / visitors[].type
- * conf.enabled -> TOML: proxies[].enabled / visitors[].enabled
- * conf.local_ip -> TOML: proxies[].localIP
- * conf.local_port -> TOML: proxies[].localPort
- * conf.remote_port -> TOML: proxies[].remotePort
- * conf.custom_domains -> TOML: proxies[].customDomains
- * conf.subdomain -> TOML: proxies[].subdomain
- * conf.locations -> TOML: proxies[].locations
- * conf.http_user -> TOML: proxies[].httpUser
- * conf.http_pwd -> TOML: proxies[].httpPassword
- * conf.route_by_http_user -> TOML: proxies[].routeByHTTPUser
- * conf.host_header_rewrite -> TOML: proxies[].hostHeaderRewrite
- * conf.request_headers -> TOML: proxies[].requestHeaders.set
- * conf.response_headers -> TOML: proxies[].responseHeaders.set
- * conf.multiplexer -> TOML: proxies[].multiplexer
- * conf.group -> TOML: proxies[].loadBalancer.group
- * conf.group_key -> TOML: proxies[].loadBalancer.groupKey
- * conf.health_check_type -> TOML: proxies[].healthCheck.type
- * conf.health_check_url -> TOML: proxies[].healthCheck.path
- * conf.health_check_headers -> TOML: proxies[].healthCheck.httpHeaders
- * conf.sk -> TOML: proxies[].secretKey / visitors[].secretKey
- * conf.allow_users -> TOML: proxies[].allowUsers
- * conf.server_user -> TOML: visitors[].serverUser
- * conf.server_name -> TOML: visitors[].serverName
- * conf.bind_addr -> TOML: visitors[].bindAddr
- * conf.bind_port -> TOML: visitors[].bindPort
- * conf.visitor_protocol -> TOML: visitors[].protocol
- * conf.keep_tunnel_open -> TOML: visitors[].keepTunnelOpen
- * conf.fallback_to -> TOML: visitors[].fallbackTo
- * conf.plugin -> TOML: proxies[].plugin.type / visitors[].plugin.type
- */
-
-const startupConf = [
-	[form.Flag, 'stdout', _('Log stdout'), null,
-	{
-		enabled: '1',
-		disabled: '0',
-		default: '1',
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Flag, 'stderr', _('Log stderr'), null,
-	{
-		enabled: '1',
-		disabled: '0',
-		default: '1',
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
+//	[Widget, Option, Title, Description, {Param: 'Value'}],
+var startupConf = [
+	[form.Flag, 'enabled', _('Enabled'), _('Enable or disable the frpc service (init.enabled).')],
+	[form.Flag, 'stdout', _('Log stdout')],
+	[form.Flag, 'stderr', _('Log stderr')],
 	[widgets.UserSelect, 'user', _('Run daemon as user')],
 	[widgets.GroupSelect, 'group', _('Run daemon as group')],
 
@@ -179,52 +40,62 @@ const startupConf = [
 	}]
 ];
 
-const commonBaseConf = [
-	[form.Value, 'client_id', _('Client ID'),
-	_('Optional unique identifier for this frpc instance.')],
+// 分页分组：将原 Common Settings 拆分为多个逻辑标签页
+var grpBasic = [
+	[form.Value, 'server_addr', _('Server address'), _('ServerAddr specifies the address of the server to connect to.<br />By default, this value is "127.0.0.1".'), {datatype: 'host'}],
+	[form.Value, 'server_port', _('Server port'), _('ServerPort specifies the port to connect to the server on.<br />By default, this value is 7000.'), {datatype: 'port'}],
+	[form.ListValue, 'protocol', _('Protocol'), _('Protocol specifies the transport protocol used to connect frpc to frps. Valid values are "tcp", "kcp", "quic" and "websocket".<br />By default, this value is "tcp".'), {values: ['tcp', 'kcp', 'quic', 'websocket']}],
+	[form.Value, 'http_proxy', _('HTTP proxy'), _('HttpProxy specifies a proxy address to connect to the server through. If this value is "", the server will be connected to directly.<br />By default, this value is read from the "http_proxy" environment variable.')],
+	[form.Flag, 'tcp_mux', _('TCP mux'), _('TcpMux toggles TCP stream multiplexing. This allows multiple requests from a client to share a single TCP connection. If this value is true, the server must have TCP multiplexing enabled as well.<br />By default, this value is true.'), {datatype: 'bool', default: 'true'}],
+	[form.Value, 'tcp_mux_keepalive_interval', _('TCP mux keepalive interval'), _('tcpMuxKeepaliveInterval (seconds).'), {datatype: 'uinteger'}],
+	[form.Value, 'heartbeat_interval', _('Heartbeat interval'), _('HeartBeatInterval specifies at what interval heartbeats are sent to the server, in seconds. It is not recommended to change this value.<br />By default, this value is 30.'), {datatype: 'uinteger'}],
+	[form.Value, 'heartbeat_timeout', _('Heartbeat timeout'), _('HeartBeatTimeout specifies the maximum allowed heartbeat response delay before the connection is terminated, in seconds. It is not recommended to change this value.<br />By default, this value is 90.'), {datatype: 'uinteger'}],
+	[form.Value, 'user', _('User'), _('User specifies a prefix for proxy names to distinguish them from other clients. If this value is not "", proxy names will automatically be changed to "{user}.{proxy_name}".<br />By default, this value is "".')],
+	[form.Flag, 'login_fail_exit', _('Exit when login fail'), _('LoginFailExit controls whether or not the client should exit after a failed login attempt. If false, the client will retry until a login attempt succeeds.<br />By default, this value is true.'), {datatype: 'bool', default: 'true'}]
+];
 
-	[form.Value, 'server_addr', _('Server address'),
-	_('Address of the frps server.'),
-	{ datatype: 'host', rmempty: false, placeholder: '127.0.0.1' }],
+var grpAuth = [
+	[form.ListValue, 'auth_method', _('Auth method'), _('Authentication method to connect frpc to frps. Valid values: "token" (default) or "oidc".'), {values: ['token', 'oidc'], default: 'token'}],
+	[form.Value, 'token', _('Token'), _('Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication.'), {depends: {auth_method: 'token'}}],
+	[form.Value, 'oidc_client_id', _('OIDC Client ID'), _('OIDC clientID used when auth.method = "oidc".'), {depends: {auth_method: 'oidc'}}],
+	[form.Value, 'oidc_client_secret', _('OIDC Client Secret'), _('OIDC clientSecret used when auth.method = "oidc".'), {password: true, depends: {auth_method: 'oidc'}}],
+	[form.Value, 'oidc_audience', _('OIDC Audience'), _('OIDC audience used when auth.method = "oidc".'), {depends: {auth_method: 'oidc'}}],
+	[form.Value, 'oidc_token_endpoint_url', _('OIDC Token Endpoint URL'), _('OIDC token endpoint URL used when auth.method = "oidc".'), {depends: {auth_method: 'oidc'}}]
+];
 
-	[form.Value, 'server_port', _('Server port'),
-	_('Port of the frps server. Default is 7000.'),
-	{ datatype: 'port', rmempty: false, placeholder: '7000' }],
+// Security & TLS (合并 TLS 与 QUIC)
+var grpSecurityTLS = [
+	[form.Flag, 'tls_enable', _('TLS'), _('TLSEnable specifies whether or not TLS should be used when communicating with the server.'), {datatype: 'bool'}],
+	[form.Value, 'tls_cert_file', _('TLS cert file'), _('Client TLS certFile path.'), {datatype: 'file'}],
+	[form.Value, 'tls_key_file', _('TLS key file'), _('Client TLS keyFile path.'), {datatype: 'file'}],
+	[form.Value, 'tls_trusted_ca_file', _('TLS trusted CA file'), _('Client TLS trustedCaFile path.'), {datatype: 'file'}],
+	[form.Value, 'tls_server_name', _('TLS server name'), _('Override TLS serverName for SNI.')],
+	[form.Flag, 'tls_disable_custom_first_byte', _('TLS disable custom first byte'), _('Disable custom first byte when using TLS.'), {datatype: 'bool'}],
+	[form.Value, 'quic_keepalive_period', _('QUIC keepalive period'), _('QUIC keepalivePeriod (seconds).'), {datatype: 'uinteger'}],
+	[form.Value, 'quic_max_idle_timeout', _('QUIC max idle timeout'), _('QUIC maxIdleTimeout (seconds).'), {datatype: 'uinteger'}],
+	[form.Value, 'quic_max_incoming_streams', _('QUIC max incoming streams'), _('QUIC maxIncomingStreams.'), {datatype: 'uinteger'}]
+];
 
-	[form.Value, 'user', _('Proxy name prefix'),
-	_('Prefix for proxy names. If set, proxy names become {user}.{proxy}.')],
+var grpWeb = [
+	[form.Value, 'admin_addr', _('Admin address'), _('AdminAddr specifies the address that the admin server binds to.<br />By default, this value is "0.0.0.0".'), {datatype: 'ipaddr'}],
+	[form.Value, 'admin_port', _('Admin port'), _('AdminPort specifies the port for the admin server to listen on. If this value is 0, the admin server will not be started.<br />By default, this value is 0.'), {datatype: 'port'}],
+	[form.Value, 'admin_user', _('Admin user'), _('AdminUser specifies the username that the admin server will use for login.<br />By default, this value is "admin".')],
+	[form.Value, 'admin_pwd', _('Admin password'), _('AdminPwd specifies the password that the admin server will use for login.<br />By default, this value is "admin".'), {password: true}],
+	[form.Value, 'assets_dir', _('Assets dir'), _('AssetsDir specifies the local directory that the admin server will load resources from. If this value is "", assets will be loaded from the bundled executable using statik.<br />By default, this value is "".')]
+];
 
-	[form.Value, 'nat_hole_stun_server', _('NAT hole STUN server'),
-	_('STUN server used for NAT traversal.'),
-	{ placeholder: 'stun.easyvoip.com:3478' }],
 
-	[form.Flag, 'login_fail_exit', _('Exit when login fails'),
-	_('Exit frpc when the first login fails.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
+var grpLogging = [
+	[form.Value, 'log_to', _('Log output target'), _('Preferred new key. Accepts a file path or special values: "console", "/dev/null". Leave empty for upstream default (console).')],
+	[form.Value, 'log_file', _('(Deprecated) legacy log_file'), _('Deprecated legacy key retained for backward compatibility. Will be migrated to log_to in runtime; please move value to "Log output target" and clear this.'), {placeholder: '/tmp/log/frpc.log'}],
+	[form.ListValue, 'log_level', _('Log level'), _('LogLevel specifies the minimum log level. Valid values are "trace", "debug", "info", "warn", and "error".<br />By default, this value is "info".'), {values: ['trace', 'debug', 'info', 'warn', 'error']}],
+	[form.Value, 'log_max_days', _('Log max days'), _('Maximum days to retain file logs when the output target is a file.'), {datatype: 'uinteger'}],
+	[form.Flag, 'disable_log_color', _('Disable log color'), _('Disable ANSI color codes in console logs.'), {datatype: 'bool', default: 'false'}]
+];
 
-	[form.Value, 'dns_server', _('DNS server'),
-	_('Custom DNS server used by frpc.'),
-	{ datatype: 'ipaddr', placeholder: '8.8.8.8' }],
-
-	[form.DynamicList, 'start', _('Start proxies / visitors'),
-	_('Only start specified proxies or visitors. Empty means start all.'),
-	{ placeholder: 'ssh' }],
-
-	[form.Value, 'udp_packet_size', _('UDP packet size'),
-	_('UDP packet size in bytes. Should match frps. Default is 1500.'),
-	{ datatype: 'uinteger', placeholder: '1500' }],
-
-	[form.DynamicList, 'includes', _('Include config files'),
-	_('Additional config files included by frpc.'),
-	{ placeholder: './confd/*.toml' }]
+// Renamed '_' -> 'extra_settings' (keep backward compatibility)
+var grpExtra = [
+	[form.DynamicList, 'extra_settings', _('Additional settings'), _('This list can be used to specify some additional parameters which have not been included in this LuCI.'), {placeholder: 'Key-A=Value-A'}]
 ];
 
 const commonAuthConf = [
@@ -618,678 +489,22 @@ const commonAdvancedConf = [
 	}]
 ];
 
-const proxyOnlyDepends = [
-	{ type: 'tcp' },
-	{ type: 'udp' },
-	{ type: 'http' },
-	{ type: 'https' },
-	{ type: 'tcpmux' },
-	{ type: 'stcp', role: 'server' },
-	{ type: 'xtcp', role: 'server' },
-	{ type: 'sudp', role: 'server' }
+// Batch B advanced proxy parameters
+var advProxyConf = [
+	[form.Value, 'bandwidth_limit', _('Bandwidth limit'), _('transport.bandwidthLimit, e.g. 1MB, 100KB, 1GB.'), {modalonly: true}],
+	[form.ListValue, 'bandwidth_limit_mode', _('Bandwidth limit mode'), _('transport.bandwidthLimitMode.'), {values: ['client', 'server'], modalonly: true}],
+	[form.ListValue, 'proxy_protocol_version', _('Proxy protocol version'), _('transport.proxyProtocolVersion.'), {values: ['', 'v1', 'v2'], modalonly: true}],
+	[form.Value, 'lb_group', _('LoadBalancer group'), _('loadBalancer.group name.'), {modalonly: true}],
+	[form.Value, 'lb_group_key', _('LoadBalancer group key'), _('loadBalancer.groupKey secret.'), {modalonly: true}],
+	[form.ListValue, 'hc_type', _('Health check type'), _('healthCheck.type'), {values: ['', 'tcp', 'http'], modalonly: true}],
+	[form.Value, 'hc_path', _('Health check path'), _('healthCheck.path (HTTP only).'), {modalonly: true, depends: {hc_type: 'http'}}],
+	[form.Value, 'hc_timeout', _('Health check timeout(s)'), _('healthCheck.timeoutSeconds'), {datatype: 'uinteger', modalonly: true}],
+	[form.Value, 'hc_max_failed', _('Health check max failed'), _('healthCheck.maxFailed'), {datatype: 'uinteger', modalonly: true}],
+	[form.Value, 'hc_interval', _('Health check interval(s)'), _('healthCheck.intervalSeconds'), {datatype: 'uinteger', modalonly: true}],
+	[form.Value, 'server_user', _('Server user (visitor)'), _('serverUser for visitor role'), {modalonly: true, depends: {role: 'visitor'}}],
+	[form.DynamicList, 'extra_options', _('Extra options'), _('Append raw key=value lines at end of this proxy block'), {placeholder: 'foo.bar=value', modalonly: true}],
+	[form.DynamicList, 'extra_options_plugin', _('Extra plugin options'), _('Append raw key=value lines inside [proxies.plugin] section'), {placeholder: 'extraKey=extraValue', modalonly: true, depends: {plugin: 'http_proxy'}}]
 ];
-
-const healthCheckDepends = [
-	{ type: 'tcp' },
-	{ type: 'http' },
-	{ type: 'https' },
-	{ type: 'tcpmux' }
-];
-
-const baseProxyConf = [
-	[form.Value, 'name', _('Proxy name'), undefined,
-	{ rmempty: false, optional: false }],
-
-	[form.ListValue, 'type', _('Proxy type'),
-	_('Proxy type.'),
-	{ values: ['tcp', 'udp', 'http', 'https', 'stcp', 'xtcp', 'sudp', 'tcpmux'], default: 'tcp' }],
-
-	[form.Flag, 'enabled', _('Enabled'),
-	_('Enable or disable this proxy.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Value, 'local_ip', _('Local IP'),
-	_('Local service IP or host.'),
-	{ datatype: 'host', depends: proxyOnlyDepends }],
-
-	[form.Value, 'local_port', _('Local port'),
-	_('Local service port.'),
-	{ datatype: 'port', depends: proxyOnlyDepends }],
-
-	[form.Value, 'remote_port', _('Remote port'),
-	_('Remote port listened by frps. If 0, frps assigns a random port.'),
-	{
-		validate: validatePortOrZero,
-		depends: [{ type: 'tcp' }, { type: 'udp' }],
-		textvalue: function (section_id) {
-			const v = this.cfgvalue(section_id);
-			return v && v !== '0' ? v : '#';
-		}
-	}]
-];
-
-const proxyTransportConf = [
-	[form.Value, 'bandwidth_limit', _('Bandwidth limit'),
-	_('Bandwidth limit, for example 1MB.'),
-	{ placeholder: '1MB', depends: proxyOnlyDepends }],
-
-	[form.ListValue, 'bandwidth_limit_mode', _('Bandwidth limit mode'),
-	_('Where to limit bandwidth.'),
-	{ values: ['client', 'server'], default: 'client', depends: proxyOnlyDepends }],
-
-	[form.Flag, 'use_encryption', _('Encryption'),
-	_('Encrypt proxy traffic.'),
-	{ datatype: 'bool', default: 'false' }],
-
-	[form.Flag, 'use_compression', _('Compression'),
-	_('Compress proxy traffic.'),
-	{ datatype: 'bool', default: 'false' }],
-
-	[form.ListValue, 'proxy_protocol_version', _('Proxy protocol version'),
-	_('Use proxy protocol to transfer connection info to local service.'),
-	{ values: [['', _('Disabled')], ['v1', 'v1'], ['v2', 'v2']], rmempty: true, depends: proxyOnlyDepends }]
-];
-
-const domainConf = [
-	[form.DynamicList, 'custom_domains', _('Custom domains'),
-	_('Configuration key: proxies[].customDomains.'),
-	{ placeholder: 'web01.yourdomain.com' }],
-
-	[form.Value, 'subdomain', _('Subdomain'),
-	_('Configuration key: proxies[].subdomain.')]
-];
-
-const httpProxyConf = [
-	[form.DynamicList, 'locations', _('Locations'),
-	_('Only valid for HTTP proxy.'),
-	{
-		placeholder: '/',
-		validate: function (section_id, value) {
-			return validateHttpPath(value);
-		}
-	}],
-
-	[form.Value, 'host_header_rewrite', _('Host header rewrite'),
-	_('Rewrite Host header.')],
-
-	[form.DynamicList, 'request_headers', _('Request headers'),
-	_('Set request headers. Use Header=Value.'),
-	{
-		placeholder: 'x-from-where=frp',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}],
-
-	[form.DynamicList, 'response_headers', _('Response headers'),
-	_('Set response headers. Use Header=Value.'),
-	{
-		placeholder: 'foo=bar',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}]
-];
-
-const httpAuthConf = [
-	[form.Value, 'http_user', _('HTTP user'),
-	_('HTTP or TCPMUX basic auth username.')],
-
-	[form.Value, 'http_pwd', _('HTTP password'),
-	_('HTTP or TCPMUX basic auth password.'),
-	{ password: true }]
-];
-
-const routeByHTTPUserConf = [
-	[form.Value, 'route_by_http_user', _('Route by HTTP user'),
-	_('Route HTTP or TCPMUX requests by HTTP basic auth user.')]
-];
-
-const tcpmuxConf = [
-	[form.ListValue, 'multiplexer', _('Multiplexer'),
-	_('TCP multiplexer.'),
-	{ values: ['httpconnect'], depends: { type: 'tcpmux' }, default: 'httpconnect' }]
-];
-
-const loadBalancerConf = [
-	[form.Value, 'group', _('Load balancer group'),
-	_('Configuration key: proxies[].loadBalancer.group.'),
-	{ depends: proxyOnlyDepends }],
-
-	[form.Value, 'group_key', _('Load balancer group key'),
-	_('Configuration key: proxies[].loadBalancer.groupKey.'),
-	{
-		password: true,
-		depends: proxyOnlyDepends,
-		validate: function (section_id, value) {
-			const group = this.section.getOption('group');
-
-			if (String(value || '').trim() && group && !String(group.formvalue(section_id) || '').trim())
-				return _('Load balancer group is required when group key is set.');
-
-			return true;
-		}
-	}]
-];
-
-const healthCheckConf = [
-	[form.ListValue, 'health_check_type', _('Health check type'),
-	_('Health check type.'),
-	{ values: [['', _('Disabled')], ['tcp', 'tcp'], ['http', 'http']], rmempty: true, depends: healthCheckDepends }],
-
-	[form.Value, 'health_check_timeout_s', _('Health check timeout'),
-	_('Health check timeout in seconds.'),
-	{ datatype: 'uinteger', depends: [{ health_check_type: 'tcp' }, { health_check_type: 'http' }], placeholder: '3' }],
-
-	[form.Value, 'health_check_max_failed', _('Health check max failed'),
-	_('Remove proxy from frps after continuous failures.'),
-	{ datatype: 'uinteger', depends: [{ health_check_type: 'tcp' }, { health_check_type: 'http' }], placeholder: '3' }],
-
-	[form.Value, 'health_check_interval_s', _('Health check interval'),
-	_('Health check interval in seconds.'),
-	{ datatype: 'uinteger', depends: [{ health_check_type: 'tcp' }, { health_check_type: 'http' }], placeholder: '10' }],
-
-	[form.Value, 'health_check_url', _('Health check path'),
-	_('HTTP health check path.'),
-	{
-		depends: { health_check_type: 'http' },
-		placeholder: '/status',
-		validate: function (section_id, value) {
-			const healthCheckType = this.section.getOption('health_check_type');
-
-			if (
-				healthCheckType &&
-				healthCheckType.formvalue(section_id) === 'http' &&
-				!String(value || '').trim()
-			)
-				return _('Health check path is required when health check type is http.');
-
-			return validateHttpPath(value);
-		}
-	}],
-
-	[form.DynamicList, 'health_check_headers', _('Health check headers'),
-	_('HTTP health check headers. Use Header=Value.'),
-	{
-		depends: { health_check_type: 'http' },
-		placeholder: 'x-from-where=frp',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}]
-];
-
-const stcpXtcpConf = [
-	[form.ListValue, 'role', _('Role'),
-	_('Compatibility field for UCI. Server sections are emitted as proxy entries; visitor sections are emitted as visitor entries.'),
-	{ values: ['server', 'visitor'], default: 'server' }],
-
-	[form.Value, 'sk', _('Secret key'),
-	_('Secret key used by STCP/XTCP/SUDP proxies and visitors.'),
-	{ password: true }],
-
-	[form.DynamicList, 'allow_users', _('Allow users'),
-	_('Only visitors from specified users can connect. Use * to allow all users.'),
-	{ depends: { role: 'server' }, placeholder: '*' }],
-
-	[form.Value, 'server_user', _('Server user'),
-	_('Server user for visitor.'),
-	{ depends: { role: 'visitor' } }],
-
-	[form.Value, 'server_name', _('Server name'),
-	_('Server proxy name to visit.'),
-	{
-		depends: { role: 'visitor' },
-		validate: function (section_id, value) {
-			const role = this.section.getOption('role');
-
-			if (role && role.formvalue(section_id) === 'visitor' && !String(value || '').trim())
-				return _('Server name is required for visitors.');
-
-			return true;
-		}
-	}],
-
-	[form.Value, 'bind_addr', _('Bind address'),
-	_('Local bind address for visitor.'),
-	{ depends: { role: 'visitor' }, datatype: 'ipaddr', placeholder: '127.0.0.1' }],
-
-	[form.Value, 'bind_port', _('Bind port'),
-	_('Local bind port for visitor. Use a negative value to avoid binding.'),
-	{
-		depends: { role: 'visitor' },
-		validate: function (section_id, value) {
-			const role = this.section.getOption('role');
-
-			if (role && role.formvalue(section_id) === 'visitor' && !String(value || '').trim())
-				return _('Bind port is required for visitors.');
-
-			return validateVisitorBindPort(section_id, value);
-		}
-	}],
-
-	[form.ListValue, 'visitor_protocol', _('XTCP protocol'),
-	_('XTCP visitor tunnel protocol.'),
-	{ depends: { role: 'visitor', type: 'xtcp' }, values: ['quic', 'kcp'], default: 'quic' }],
-
-	[form.Flag, 'keep_tunnel_open', _('Keep tunnel open'),
-	_('Keep XTCP tunnel open.'),
-	{ depends: { role: 'visitor', type: 'xtcp' }, datatype: 'bool', default: 'false' }],
-
-	[form.Value, 'max_retries_an_hour', _('Max retries per hour'),
-	_('Effective when XTCP keep tunnel open is enabled.'),
-	{ depends: { role: 'visitor', type: 'xtcp' }, datatype: 'uinteger', placeholder: '8' }],
-
-	[form.Value, 'min_retry_interval', _('Min retry interval'),
-	_('Minimum XTCP retry interval.'),
-	{ depends: { role: 'visitor', type: 'xtcp' }, datatype: 'uinteger', placeholder: '90' }],
-
-	[form.Value, 'fallback_to', _('Fallback to'),
-	_('Fallback visitor name for XTCP.'),
-	{ depends: { role: 'visitor', type: 'xtcp' } }],
-
-	[form.Value, 'fallback_timeout_ms', _('Fallback timeout ms'),
-	_('Fallback timeout in milliseconds for XTCP.'),
-	{ depends: { role: 'visitor', type: 'xtcp' }, datatype: 'uinteger', placeholder: '500' }],
-
-	[form.Flag, 'nat_disable_assisted_addrs', _('Disable NAT assisted addresses'),
-	_('Disable local interface assisted addresses for XTCP NAT traversal.'),
-	{ depends: { type: 'xtcp' }, datatype: 'bool', default: 'false' }]
-];
-
-const pluginConf = [
-	[form.ListValue, 'plugin', _('Plugin'),
-	_('Plugin type.'),
-	{
-		values: [
-			['', _('Disabled')],
-			['http_proxy', 'http_proxy'],
-			['socks5', 'socks5'],
-			['unix_domain_socket', 'unix_domain_socket'],
-			['static_file', 'static_file'],
-			['https2http', 'https2http'],
-			['https2https', 'https2https'],
-			['http2https', 'http2https'],
-			['http2http', 'http2http'],
-			['tls2raw', 'tls2raw'],
-			['virtual_net', 'virtual_net']
-		],
-		rmempty: true,
-		validate: function (section_id, value) {
-			return validatePlugin(this.section, section_id, value);
-		}
-	}],
-
-	[form.Value, 'plugin_http_user', _('HTTP user'),
-	_('Configuration key: plugin.httpUser.'),
-	{ depends: [{ plugin: 'http_proxy' }, { plugin: 'static_file' }] }],
-
-	[form.Value, 'plugin_http_passwd', _('HTTP password'),
-	_('Configuration key: plugin.httpPassword.'),
-	{ depends: [{ plugin: 'http_proxy' }, { plugin: 'static_file' }], password: true }],
-
-	[form.Value, 'plugin_user', _('SOCKS5 user'),
-	_('Configuration key: plugin.username.'),
-	{ depends: { plugin: 'socks5' } }],
-
-	[form.Value, 'plugin_passwd', _('SOCKS5 password'),
-	_('Configuration key: plugin.password.'),
-	{ depends: { plugin: 'socks5' }, password: true }],
-
-	[form.Value, 'plugin_unix_path', _('Unix domain socket path'),
-	_('Configuration key: plugin.unixPath.'),
-	{
-		depends: { plugin: 'unix_domain_socket' },
-		optional: false,
-		rmempty: false,
-		datatype: 'file',
-		placeholder: '/var/run/docker.sock',
-		default: '/var/run/docker.sock'
-	}],
-
-	[form.Value, 'plugin_local_path', _('Static file local path'),
-	_('Configuration key: plugin.localPath.'),
-	{ depends: { plugin: 'static_file' }, datatype: 'directory', placeholder: '/var/www/blog' }],
-
-	[form.Value, 'plugin_strip_prefix', _('Static file strip prefix'),
-	_('Configuration key: plugin.stripPrefix.'),
-	{ depends: { plugin: 'static_file' }, placeholder: 'static' }],
-
-	[form.Value, 'plugin_local_addr', _('Plugin local address'),
-	_('Local backend address used by bridge plugins. For https2http, https2https and tls2raw, this is the local service address reached after frp terminates external TLS; for http2https/http2http, it is the local upstream address.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' },
-			{ plugin: 'http2https' },
-			{ plugin: 'http2http' },
-			{ plugin: 'tls2raw' }
-		],
-		placeholder: '127.0.0.1:80'
-	}],
-
-	[form.Value, 'plugin_crt_path', _('Plugin certificate path'),
-	_('Configuration key: plugin.crtPath.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' },
-			{ plugin: 'tls2raw' }
-		],
-		datatype: 'file',
-		placeholder: './server.crt'
-	}],
-
-	[form.Value, 'plugin_key_path', _('Plugin key path'),
-	_('Configuration key: plugin.keyPath.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' },
-			{ plugin: 'tls2raw' }
-		],
-		datatype: 'file',
-		placeholder: './server.key'
-	}],
-
-	[form.Value, 'plugin_host_header_rewrite', _('Plugin host header rewrite'),
-	_('Configuration key: plugin.hostHeaderRewrite.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' },
-			{ plugin: 'http2https' },
-			{ plugin: 'http2http' }
-		],
-		placeholder: '127.0.0.1'
-	}],
-
-	[form.Flag, 'plugin_enable_http2', _('Plugin HTTP/2'),
-	_('Enable HTTP/2 for HTTPS bridge plugins.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' }
-		],
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.DynamicList, 'plugin_request_headers', _('Plugin request headers'),
-	_('Use Header=Value.'),
-	{
-		depends: [
-			{ plugin: 'https2http' },
-			{ plugin: 'https2https' },
-			{ plugin: 'http2https' },
-			{ plugin: 'http2http' }
-		],
-		placeholder: 'x-from-where=frp',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}],
-
-	[form.Value, 'plugin_destination_ip', _('VirtualNet destination IP'),
-	_('For virtual_net visitor plugin.'),
-	{
-		depends: { plugin: 'virtual_net', role: 'visitor' },
-		datatype: 'ipaddr',
-		placeholder: '100.86.0.1',
-		validate: function (section_id, value) {
-			return validateVirtualNetDestination(this.section, section_id, value);
-		}
-	}]
-];
-
-const metadataConf = [
-	[form.DynamicList, 'metadatas', _('Proxy metadatas'),
-	_('Additional proxy metadata. Use key=value.'),
-	{
-		depends: proxyOnlyDepends,
-		placeholder: 'var1=abc',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}],
-
-	[form.DynamicList, 'annotations', _('Annotations'),
-	_('Annotations displayed on frps dashboard. Use key=value.'),
-	{
-		depends: proxyOnlyDepends,
-		placeholder: 'key1=value1',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}]
-];
-
-function writeFlagDisabled(section_id) {
-	return this.write(section_id, this.disabled || 'false');
-}
-
-function removeIfPresent(section_id) {
-	const this_cfg = this.uciconfig || this.section.uciconfig || this.map.config;
-	const this_sid = this.ucisection || section_id;
-	const this_opt = this.ucioption || this.option;
-
-	for (let i = 0; i < this.section.children.length; i++) {
-		const sibling = this.section.children[i];
-
-		if (sibling === this || sibling.ucioption == null)
-			continue;
-
-		const sibling_cfg = sibling.uciconfig || sibling.section.uciconfig || sibling.map.config;
-		const sibling_sid = sibling.ucisection || section_id;
-		const sibling_opt = sibling.ucioption || sibling.option;
-
-		if (this_cfg != sibling_cfg || this_sid != sibling_sid || this_opt != sibling_opt)
-			continue;
-
-		if (typeof sibling.isActive === 'function' && sibling.isActive(section_id))
-			return Promise.resolve();
-	}
-
-	if (this.map.data.get(this_cfg, this_sid, this_opt) == null)
-		return Promise.resolve();
-
-	return this.map.data.unset(this_cfg, this_sid, this_opt);
-}
-
-function isUciDeleteNotFoundError(err) {
-	const message = err && err.message ? err.message : String(err);
-
-	return /uci\/delete/.test(message) && /ubus code 4/.test(message);
-}
-
-function guardUciDeleteNotFound(data, config) {
-	data._frpIgnoreMissingDeleteConfigs ??= {};
-	data._frpIgnoreMissingDeleteConfigs[config] = true;
-
-	if (data._frpIgnoreMissingDeleteInstalled)
-		return;
-
-	const callDelete = data.callDelete;
-
-	data.callDelete = function(conf, sid, options) {
-		const guarded = this._frpIgnoreMissingDeleteConfigs && this._frpIgnoreMissingDeleteConfigs[conf];
-
-		return callDelete.apply(this, arguments).catch(L.bind(function(err) {
-			if (!guarded || !isUciDeleteNotFoundError(err))
-				return Promise.reject(err);
-
-			if (!Array.isArray(options) || options.length <= 1)
-				return null;
-
-			return Promise.all(options.map(L.bind(function(opt) {
-				return callDelete.call(this, conf, sid, [ opt ]).catch(function(e) {
-					return isUciDeleteNotFoundError(e) ? null : Promise.reject(e);
-				});
-			}, this)));
-		}, this));
-	};
-
-	data._frpIgnoreMissingDeleteInstalled = true;
-}
-
-function adminWebEnabled(section, section_id) {
-	const port = section.getOption('admin_port');
-	const value = port ? port.formvalue(section_id) : null;
-
-	return !!(value && value !== '0');
-}
-
-function adminHttpsEnabled(section, section_id) {
-	const enable = section.getOption('admin_tls_enable');
-
-	return !!(enable && enable.formvalue(section_id) === 'true');
-}
-
-function validatePortOrZero(section_id, value) {
-	if (!value)
-		return true;
-
-	value = String(value).trim();
-
-	if (!/^\d+$/.test(value))
-		return _('Port must be a number between 0 and 65535.');
-
-	const port = Number(value);
-	if (port < 0 || port > 65535)
-		return _('Port must be between 0 and 65535.');
-
-	return true;
-}
-
-function validateVisitorBindPort(section_id, value) {
-	if (!value)
-		return true;
-
-	value = String(value).trim();
-
-	if (/^-\d+$/.test(value) && Number(value) < 0)
-		return true;
-
-	if (!/^\d+$/.test(value))
-		return _('Port must be negative or a number between 1 and 65535.');
-
-	const port = Number(value);
-	if (port < 1 || port > 65535)
-		return _('Port must be negative or between 1 and 65535.');
-
-	return true;
-}
-
-function validateEnv(value) {
-	if (!value)
-		return true;
-
-	if (/\r|\n/.test(String(value)) || !/^[A-Za-z_][A-Za-z0-9_]*=.*$/.test(String(value)))
-		return _('Environment variable must use KEY=value format.');
-
-	return true;
-}
-
-function validateHttpPath(value) {
-	if (!value)
-		return true;
-
-	if (/\r|\n/.test(String(value)) || String(value).charAt(0) !== '/')
-		return _('HTTP path must start with /.');
-
-	return true;
-}
-
-function validateKeyValue(value) {
-	if (!value)
-		return true;
-
-	if (/[\r\n]/.test(String(value)) || !/^[^=\s][^=]*=.*$/.test(String(value)))
-		return _('Please use KEY=value format.');
-
-	return true;
-}
-
-function validatePlugin(section, section_id, value) {
-	const role = section.getOption('role');
-	const roleValue = role ? role.formvalue(section_id) : null;
-
-	if (roleValue === 'visitor' && value && value !== 'virtual_net')
-		return _('Only the virtual_net plugin is valid for visitors.');
-
-	return true;
-}
-
-function validateVirtualNetDestination(section, section_id, value) {
-	const plugin = section.getOption('plugin');
-	const role = section.getOption('role');
-
-	if (
-		plugin && plugin.formvalue(section_id) === 'virtual_net' &&
-		role && role.formvalue(section_id) === 'visitor' &&
-		!String(value || '').trim()
-	)
-		return _('VirtualNet destination IP is required for virtual_net visitors.');
-
-	return true;
-}
-
-function normalizeDepends(depends) {
-	if (depends == null)
-		return [];
-
-	return Array.isArray(depends) ? depends : [ depends ];
-}
-
-function mergeDepends(existing, next) {
-	const current = normalizeDepends(existing);
-	const incoming = normalizeDepends(next);
-
-	if (current.length === 0)
-		return incoming;
-
-	if (incoming.length === 0)
-		return current;
-
-	const merged = [];
-
-	for (let oldDep of current) {
-		for (let newDep of incoming) {
-			const dep = {};
-			let conflict = false;
-
-			for (let key in oldDep)
-				dep[key] = oldDep[key];
-
-			for (let key in newDep) {
-				if (Object.prototype.hasOwnProperty.call(dep, key) && dep[key] !== newDep[key]) {
-					conflict = true;
-					break;
-				}
-
-				dep[key] = newDep[key];
-			}
-
-			if (!conflict)
-				merged.push(dep);
-		}
-	}
-
-	return merged;
-}
 
 function setParams(o, params) {
 	if (!params)
@@ -1327,21 +542,51 @@ function defTabOpts(s, t, opts, params) {
 
 		setParams(o, opt[4]);
 		setParams(o, params);
-
-		/*
-		 * Per-option optional must win over tab-wide optional.
-		 * This is important for form.Flag with default='true',
-		 * otherwise LuCI may treat checked state as default and call remove().
-		 */
-		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'optional'))
-			o.optional = opt[4].optional;
-
-		if (
-			!(opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'remove')) &&
-			!(params && Object.prototype.hasOwnProperty.call(params, 'remove'))
-		)
-			o.remove = removeIfPresent;
+		if (typeof o.remove === 'function') {
+			(function(orig) {
+				o.remove = function(section_id) {
+					if (this.option) {
+						var cur = this.map.data.get(this.map.config, section_id, this.option);
+						if (cur == null)
+							return Promise.resolve();
+					}
+					var res = orig.apply(this, arguments);
+					return Promise.resolve(res).catch(function(err) {
+						var msg = err && err.message ? err.message : err;
+						if (msg) {
+							var text = '' + msg;
+							if (text.indexOf('uci/delete') !== -1 || text.indexOf('Not found') !== -1 || text.indexOf('code 4') !== -1)
+								return Promise.resolve();
+						}
+						throw err;
+					});
+				};
+			})(o.remove);
+		}
 	}
+}
+
+function isIgnorableUciDeleteError(err) {
+	if (!err)
+		return false;
+	var msg = '';
+	if (err.message)
+		msg = err.message;
+	else if (typeof err === 'string')
+		msg = err;
+	else
+		msg = '' + err;
+	return (msg.indexOf('uci/delete') !== -1) && (msg.indexOf('Not found') !== -1 || msg.indexOf('code 4') !== -1);
+}
+
+function swallowUciDelete(promise) {
+	return Promise.resolve(promise).catch(function(err) {
+		if (isIgnorableUciDeleteError(err)) {
+			console.warn('Ignoring benign UCI delete failure:', err);
+			return null;
+		}
+		throw err;
+	});
 }
 
 function defOpts(s, opts, params) {
@@ -1350,15 +595,27 @@ function defOpts(s, opts, params) {
 
 		setParams(o, opt[4]);
 		setParams(o, params);
-
-		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'optional'))
-			o.optional = opt[4].optional;
-
-		if (
-			!(opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'remove')) &&
-			!(params && Object.prototype.hasOwnProperty.call(params, 'remove'))
-		)
-			o.remove = removeIfPresent;
+		if (typeof o.remove === 'function') {
+			(function(orig) {
+				o.remove = function(section_id) {
+					if (this.option) {
+						var cur = this.map.data.get(this.map.config, section_id, this.option);
+						if (cur == null)
+							return Promise.resolve();
+					}
+					var res = orig.apply(this, arguments);
+					return Promise.resolve(res).catch(function(err) {
+						var msg = err && err.message ? err.message : err;
+						if (msg) {
+							var text = '' + msg;
+							if (text.indexOf('uci/delete') !== -1 || text.indexOf('Not found') !== -1 || text.indexOf('code 4') !== -1)
+								return Promise.resolve();
+						}
+						throw err;
+					});
+				};
+			})(o.remove);
+		}
 	}
 }
 
@@ -1393,6 +650,38 @@ function renderStatus(isRunning) {
 		color, _('frp Client'), status);
 }
 
+var callRcInit = rpc.declare({
+	object: 'rc',
+	method: 'init',
+	params: [ 'name', 'action' ]
+});
+
+// Exec frpc init.d action via rc ubus interface
+function serviceAction(action) {
+	return callRcInit('frpc', action).then(function() {
+		// Success: rc.init returns empty object on success
+		return { code: 0, stderr: '' };
+	}).catch(function(e) {
+		console.error('Service action failed:', e);
+		return { code: -1, stderr: (e && e.message) || 'Unknown error' };
+	});
+}
+
+function fmtNow() {
+	try { return new Date().toLocaleString(); } catch (e) { return new Date().toISOString(); }
+}
+
+function updateActionStatus(action, res) {
+	var el = document.getElementById('service_action_status');
+	if (!el) return;
+	var code = (res && typeof res.code !== 'undefined') ? res.code : 'n/a';
+	var msg = (res && res.stderr) ? ('' + res.stderr).trim() : '';
+	var ok = (code === 0);
+	el.innerText = String.format('%s: %s (code=%s) @ %s%s',
+		action.toUpperCase(), ok ? _('OK') : _('Failed'), code, fmtNow(), msg ? (' - ' + msg) : '');
+	el.style.color = ok ? 'green' : 'red';
+}
+
 return view.extend({
 	render() {
 		let m, s, o;
@@ -1403,18 +692,26 @@ return view.extend({
 		s = m.section(form.NamedSection, '_status');
 		s.anonymous = true;
 		s.render = function (section_id) {
-			L.Poll.add(function () {
-				return L.resolveDefault(getServiceStatus()).then(function (res) {
-					const view = document.getElementById('service_status');
-
-					if (view)
-						view.innerHTML = renderStatus(res);
+			var refresh = function() {
+				return L.resolveDefault(getServiceStatus()).then(function(res) {
+					var view = document.getElementById('service_status');
+					if (view) view.innerHTML = renderStatus(res);
 				});
-			});
+			};
 
-			return E('div', {},
-				E('fieldset', { class: 'cbi-section' }, [
-					E('p', { id: 'service_status' }, _('Collecting data ...'))
+			L.Poll.add(refresh);
+
+			return E('div', { class: 'cbi-map' },
+				E('fieldset', { class: 'cbi-section'}, [
+					E('p', { id: 'service_status' }, _('Collecting data ...')),
+					E('div', { class: 'cbi-section-actions' }, [
+						E('button', { class: 'btn cbi-button-action', click: function(){ serviceAction('start').then(function(res){ updateActionStatus('start', res); }).then(refresh); } }, _('Start')),
+						E('button', { class: 'btn cbi-button-reset', click: function(){ serviceAction('stop').then(function(res){ updateActionStatus('stop', res); }).then(refresh); } }, _('Stop')),
+						E('button', { class: 'btn cbi-button-reload', click: function(){ serviceAction('restart').then(function(res){ updateActionStatus('restart', res); }).then(refresh); } }, _('Restart'))
+					]),
+					E('div', { class: 'cbi-value-description' }, [
+						E('small', { id: 'service_action_status', style: 'opacity:0.85' }, _('No actions yet.'))
+					])
 				])
 			);
 		};
@@ -1422,22 +719,28 @@ return view.extend({
 		s = m.section(form.NamedSection, 'common', 'conf');
 		s.dynamic = true;
 
-		s.tab('common', _('Common Settings'));
+		// 新分页标签
+		s.tab('basic', _('Basic'));
 		s.tab('auth', _('Authentication'));
-		s.tab('transport', _('Transport Settings'));
-		s.tab('tls_quic', _('TLS / QUIC'));
-		s.tab('web', _('Web Server'));
-		s.tab('advanced', _('Advanced'));
-		s.tab('log', _('Log Settings'));
+		s.tab('securitytls', _('Security & TLS'));
+		s.tab('web', _('Web Admin'));
+		s.tab('logging', _('Logging'));
+		s.tab('extra', _('Additional'));
 		s.tab('init', _('Startup Settings'));
 
-		defTabOpts(s, 'common', commonBaseConf, { optional: true });
-		defTabOpts(s, 'auth', commonAuthConf, { optional: true });
-		defTabOpts(s, 'transport', commonTransportConf, { optional: true });
-		defTabOpts(s, 'tls_quic', commonTlsQuicConf, { optional: true });
-		defTabOpts(s, 'web', commonWebConf, { optional: true });
-		defTabOpts(s, 'advanced', commonAdvancedConf, { optional: true });
-		defTabOpts(s, 'log', commonLogConf, { optional: true });
+		defTabOpts(s, 'basic', grpBasic);
+		defTabOpts(s, 'auth', grpAuth);
+		defTabOpts(s, 'securitytls', grpSecurityTLS);
+		defTabOpts(s, 'web', grpWeb);
+		defTabOpts(s, 'logging', grpLogging);
+		defTabOpts(s, 'extra', grpExtra);
+
+		// Backward compatibility: migrate old '_' list if present
+		var oldList = m.data.get('frpc', 'common', '_');
+		var newList = m.data.get('frpc', 'common', 'extra_settings');
+		if (oldList && (!newList || newList.length === 0)) {
+			m.data.set('frpc', 'common', 'extra_settings', oldList);
+		}
 
 		o = s.taboption('init', form.SectionValue, 'init', form.TypedSection, 'init', _('Startup Settings'));
 		s = o.subsection;
@@ -1526,6 +829,23 @@ return view.extend({
 			modalonly: true
 		});
 
+		// Advanced
+		s.tab('advanced', _('Advanced Settings'));
+		defTabOpts(s, 'advanced', advProxyConf, {optional: true});
+
 		return m.render();
+	}
+,
+	// Suppress harmless "uci/delete code 4" errors during save cycles
+	handleSave: function(ev) {
+		return swallowUciDelete(this.super('handleSave', ev));
+	},
+
+	// Restart frpc after Save & Apply to apply new config immediately
+	handleSaveApply: function(ev) {
+		var self = this;
+		return swallowUciDelete(this.super('handleSaveApply', ev)).then(function(res) {
+			return callRcInit('frpc', 'restart').catch(function(e){ return null; }).then(function(){ return res; });
+		});
 	}
 });

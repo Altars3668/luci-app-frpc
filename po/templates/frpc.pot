@@ -1208,8 +1208,122 @@ msgstr ""
 msgid "frp Client"
 msgstr ""
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
+# New strings added for OIDC, QUIC and updated protocol/token descriptions
+
+msgid "Auth method"
+msgstr ""
+
+msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
+msgstr ""
+
+msgid "OIDC Client ID"
+msgstr ""
+
+msgid "OIDC clientID used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Client Secret"
+msgstr ""
+
+msgid "OIDC clientSecret used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Audience"
+msgstr ""
+
+msgid "OIDC audience used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Token Endpoint URL"
+msgstr ""
+
+msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr ""
+
+msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
+msgstr ""
+
+# Batch B advanced proxy settings
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "Bandwidth limit"
+msgstr ""
+
+msgid "transport.bandwidthLimit, e.g. 1MB, 100KB, 1GB."
+msgstr ""
+
+msgid "Bandwidth limit mode"
+msgstr ""
+
+msgid "transport.bandwidthLimitMode."
+msgstr ""
+
+msgid "Proxy protocol version"
+msgstr ""
+
+msgid "transport.proxyProtocolVersion."
+msgstr ""
+
+msgid "LoadBalancer group"
+msgstr ""
+
+msgid "loadBalancer.group name."
+msgstr ""
+
+msgid "LoadBalancer group key"
+msgstr ""
+
+msgid "loadBalancer.groupKey secret."
+msgstr ""
+
+msgid "Health check type"
+msgstr ""
+
+msgid "healthCheck.type"
+msgstr ""
+
+msgid "Health check path"
+msgstr ""
+
+msgid "healthCheck.path (HTTP only)."
+msgstr ""
+
+msgid "Health check timeout(s)"
+msgstr ""
+
+msgid "healthCheck.timeoutSeconds"
+msgstr ""
+
+msgid "Health check max failed"
+msgstr ""
+
+msgid "healthCheck.maxFailed"
+msgstr ""
+
+msgid "Health check interval(s)"
+msgstr ""
+
+msgid "healthCheck.intervalSeconds"
+msgstr ""
+
+msgid "Server user (visitor)"
+msgstr ""
+
+msgid "serverUser for visitor role"
+msgstr ""
+
+msgid "Extra options"
+msgstr ""
+
+msgid "Append raw key=value lines at end of this proxy block"
+msgstr ""
+
+msgid "Extra plugin options"
+msgstr ""
+
+msgid "Append raw key=value lines inside [proxies.plugin] section"
 msgstr ""

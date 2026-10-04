@@ -610,7 +610,15 @@ msgstr "位置"
 msgid "Log Settings"
 msgstr "日志设置"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:387
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Log output target"
+msgstr "日志输出目标"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Preferred new key. Accepts a file path or special values: \"console\", \"/dev/null\". Leave empty for upstream default (console)."
+msgstr "推荐使用的新字段。可填写文件路径，或特殊值 \"console\"、\"/dev/null\"。留空则使用上游默认（console）。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid "Log level"
 msgstr "日志级别"
 
@@ -618,15 +626,15 @@ msgstr "日志级别"
 msgid "Log max days"
 msgstr "日志最大天数"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:383
-msgid "Log output"
-msgstr "日志输出"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "(Deprecated) legacy log_file"
+msgstr "（已弃用）旧版 log_file"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:384
-msgid "Log output path or console."
-msgstr "日志输出路径或 console。"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "Deprecated legacy key retained for backward compatibility. Will be migrated to log_to in runtime; please move value to \"Log output target\" and clear this."
+msgstr "为兼容旧版本保留的字段，运行时会迁移到 log_to；请将值移动到“日志输出目标”并清空此项。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:142
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
 msgstr "错误日志"
 
@@ -1231,8 +1239,121 @@ msgstr "frp"
 msgid "frp Client"
 msgstr "frp 客户端"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
-msgstr "frp 内部线路协议。v2 需要 frps 支持，并且必须显式启用。"
+# 新增 OIDC、QUIC、认证方式等
+msgid "Auth method"
+msgstr "认证方式"
+
+msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
+msgstr "连接 frpc 到 frps 的认证方式。有效值：\"token\"(默认) 或 \"oidc\"。"
+
+msgid "OIDC Client ID"
+msgstr "OIDC 客户端 ID"
+
+msgid "OIDC clientID used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientID。"
+
+msgid "OIDC Client Secret"
+msgstr "OIDC 客户端密钥"
+
+msgid "OIDC clientSecret used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientSecret。"
+
+msgid "OIDC Audience"
+msgstr "OIDC 受众"
+
+msgid "OIDC audience used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC audience。"
+
+msgid "OIDC Token Endpoint URL"
+msgstr "OIDC 令牌端点 URL"
+
+msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC token endpoint URL。"
+
+msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Protocol 指定连接 frpc 与 frps 的传输协议。有效值为 \"tcp\"、\"kcp\"、\"quic\" 和 \"websocket\"。<br />默认值为 \"tcp\"。"
+
+msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
+msgstr "Token 指定共享授权令牌（auth.method=token）。留空则禁用令牌认证。"
+
+# Batch B 高级代理设置
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+msgid "Bandwidth limit"
+msgstr "带宽限制"
+
+msgid "transport.bandwidthLimit, e.g. 1MB, 100KB, 1GB."
+msgstr "transport.bandwidthLimit，例如 1MB、100KB、1GB。"
+
+msgid "Bandwidth limit mode"
+msgstr "带宽限制模式"
+
+msgid "transport.bandwidthLimitMode."
+msgstr "transport.bandwidthLimitMode。"
+
+msgid "Proxy protocol version"
+msgstr "Proxy Protocol 版本"
+
+msgid "transport.proxyProtocolVersion."
+msgstr "transport.proxyProtocolVersion。"
+
+msgid "LoadBalancer group"
+msgstr "负载均衡组"
+
+msgid "loadBalancer.group name."
+msgstr "loadBalancer.group 名称。"
+
+msgid "LoadBalancer group key"
+msgstr "负载均衡组密钥"
+
+msgid "loadBalancer.groupKey secret."
+msgstr "loadBalancer.groupKey 密钥。"
+
+msgid "Health check type"
+msgstr "健康检查类型"
+
+msgid "healthCheck.type"
+msgstr "healthCheck.type"
+
+msgid "Health check path"
+msgstr "健康检查路径"
+
+msgid "healthCheck.path (HTTP only)."
+msgstr "healthCheck.path（仅 HTTP）。"
+
+msgid "Health check timeout(s)"
+msgstr "健康检查超时(秒)"
+
+msgid "healthCheck.timeoutSeconds"
+msgstr "healthCheck.timeoutSeconds"
+
+msgid "Health check max failed"
+msgstr "健康检查最大失败次数"
+
+msgid "healthCheck.maxFailed"
+msgstr "healthCheck.maxFailed"
+
+msgid "Health check interval(s)"
+msgstr "健康检查间隔(秒)"
+
+msgid "healthCheck.intervalSeconds"
+msgstr "healthCheck.intervalSeconds"
+
+msgid "Server user (visitor)"
+msgstr "服务器用户（visitor）"
+
+msgid "serverUser for visitor role"
+msgstr "visitor 角色使用的 serverUser"
+
+msgid "Extra options"
+msgstr "额外选项"
+
+msgid "Append raw key=value lines at end of this proxy block"
+msgstr "追加原始 key=value 行到该代理块末尾"
+
+msgid "Extra plugin options"
+msgstr "插件额外选项"
+
+msgid "Append raw key=value lines inside [proxies.plugin] section"
+msgstr "在 [proxies.plugin] 段内追加原始 key=value 行"

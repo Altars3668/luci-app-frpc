@@ -609,7 +609,15 @@ msgstr "地點"
 msgid "Log Settings"
 msgstr "日誌設定"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:387
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Log output target"
+msgstr "日誌輸出目標"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Preferred new key. Accepts a file path or special values: \"console\", \"/dev/null\". Leave empty for upstream default (console)."
+msgstr "建議使用的新鍵。可填入檔案路徑，或特殊值 \"console\"、\"/dev/null\"。留空則使用上游預設（console）。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid "Log level"
 msgstr "紀錄等級"
 
@@ -617,15 +625,15 @@ msgstr "紀錄等級"
 msgid "Log max days"
 msgstr "紀錄最大天數"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:383
-msgid "Log output"
-msgstr "日誌輸出"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "(Deprecated) legacy log_file"
+msgstr "（已棄用）舊版 log_file"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:384
-msgid "Log output path or console."
-msgstr "日誌輸出路徑或 console。"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "Deprecated legacy key retained for backward compatibility. Will be migrated to log_to in runtime; please move value to \"Log output target\" and clear this."
+msgstr "為向後相容而保留的舊鍵，執行時會轉換為 log_to；請將值移到「日誌輸出目標」並清空此欄。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:142
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
 msgstr "紀錄 stderr"
 
@@ -1228,10 +1236,41 @@ msgstr "frp"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1393
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1400
 msgid "frp Client"
-msgstr "frp 用戶端"
+msgstr "frp用戶端"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
-msgstr "frp 內部線路協定。v2 需要 frps 支援，且必須明確啟用。"
+# 新增 OIDC、QUIC、認證方式等
+msgid "Auth method"
+msgstr "認證方式"
+
+msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
+msgstr "連接 frpc 到 frps 的認證方式。有效值：\"token\"(預設) 或 \"oidc\"。"
+
+msgid "OIDC Client ID"
+msgstr "OIDC 用戶端 ID"
+
+msgid "OIDC clientID used when auth.method = \"oidc\"."
+msgstr "當 auth.method = \"oidc\" 時使用的 OIDC clientID。"
+
+msgid "OIDC Client Secret"
+msgstr "OIDC 用戶端密鑰"
+
+msgid "OIDC clientSecret used when auth.method = \"oidc\"."
+msgstr "當 auth.method = \"oidc\" 時使用的 OIDC clientSecret。"
+
+msgid "OIDC Audience"
+msgstr "OIDC 受眾"
+
+msgid "OIDC audience used when auth.method = \"oidc\"."
+msgstr "當 auth.method = \"oidc\" 時使用的 OIDC audience。"
+
+msgid "OIDC Token Endpoint URL"
+msgstr "OIDC 權杖端點 URL"
+
+msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
+msgstr "當 auth.method = \"oidc\" 時使用的 OIDC token endpoint URL。"
+
+msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Protocol 指定連接 frpc 與 frps 的傳輸協定。有效值為 \"tcp\"、\"kcp\"、\"quic\" 和 \"websocket\"。<br />預設值為 \"tcp\"。"
+
+msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
+msgstr "Token 指定共用授權權杖（auth.method=token）。留空則停用權杖認證。"

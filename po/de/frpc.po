@@ -1221,8 +1221,39 @@ msgstr ""
 msgid "frp Client"
 msgstr "frp Client"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
+# New untranslated strings (OIDC, QUIC, auth)
+msgid "Auth method"
+msgstr ""
+
+msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
+msgstr ""
+
+msgid "OIDC Client ID"
+msgstr ""
+
+msgid "OIDC clientID used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Client Secret"
+msgstr ""
+
+msgid "OIDC clientSecret used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Audience"
+msgstr ""
+
+msgid "OIDC audience used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "OIDC Token Endpoint URL"
+msgstr ""
+
+msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
+msgstr ""
+
+msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr ""
+
+msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
 msgstr ""

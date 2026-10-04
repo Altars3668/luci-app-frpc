@@ -1,0 +1,6 @@
+# Normalize line endings to LF to ensure shell scripts run correctly
+*.sh text eol=lf
+root/etc/init.d/* text eol=lf
+htdocs/luci-static/resources/view/*.js text eol=lf
+*.lua text eol=lf
+*.toml text eol=lf
