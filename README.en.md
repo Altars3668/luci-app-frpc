@@ -2,9 +2,15 @@
 
 [简体中文](README.md) | **English**
 
-A **LuCI frontend and service integration for the frp client on OpenWrt / ImmortalWrt**. This edition maintains the UCI schema, TOML generator and procd init script alongside the UI, so its settings have a corresponding runtime implementation.
+A **LuCI frontend and service integration for the frp client on OpenWrt / ImmortalWrt**. This edition maintains the UCI schema, TOML generator and procd init script alongside the UI, so supported settings map to the runtime configuration with explicit compatibility and validation paths.
 
 > This repository is an OpenWrt integration, not a replacement frp engine. Tunnelling is performed by the upstream [fatedier/frp](https://github.com/fatedier/frp) `frpc` binary.
+
+## Current version and upstream
+
+UI package **99.1.0**, with original LuCI sources from **ImmortalWrt**. The custom UCI schema, tabs, service controls and bundled generator remain; stock UI option names are not mixed with a different generator.
+
+This refresh incorporates upstream application history and translations, fixes duplicate writable options, dependency merging, persistent disabled flags and instance detection, and corrects boolean, TLS / QUIC and visitor-bind TOML output.
 
 ## What I changed
 
@@ -43,7 +49,7 @@ Keep only one copy of this LuCI package in `package/` and the feeds. Outputs are
 
 1. Back up `/etc/config/frpc`, then install packages matching your target and their dependencies.
 2. Open **Services → frp → Client** and configure the server address, port and authentication.
-3. Add proxy entries, distinguishing the public remote port from the local service port. STCP / XTCP visitors also require the matching service name and secret.
+3. Add proxy entries, distinguishing the public remote port from the local service port. STCP / XTCP visitors also require the matching service name, secret and local bind address / port.
 4. Enable and apply the service. Check both the startup section's `enabled` option and init autostart state.
 5. Diagnose using service status, `logread -e frpc` and the engine's configuration check.
 
@@ -68,8 +74,10 @@ An OpenWrt frp integration maintained by Altars3668; the client snapshot's impor
 
 Related: [FRPS server UI](https://github.com/Altars3668/luci-app-frps) · [firmware CI](https://github.com/Altars3668/OpenWRT-CI).
 
-## Upstream baseline and regression checks
+## Upstream baseline and verification scope
 
 The verified source is [`immortalwrt/luci/applications/luci-app-frpc`](https://github.com/immortalwrt/luci/tree/5fc1fac5684cac6eee2c7fbff78c65b867980dd8/applications/luci-app-frpc), pinned to `5fc1fac5684c`. [UPSTREAM.md](UPSTREAM.md) explains provenance, imported history and retained customisations.
 
 `node tests/upstream-regression.mjs` and `python3 -I tests/config-generation.py`; generation tests use a temporary UCI stub and never start services.
+
+These checks cover syntax, translations and the listed local regressions, not full SDK / firmware builds for every architecture or live-device qualification. This publication updates sources and documentation; it neither installs software nor flashes devices or manufactures prebuilt artifacts.

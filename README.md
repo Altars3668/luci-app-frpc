@@ -2,9 +2,15 @@
 
 **简体中文** | [English](README.en.md)
 
-面向 OpenWrt / ImmortalWrt 的 **frp 客户端 LuCI 管理界面**。这个版本不只是给 `frpc` 加一张网页：它同时维护 UCI 配置、TOML 生成器和 procd 启动脚本，让网页里的设置能够完整地落到运行配置中。
+面向 OpenWrt / ImmortalWrt 的 **frp 客户端 LuCI 管理界面**。这个版本不只是给 `frpc` 加一张网页：它同时维护 UCI 配置、TOML 生成器和 procd 启动脚本，让支持的网页选项映射到运行配置，并保留明确的兼容与校验路径。
 
 > 本仓库提供管理界面与 OpenWrt 集成，不是 frp 核心的替代实现。反向代理由上游 [fatedier/frp](https://github.com/fatedier/frp) 的 `frpc` 二进制执行。
+
+## 当前版本与上游
+
+界面包 **99.1.0**；LuCI 原始源码来自 **ImmortalWrt**。保留本仓库的 UCI 格式、分组页面、服务按钮和自带生成器，不直接混装上游 stock 页面的新字段名。
+
+本轮同步上游应用历史和翻译，修复表单重复保存、依赖合并、关闭开关持久化及实例状态检测；配套修正布尔值、TLS / QUIC 和 visitor 绑定参数的 TOML 输出。
 
 ## 我的改造与特色
 
@@ -43,7 +49,7 @@ make package/luci-app-frpc/compile V=s -j2
 
 1. 备份已有 `/etc/config/frpc`，安装与目标系统匹配的包及依赖。
 2. 打开 **服务 → frp → 客户端**，填写服务端地址、端口和认证信息。
-3. 添加代理条目，区分公网远端端口与本地服务端口；STCP / XTCP visitor 还需对应的服务名称和密钥。
+3. 添加代理条目，区分公网远端端口与本地服务端口；STCP / XTCP visitor 还需对应的服务名称、密钥和本地绑定地址 / 端口。
 4. 启用服务并保存应用；启动设置中的 `enabled` 与 init 自启动状态都应核对。
 5. 通过服务状态、`logread -e frpc` 和核心配置校验定位问题。
 
@@ -68,8 +74,10 @@ logread -e frpc
 
 相关项目：[FRPS 服务端界面](https://github.com/Altars3668/luci-app-frps) · [配套固件 CI](https://github.com/Altars3668/OpenWRT-CI)。
 
-## 上游基线与回归检查
+## 上游基线与验证边界
 
 源码来源已核实为 [immortalwrt/luci 的 `applications/luci-app-frpc`](https://github.com/immortalwrt/luci/tree/5fc1fac5684cac6eee2c7fbff78c65b867980dd8/applications/luci-app-frpc)，本轮基线为 `5fc1fac5684c`。来源、导入历史和保留的定制差异见 [UPSTREAM.md](UPSTREAM.md)。
 
 `node tests/upstream-regression.mjs` 和 `python3 -I tests/config-generation.py`；后者仅使用临时 UCI 替身，不启动服务。
+
+这些检查覆盖语法、翻译及所列本机回归；不等于所有架构 SDK / 固件构建或真实设备验收。本次发布更新源码和说明，不安装软件、不触发刷机，也不伪造预编译产物。
