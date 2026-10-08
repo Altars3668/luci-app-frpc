@@ -42,7 +42,7 @@ make package/luci-app-frpc/compile V=s -j2
 ## 使用
 
 1. 备份已有 `/etc/config/frpc`，安装与目标系统匹配的包及依赖。
-2. 打开 **服务 → frp 客户端**，填写服务端地址、端口和认证信息。
+2. 打开 **服务 → frp → 客户端**，填写服务端地址、端口和认证信息。
 3. 添加代理条目，区分公网远端端口与本地服务端口；STCP / XTCP visitor 还需对应的服务名称和密钥。
 4. 启用服务并保存应用；启动设置中的 `enabled` 与 init 自启动状态都应核对。
 5. 通过服务状态、`logread -e frpc` 和核心配置校验定位问题。
@@ -67,3 +67,9 @@ logread -e frpc
 由 Altars3668 维护的 OpenWrt frp 集成版本，客户端快照导入来源在 Git 历史中保留。frp 核心来自 [fatedier/frp](https://github.com/fatedier/frp)。本包 [Makefile](Makefile) 声明 **Apache-2.0**；依赖组件遵循各自许可证。
 
 相关项目：[FRPS 服务端界面](https://github.com/Altars3668/luci-app-frps) · [配套固件 CI](https://github.com/Altars3668/OpenWRT-CI)。
+
+## 上游基线与回归检查
+
+源码来源已核实为 [immortalwrt/luci 的 `applications/luci-app-frpc`](https://github.com/immortalwrt/luci/tree/5fc1fac5684cac6eee2c7fbff78c65b867980dd8/applications/luci-app-frpc)，本轮基线为 `5fc1fac5684c`。来源、导入历史和保留的定制差异见 [UPSTREAM.md](UPSTREAM.md)。
+
+`node tests/upstream-regression.mjs` 和 `python3 -I tests/config-generation.py`；后者仅使用临时 UCI 替身，不启动服务。

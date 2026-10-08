@@ -1,0 +1,10 @@
+repository = "immortalwrt/luci"
+branch = "master"
+commit = "5fc1fac5684cac6eee2c7fbff78c65b867980dd8"
+path = "applications/luci-app-frpc"
+checked_on = "2026-10-08"
+method = "application-only subtree split + reconstructed custom history + git rebase"
+split_commit = "1556ca8bd62d14a6c43f20f0264a477b0a2e587d"
+import_snapshot = "b2b725d5d455fe3d0cded7b4f845d77a62ad7dd0"
+historical_anchor = "ea25a3dafead864408594f29606223d7c1bcc5be"
+anchor_is_exact_import = false

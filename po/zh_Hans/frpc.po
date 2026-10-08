@@ -1,21 +1,25 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-08-31 06:44+0000\n"
-"Project-Id-Version: luci-app-frpc\n"
-"Last-Translator: Hosted Weblate user 54392 "
-"<hamburger2048@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
-"projects/openwrt/luciapplicationsfrpc/zh_Hans/>\n"
+"PO-Revision-Date: 2024-04-08 17:22+0000\n"
+"Last-Translator: try496 <pinghejk@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/openwrt/luciapplicationsfrpc/zh_Hans/>\n"
 "Language: zh_Hans\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "(Deprecated) legacy log_file"
+msgstr "（已弃用）旧版 log_file"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1454
 msgid "Add new proxy or visitor..."
 msgstr "添加新的代理或访问者..."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:214
+msgid "Add new proxy..."
+msgstr "添加新代理…"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:360
 msgid "Additional OIDC token endpoint params. Use key=value."
@@ -33,7 +37,7 @@ msgstr "附加客户端元数据。使用 key=value。"
 msgid "Additional config files included by frpc."
 msgstr "frpc 包含的附加配置文件。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:174
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Additional configs"
 msgstr "额外配置"
 
@@ -45,13 +49,53 @@ msgstr "附加代理元数据。使用 key=value。"
 msgid "Additional scopes to include authentication information."
 msgstr "包含认证信息的附加作用域。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "Additional settings"
+msgstr "其他设置"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:187
 msgid "Address of the frps server."
 msgstr "frps 服务器地址。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "Admin address"
+msgstr "管理地址"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "Admin password"
+msgstr "管理密码"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "Admin port"
+msgstr "管理端口"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "Admin user"
+msgstr "管理用户"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "AdminAddr specifies the address that the admin server binds to.<br />By default, this value is \"0.0.0.0\"."
+msgstr "AdminAddr 特指用于绑定管理服务器的地址。<br />默认是\"0.0.0.0\"。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "AdminPort specifies the port for the admin server to listen on. If this value is 0, the admin server will not be started.<br />By default, this value is 0."
+msgstr "AdminPort 用于指定管理服务器要侦听的端口。如果此值为0，则不会启动管理服务器。<br />默认情况下，此值为0。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "AdminPwd specifies the password that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "AdminPwd 指定管理服务器用于登录的密码。<br />默认情况下，此值为\"admin\"。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "AdminUser specifies the username that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "AdminUser 指定管理服务器用于登录的用户名。<br />默认情况下，此值为\"admin\"。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1430
 msgid "Advanced"
 msgstr "高级"
+
+# Batch B 高级代理设置
+msgid "Advanced Settings"
+msgstr "高级设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:839
 msgid "Allow users"
@@ -65,9 +109,23 @@ msgstr "注解"
 msgid "Annotations displayed on frps dashboard. Use key=value."
 msgstr "显示在 frps 仪表盘上的注解。使用 key=value。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:464
+msgid "Append raw key=value lines at end of this proxy block"
+msgstr "追加原始 key=value 行到该代理块末尾"
+
+msgid "Append raw key=value lines inside [proxies.plugin] section"
+msgstr "在 [proxies.plugin] 段内追加原始 key=value 行"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
 msgid "Assets dir"
 msgstr "资源目录"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
+msgid "AssetsDir specifies the local directory that the admin server will load resources from. If this value is \"\", assets will be loaded from the bundled executable using statik.<br />By default, this value is \"\"."
+msgstr "AssetsDir指定管理服务器用于加载资源的本地目录。如果此值为空，则使用statik从可执行文件中加载资源。<br />默认情况下，此值为空。"
+
+# 新增 OIDC、QUIC、认证方式等
+msgid "Auth method"
+msgstr "认证方式"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1426
 msgid "Authentication"
@@ -77,15 +135,16 @@ msgstr "身份认证"
 msgid "Authentication method"
 msgstr "认证方式"
 
+msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
+msgstr "连接 frpc 到 frps 的认证方式。有效值：\"token\"(默认) 或 \"oidc\"。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:232
 msgid "Authentication method."
 msgstr "认证方式。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:680
 msgid "Bandwidth limit"
 msgstr "带宽限制"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:684
 msgid "Bandwidth limit mode"
 msgstr "带宽限制模式"
 
@@ -117,7 +176,7 @@ msgstr "客户端 ID"
 msgid "Client metadata"
 msgstr "客户端元数据"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1417
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
 msgid "Collecting data ..."
 msgstr "正在收集数据…"
 
@@ -126,30 +185,28 @@ msgid "Command arguments passed to token source exec."
 msgstr "传递给令牌来源执行命令的参数。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:294
-msgid ""
-"Command used to obtain the token. The init script adds --allow-"
-"unsafe=TokenSourceExec when this source type is used."
-msgstr ""
-"用于获取令牌的命令。使用此来源类型时，init 脚本会添加 --allow-"
-"unsafe=TokenSourceExec。"
+msgid "Command used to obtain the token. The init script adds --allow-unsafe=TokenSourceExec when this source type is used."
+msgstr "用于获取令牌的命令。使用此来源类型时，init 脚本会添加 --allow-unsafe=TokenSourceExec。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1425
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:198
 msgid "Common Settings"
 msgstr "常规设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:832
-msgid ""
-"Compatibility field for UCI. Server sections are emitted as proxy entries; "
-"visitor sections are emitted as visitor entries."
+msgid "Compatibility field for UCI. Server sections are emitted as proxy entries; visitor sections are emitted as visitor entries."
 msgstr "UCI 兼容字段。服务端段会生成为代理条目；访问者段会生成为访问者条目。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:693
 msgid "Compress proxy traffic."
 msgstr "压缩代理流量。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:692
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
 msgid "Compression"
 msgstr "压缩"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
+msgid "Config files include in temporary config file"
+msgstr "配置文件包含在临时配置文件中"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:348
 msgid "Configuration key: auth.oidc.audience."
@@ -263,13 +320,17 @@ msgstr "OIDC 端点的自定义 CA 证书文件。"
 msgid "Custom DNS server used by frpc."
 msgstr "frpc 使用的自定义 DNS 服务器。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:702
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:57
 msgid "Custom domains"
 msgstr "自定义域"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:213
 msgid "DNS server"
 msgstr "DNS 服务器"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "Deprecated legacy key retained for backward compatibility. Will be migrated to log_to in runtime; please move value to \"Log output target\" and clear this."
+msgstr "为兼容旧版本保留的字段，运行时会迁移到 log_to；请将值移动到“日志输出目标”并清空此项。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:486
 msgid "Dial server keepalive"
@@ -291,13 +352,17 @@ msgstr "禁用自定义 TLS 首字节"
 msgid "Disable local interface assisted addresses for XTCP NAT traversal."
 msgstr "禁用用于 XTCP NAT 穿透的本地接口辅助地址。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:395
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
 msgid "Disable log color"
 msgstr "禁用日志的颜色"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:396
 msgid "Disable log colors when log output is console."
 msgstr "当日志输出到控制台时禁用日志颜色。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
+msgid "DisableLogColor disables log colors when LogWay == \"console\" when set to true."
+msgstr "当DisableLogColor设置为true且LogWay==\"console\"时禁用日志颜色。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:258
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:698
@@ -319,20 +384,15 @@ msgid "Enable HTTP/2 for HTTPS bridge plugins."
 msgstr "为 HTTPS 桥接插件启用 HTTP/2。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:418
-msgid ""
-"Enable HTTPS for the frpc web server. This switch controls whether "
-"webServer.tls.certFile and webServer.tls.keyFile are emitted."
-msgstr ""
-"为 frpc Web 服务器启用 HTTPS。此开关控制是否生成 webServer.tls.certFile 和 "
-"webServer.tls.keyFile。"
+msgid "Enable HTTPS for the frpc web server. This switch controls whether webServer.tls.certFile and webServer.tls.keyFile are emitted."
+msgstr "为 frpc Web 服务器启用 HTTPS。此开关控制是否生成 webServer.tls.certFile 和 webServer.tls.keyFile。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:499
 msgid "Enable TCP stream multiplexing."
 msgstr "启用 TCP 流多路复用。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:541
-msgid ""
-"Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
+msgid "Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
 msgstr "与 frps 通信时启用 TLS。自 frp v0.50.0 起默认为 true。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:648
@@ -355,11 +415,11 @@ msgstr "已启用"
 msgid "Encrypt proxy traffic."
 msgstr "加密代理流量。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:688
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid "Encryption"
 msgstr "加密"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "Environment variable"
 msgstr "环境变量"
 
@@ -375,6 +435,10 @@ msgstr "传递给令牌来源执行命令的环境变量。使用 KEY=value。"
 msgid "Exit frpc when the first login fails."
 msgstr "首次登录失败时退出 frpc。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "Exit when login fail"
+msgstr "当登录失败时退出"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:201
 msgid "Exit when login fails"
 msgstr "登录失败时退出"
@@ -383,14 +447,15 @@ msgstr "登录失败时退出"
 msgid "Experimental feature gates. Use key=value, for example VirtualNet=true."
 msgstr "实验性功能开关。使用 key=value，例如 VirtualNet=true。"
 
+msgid "Extra options"
+msgstr "额外选项"
+
+msgid "Extra plugin options"
+msgstr "插件额外选项"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
-msgid ""
-"Extra root-level configuration fragments included before generated proxy and "
-"visitor sections. Use frp includes or per-proxy raw settings for proxy/"
-"visitor tables."
-msgstr ""
-"在生成的代理和访问者段之前包含额外的根级配置片段。代理/访问者表请使用 frp "
-"includes 或每个代理的原始设置。"
+msgid "Extra root-level configuration fragments included before generated proxy and visitor sections. Use frp includes or per-proxy raw settings for proxy/visitor tables."
+msgstr "在生成的代理和访问者段之前包含额外的根级配置片段。代理/访问者表请使用 frp includes 或每个代理的原始设置。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:900
 msgid "Fallback timeout in milliseconds for XTCP."
@@ -416,9 +481,9 @@ msgstr "功能开关"
 msgid "For virtual_net visitor plugin."
 msgstr "用于 virtual_net 访问者插件。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1460
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "General Settings"
-msgstr "通用设置"
+msgstr "常规设置"
 
 #: applications/luci-app-frpc/root/usr/share/rpcd/acl.d/luci-app-frpc.json:3
 msgid "Grant access to LuCI app frpc"
@@ -427,6 +492,10 @@ msgstr "授予访问 LuCI 应用 frpc 的权限"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1462
 msgid "HTTP / Domain"
 msgstr "HTTP / 域名"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:219
+msgid "HTTP Settings"
+msgstr "HTTP 设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:820
 msgid "HTTP health check headers. Use Header=Value."
@@ -444,8 +513,8 @@ msgstr "HTTP 或 TCPMUX 基本认证密码。"
 msgid "HTTP or TCPMUX basic auth username."
 msgstr "HTTP 或 TCPMUX 基本认证用户名。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:746
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:935
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:64
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:78
 msgid "HTTP password"
 msgstr "HTTP 密码"
 
@@ -453,8 +522,12 @@ msgstr "HTTP 密码"
 msgid "HTTP path must start with /."
 msgstr "HTTP 路径必须以 / 开头。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:743
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:931
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HTTP proxy"
+msgstr "HTTP 代理"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:63
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:77
 msgid "HTTP user"
 msgstr "HTTP 用户"
 
@@ -474,11 +547,12 @@ msgstr "健康检查间隔"
 msgid "Health check interval in seconds."
 msgstr "健康检查间隔，单位为秒。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:792
+msgid "Health check interval(s)"
+msgstr "健康检查间隔(秒)"
+
 msgid "Health check max failed"
 msgstr "健康检查最大失败次数"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:800
 msgid "Health check path"
 msgstr "健康检查路径"
 
@@ -494,7 +568,9 @@ msgstr "健康检查超时"
 msgid "Health check timeout in seconds."
 msgstr "健康检查超时时间，单位为秒。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:784
+msgid "Health check timeout(s)"
+msgstr "健康检查超时(秒)"
+
 msgid "Health check type"
 msgstr "健康检查类型"
 
@@ -502,7 +578,15 @@ msgstr "健康检查类型"
 msgid "Health check type."
 msgstr "健康检查类型。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:530
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
+msgid "HeartBeatInterval specifies at what interval heartbeats are sent to the server, in seconds. It is not recommended to change this value.<br />By default, this value is 30."
+msgstr "HeartBeatInterval 用于指定向服务器发送心跳包的间隔（以秒为单位）。不建议更改此值。<br />默认情况下，此值为 30。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
+msgid "HeartBeatTimeout specifies the maximum allowed heartbeat response delay before the connection is terminated, in seconds. It is not recommended to change this value.<br />By default, this value is 90."
+msgstr "HeartBeatTimeout 用于指定多久未收到心跳包后断开连接（以秒为单位）。不建议更改此值。<br />默认情况下，此值为 90。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
 msgid "Heartbeat interval"
 msgstr "心跳包间隔时间"
 
@@ -510,7 +594,7 @@ msgstr "心跳包间隔时间"
 msgid "Heartbeat interval in seconds."
 msgstr "心跳间隔，单位为秒。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:534
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
 msgid "Heartbeat timeout"
 msgstr "心跳包超时"
 
@@ -518,9 +602,17 @@ msgstr "心跳包超时"
 msgid "Heartbeat timeout in seconds."
 msgstr "心跳超时时间，单位为秒。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:720
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:65
 msgid "Host header rewrite"
 msgstr "主机头重写"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HttpProxy specifies a proxy address to connect to the server through. If this value is \"\", the server will be connected to directly.<br />By default, this value is read from the \"http_proxy\" environment variable."
+msgstr "HttpProxy 指定连接到服务器所用的代理地址。如果此值空，则直接连接服务器。<br />默认情况下，从\"http_proxy\"环境变量中读取此值。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+msgid "If remote_port is 0, frps will assign a random port for you"
+msgstr "如远程端口为 0，frps 将给你分配一个端口"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Include config files"
@@ -555,32 +647,27 @@ msgid "Load balancer group key"
 msgstr "负载均衡组密钥"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:255
-msgid ""
-"Load token from an external source. File reads the token from a local file; "
-"exec runs a command and requires frp unsafe permission. Mutually exclusive "
-"with auth.token."
-msgstr ""
-"从外部来源加载令牌。file 从本地文件读取令牌；exec 运行命令并需要 frp unsafe "
-"权限。与 auth.token 互斥。"
+msgid "Load token from an external source. File reads the token from a local file; exec runs a command and requires frp unsafe permission. Mutually exclusive with auth.token."
+msgstr "从外部来源加载令牌。file 从本地文件读取令牌；exec 运行命令并需要 frp unsafe 权限。与 auth.token 互斥。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:659
+msgid "LoadBalancer group"
+msgstr "负载均衡组"
+
+msgid "LoadBalancer group key"
+msgstr "负载均衡组密钥"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:224
 msgid "Local IP"
 msgstr "本地 IP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:523
-msgid ""
-"Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
+msgid "Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
 msgstr "连接 frps 时绑定的本地 IP。仅对 tcp、websocket 或 wss 有效。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:967
-msgid ""
-"Local backend address used by bridge plugins. For https2http, https2https "
-"and tls2raw, this is the local service address reached after frp terminates "
-"external TLS; for http2https/http2http, it is the local upstream address."
-msgstr ""
-"桥接插件使用的本地后端地址。对于 https2http、https2https 和 tls2raw，这是 "
-"frp 终止外部 TLS 后访问的本地服务地址；对于 http2https/http2http，这是本地上"
-"游地址。"
+msgid "Local backend address used by bridge plugins. For https2http, https2https and tls2raw, this is the local service address reached after frp terminates external TLS; for http2https/http2http, it is the local upstream address."
+msgstr "桥接插件使用的本地后端地址。对于 https2http、https2https 和 tls2raw，这是 frp 终止外部 TLS 后访问的本地服务地址；对于 http2https/http2http，这是本地上游地址。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:862
 msgid "Local bind address for visitor."
@@ -590,7 +677,8 @@ msgstr "访问者本地绑定地址。"
 msgid "Local bind port for visitor. Use a negative value to avoid binding."
 msgstr "访问者本地绑定端口。使用负值可避免绑定。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:663
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Local port"
 msgstr "本地端口"
 
@@ -602,7 +690,15 @@ msgstr "本地服务 IP 或主机名。"
 msgid "Local service port."
 msgstr "本地服务端口。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:711
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+msgid "LocalIp specifies the IP address or host name to proxy to."
+msgstr "LocalIp 指定要经代理访问的 IP 地址或主机名。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+msgid "LocalPort specifies the port to proxy to."
+msgstr "LocalPort 指定要经代理访问的端口。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:62
 msgid "Locations"
 msgstr "位置"
 
@@ -611,36 +707,52 @@ msgid "Log Settings"
 msgstr "日志设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
-msgid "Log output target"
-msgstr "日志输出目标"
-
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
-msgid "Preferred new key. Accepts a file path or special values: \"console\", \"/dev/null\". Leave empty for upstream default (console)."
-msgstr "推荐使用的新字段。可填写文件路径，或特殊值 \"console\"、\"/dev/null\"。留空则使用上游默认（console）。"
+msgid "Log file"
+msgstr "日志文件"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
 msgid "Log level"
 msgstr "日志级别"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:391
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid "Log max days"
 msgstr "日志最大天数"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
-msgid "(Deprecated) legacy log_file"
-msgstr "（已弃用）旧版 log_file"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:383
+msgid "Log output"
+msgstr "日志输出"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
-msgid "Deprecated legacy key retained for backward compatibility. Will be migrated to log_to in runtime; please move value to \"Log output target\" and clear this."
-msgstr "为兼容旧版本保留的字段，运行时会迁移到 log_to；请将值移动到“日志输出目标”并清空此项。"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:384
+msgid "Log output path or console."
+msgstr "日志输出路径或 console。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Log output target"
+msgstr "日志输出目标"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
 msgstr "错误日志"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:132
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:10
 msgid "Log stdout"
 msgstr "普通日志"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "LogFile specifies a file where logs will be written to. This value will only be used if LogWay is set appropriately.<br />By default, this value is \"console\"."
+msgstr "LogFile 指定写入日志的文件。仅当正确设置 LogWay 时，才会使用此值。<br />默认值为“console”。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "LogLevel specifies the minimum log level. Valid values are \"trace\", \"debug\", \"info\", \"warn\", and \"error\".<br />By default, this value is \"info\"."
+msgstr "LogLevel 指定最小的日志级别。有效值为\"trace\", \"debug\", \"info\", \"warn\"和\"error\"。<br />默认情况下，此值为\"info\"。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
+msgid "LogMaxDays specifies the maximum number of days to store log information before deletion. This is only used if LogWay == \"file\".<br />By default, this value is 0."
+msgstr "LogMaxDays 指定删除前存储日志信息的最长天数。仅当 LogWay == \"file\" 时才使用。<br />默认值为 0。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "LoginFailExit controls whether or not the client should exit after a failed login attempt. If false, the client will retry until a login attempt succeeds.<br />By default, this value is true."
+msgstr "LoginFailExit 控制客户端在尝试登录失败后是否应退出。如果为 false，客户端将重试，直到登录成功。<br />默认情况下，此值为 true。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:887
 msgid "Max retries per hour"
@@ -670,9 +782,21 @@ msgstr "多路复用器"
 msgid "NAT hole STUN server"
 msgstr "NAT 打洞 STUN 服务器"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 msgid "NOT RUNNING"
 msgstr "未在运行"
+
+msgid "OIDC Audience"
+msgstr "OIDC 受众"
+
+msgid "OIDC Client ID"
+msgstr "OIDC 客户端 ID"
+
+msgid "OIDC Client Secret"
+msgstr "OIDC 客户端密钥"
+
+msgid "OIDC Token Endpoint URL"
+msgstr "OIDC 令牌端点 URL"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:359
 msgid "OIDC additional endpoint params"
@@ -682,6 +806,9 @@ msgstr "OIDC 额外端点参数"
 msgid "OIDC audience"
 msgstr "OIDC 受众"
 
+msgid "OIDC audience used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC audience。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:339
 msgid "OIDC client ID"
 msgstr "OIDC 客户端 ID"
@@ -689,6 +816,12 @@ msgstr "OIDC 客户端 ID"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:343
 msgid "OIDC client secret"
 msgstr "OIDC 客户端密钥"
+
+msgid "OIDC clientID used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientID。"
+
+msgid "OIDC clientSecret used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientSecret。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:373
 msgid "OIDC insecure skip verify"
@@ -706,9 +839,16 @@ msgstr "OIDC 范围"
 msgid "OIDC token endpoint URL"
 msgstr "OIDC 令牌端点 URL"
 
+msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
+msgstr "当 auth.method = \"oidc\" 时使用的 OIDC token endpoint URL。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:369
 msgid "OIDC trusted CA file"
 msgstr "OIDC 受信任 CA 文件"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
+msgid "OS environments pass to frp for config file template, see <a href=\"https://github.com/fatedier/frp#configuration-file-template\">frp README</a>"
+msgstr "操作系统环境传递给 frp。配置模板请参阅 <a href=\"https://github.com/fatedier/frp#configuration-file-template\">frp文档</a>"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:166
 msgid "OS environments passed to frp for config file template, see %s."
@@ -727,8 +867,7 @@ msgid "Only valid for HTTP proxy."
 msgstr "仅对 HTTP 代理有效。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:840
-msgid ""
-"Only visitors from specified users can connect. Use * to allow all users."
+msgid "Only visitors from specified users can connect. Use * to allow all users."
 msgstr "仅允许指定用户的访问者连接。使用 * 允许所有用户。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:184
@@ -760,22 +899,24 @@ msgid "Path to the trusted CA certificate file."
 msgstr "受信任 CA 证书文件路径。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:608
-msgid ""
-"Persist runtime proxy and visitor configuration for Web UI or API management."
+msgid "Persist runtime proxy and visitor configuration for Web UI or API management."
 msgstr "持久化运行时代理和访问者配置，用于 Web UI 或 API 管理。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1221
 msgid "Please use KEY=value format."
 msgstr "请使用 KEY=value 格式。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:909
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1463
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:76
 msgid "Plugin"
 msgstr "插件"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1015
 msgid "Plugin HTTP/2"
 msgstr "插件 HTTP/2"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:220
+msgid "Plugin Settings"
+msgstr "插件设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:979
 msgid "Plugin certificate path"
@@ -821,13 +962,32 @@ msgstr "端口必须为负数，或介于 1 到 65535 之间。"
 msgid "Port of the frps server. Default is 7000."
 msgstr "frps 服务器端口。默认值为 7000。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Preferred new key. Accepts a file path or special values: \"console\", \"/dev/null\". Leave empty for upstream default (console)."
+msgstr "推荐使用的新字段。可填写文件路径，或特殊值 \"console\"、\"/dev/null\"。留空则使用上游默认（console）。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:195
 msgid "Prefix for proxy names. If set, proxy names become {user}.{proxy}."
 msgstr "代理名称前缀。如果设置，代理名称将变为 {user}.{proxy}。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol"
+msgstr "协议"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol specifies the protocol to use when interacting with the server. Valid values are \"tcp\", \"kcp\", and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Protocol 指定在与服务器交互时要使用的协议。有效值为\"tcp\"、\"kcp\"和\"websocket\"。<br />默认情况下，此值为\"tcp\"。"
+
+msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Protocol 指定连接 frpc 与 frps 的传输协议。有效值为 \"tcp\"、\"kcp\"、\"quic\" 和 \"websocket\"。<br />默认值为 \"tcp\"。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1449
 msgid "Proxy / Visitor Settings"
 msgstr "代理 / 访问者设置"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:210
+msgid "Proxy Settings"
+msgstr "代理设置"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:490
 msgid "Proxy URL"
@@ -845,7 +1005,8 @@ msgstr "用于连接 frps 的代理 URL。支持 http、socks5 和 ntlm。"
 msgid "Proxy metadatas"
 msgstr "代理元数据"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:640
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:44
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "Proxy name"
 msgstr "代理名称"
 
@@ -853,17 +1014,21 @@ msgstr "代理名称"
 msgid "Proxy name prefix"
 msgstr "代理名称前缀"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:696
 msgid "Proxy protocol version"
-msgstr "代理协议版本"
+msgstr "Proxy Protocol 版本"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:643
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:223
 msgid "Proxy type"
 msgstr "代理类型"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:644
 msgid "Proxy type."
 msgstr "代理类型。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+msgid "ProxyType specifies the type of this proxy. Valid values include \"tcp\", \"udp\", \"http\", \"https\", \"stcp\", and \"xtcp\".<br />By default, this value is \"tcp\"."
+msgstr "ProxyType 指定此代理的类型。有效值包括\"tcp\"、\"udp\"、\"http\"、\"https\"、\"stcp\"和\"xtcp\"。<br />默认情况下，此值为\"tcp\"。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:580
 msgid "QUIC keepalive period"
@@ -877,11 +1042,12 @@ msgstr "QUIC 最大空闲超时"
 msgid "QUIC max incoming streams"
 msgstr "QUIC 最大传入流数"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
 msgid "RUNNING"
 msgstr "运行中"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:667
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:226
 msgid "Remote port"
 msgstr "远程端口"
 
@@ -897,7 +1063,7 @@ msgstr "连续失败后从 frps 移除此代理。"
 msgid "Request headers"
 msgstr "请求头"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:155
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:14
 msgid "Respawn when crashed"
 msgstr "崩溃时重启"
 
@@ -909,7 +1075,7 @@ msgstr "响应头"
 msgid "Rewrite Host header."
 msgstr "重写 Host 头。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:831
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:70
 msgid "Role"
 msgstr "角色"
 
@@ -921,19 +1087,19 @@ msgstr "按 HTTP 基本认证用户路由 HTTP 或 TCPMUX 请求。"
 msgid "Route by HTTP user"
 msgstr "按 HTTP 用户路由"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:153
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:13
 msgid "Run daemon as group"
 msgstr "以此组权限运行"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:152
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:12
 msgid "Run daemon as user"
 msgstr "以此用户权限运行"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:943
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:80
 msgid "SOCKS5 password"
 msgstr "SOCKS5 密码"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:939
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:79
 msgid "SOCKS5 user"
 msgstr "SOCKS5 用户"
 
@@ -953,11 +1119,11 @@ msgstr "密钥"
 msgid "Secret key used by STCP/XTCP/SUDP proxies and visitors."
 msgstr "STCP/XTCP/SUDP 代理和访问者使用的密钥。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:186
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid "Server address"
 msgstr "服务器地址"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:847
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:71
 msgid "Server name"
 msgstr "服务器名称"
 
@@ -969,7 +1135,7 @@ msgstr "访问者必须填写服务器名称。"
 msgid "Server name used for TLS verification."
 msgstr "用于 TLS 验证的服务器名称。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid "Server port"
 msgstr "服务器端口"
 
@@ -981,9 +1147,20 @@ msgstr "要访问的服务器代理名称。"
 msgid "Server user"
 msgstr "服务器用户"
 
+msgid "Server user (visitor)"
+msgstr "服务器用户（visitor）"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:844
 msgid "Server user for visitor."
 msgstr "访问者对应的服务器用户。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
+msgid "ServerAddr specifies the address of the server to connect to.<br />By default, this value is \"127.0.0.1\"."
+msgstr "ServerAddr 指定要连接到的服务器的地址。<br />默认情况下，此值为\"127.0.0.1\"。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
+msgid "ServerPort specifies the port to connect to the server on.<br />By default, this value is 7000."
+msgstr "ServerPort 指定要连接到的服务器端口。<br />默认情况下，此值为 7000。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:724
 msgid "Set request headers. Use Header=Value."
@@ -997,17 +1174,20 @@ msgstr "设置响应头。使用 Header=Value。"
 msgid "Since frp v0.50.0, default is true."
 msgstr "自 frp v0.50.0 起默认为 true。"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:72
+msgid "Sk"
+msgstr "Sk"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:374
-msgid ""
-"Skip TLS verification for OIDC endpoint. Not recommended for production."
+msgid "Skip TLS verification for OIDC endpoint. Not recommended for production."
 msgstr "跳过 OIDC 端点的 TLS 验证。不建议在生产环境使用。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:217
 msgid "Start proxies / visitors"
 msgstr "启动代理 / 访问者"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1432
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1442
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:199
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:203
 msgid "Startup Settings"
 msgstr "启动设置"
 
@@ -1023,7 +1203,7 @@ msgstr "静态文件剥离前缀"
 msgid "Store file path"
 msgstr "存储文件路径"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:706
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:58
 msgid "Subdomain"
 msgstr "子域名"
 
@@ -1035,7 +1215,7 @@ msgstr "TCP 保活间隔，单位为秒。负值表示禁用保活。"
 msgid "TCP multiplexer."
 msgstr "TCP 多路复用器。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:498
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
 msgid "TCP mux"
 msgstr "TCP 多路复用"
 
@@ -1043,7 +1223,7 @@ msgstr "TCP 多路复用"
 msgid "TCP mux keepalive interval"
 msgstr "TCP mux 保活间隔"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:540
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
 msgid "TLS"
 msgstr "TLS"
 
@@ -1077,11 +1257,23 @@ msgstr "TLS 服务器名称"
 msgid "TLS trusted CA path"
 msgstr "TLS 受信任 CA 路径"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
+msgid "TLSEnable specifies whether or not TLS should be used when communicating with the server."
+msgstr "TLSEnable 指定在与服务器通信时是否应使用 TLS。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
+msgid "TcpMux toggles TCP stream multiplexing. This allows multiple requests from a client to share a single TCP connection. If this value is true, the server must have TCP multiplexing enabled as well.<br />By default, this value is true."
+msgstr "TcpMux 切换 TCP 流多路复用。这允许来自客户端的多个请求共享单个 TCP 连接。如果此值为 true，则服务器必须启用 TCP 多路复用。<br />默认情况下，此值为 true。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "This list can be used to specify some additional parameters which have not been included in this LuCI."
+msgstr "此列表可用于指定此LuCI中未包括的一些其他参数。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:483
 msgid "Timeout in seconds for connecting to frps."
 msgstr "连接 frps 的超时时间，单位为秒。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:235
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
 msgid "Token"
 msgstr "令牌"
 
@@ -1118,6 +1310,13 @@ msgstr "令牌来源类型为文件时必须填写令牌来源文件路径。"
 msgid "Token source type"
 msgstr "令牌来源类型"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
+msgid "Token specifies the authorization token used to create keys to be sent to the server. The server must have a matching token for authorization to succeed. <br />By default, this value is \"\"."
+msgstr "Token 指定用于创建要发送到服务器的密钥的授权令牌。服务器必须具有匹配的令牌才能成功进行授权。<br />默认情况下，此值为空。"
+
+msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
+msgstr "Token 指定共享授权令牌（auth.method=token）。留空则禁用令牌认证。"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:236
 msgid "Token used for authentication."
 msgstr "用于认证的令牌。"
@@ -1146,7 +1345,7 @@ msgstr "UDP 数据包大小"
 msgid "UDP packet size in bytes. Should match frps. Default is 1500."
 msgstr "UDP 数据包大小，单位为字节。应与 frps 匹配。默认值为 1500。"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:947
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:81
 msgid "Unix domain socket path"
 msgstr "Unix 域套接字路径"
 
@@ -1157,6 +1356,22 @@ msgstr "使用 Header=Value。"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:697
 msgid "Use proxy protocol to transfer connection info to local service."
 msgstr "使用 proxy protocol 向本地服务传递连接信息。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
+msgid "UseCompression controls whether or not communication with the server will be compressed.<br />By default, this value is false."
+msgstr "UseCompression 控制是否压缩与服务器的通信。<br />默认情况下，此值为 false。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
+msgid "UseEncryption controls whether or not communication with the server will be encrypted. Encryption is done using the tokens supplied in the server and client configuration.<br />By default, this value is false."
+msgstr "UseEncryption 控制是否加密与服务器的通信。使用服务器和客户端配置中提供的令牌来完成加密。<br />默认情况下，此值为 false。"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User"
+msgstr "用户"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User specifies a prefix for proxy names to distinguish them from other clients. If this value is not \"\", proxy names will automatically be changed to \"{user}.{proxy_name}\".<br />By default, this value is \"\"."
+msgstr "User 为代理名称指定前缀，以将它们与其他客户端区分开来。如果此值不为空，则代理名称将自动更改为\"{user}.{proxy_name}\"。<br />默认情况下，此值为空。"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:604
 msgid "Virtual network address. Requires VirtualNet feature gate."
@@ -1234,126 +1449,46 @@ msgstr "XTCP 访问者隧道协议。"
 msgid "frp"
 msgstr "frp"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1393
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1400
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
+#: applications/luci-app-frpc/root/usr/share/luci/menu.d/luci-app-frpc.json:3
 msgid "frp Client"
 msgstr "frp 客户端"
 
-# 新增 OIDC、QUIC、认证方式等
-msgid "Auth method"
-msgstr "认证方式"
-
-msgid "Authentication method to connect frpc to frps. Valid values: \"token\" (default) or \"oidc\"."
-msgstr "连接 frpc 到 frps 的认证方式。有效值：\"token\"(默认) 或 \"oidc\"。"
-
-msgid "OIDC Client ID"
-msgstr "OIDC 客户端 ID"
-
-msgid "OIDC clientID used when auth.method = \"oidc\"."
-msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientID。"
-
-msgid "OIDC Client Secret"
-msgstr "OIDC 客户端密钥"
-
-msgid "OIDC clientSecret used when auth.method = \"oidc\"."
-msgstr "当 auth.method = \"oidc\" 时使用的 OIDC clientSecret。"
-
-msgid "OIDC Audience"
-msgstr "OIDC 受众"
-
-msgid "OIDC audience used when auth.method = \"oidc\"."
-msgstr "当 auth.method = \"oidc\" 时使用的 OIDC audience。"
-
-msgid "OIDC Token Endpoint URL"
-msgstr "OIDC 令牌端点 URL"
-
-msgid "OIDC token endpoint URL used when auth.method = \"oidc\"."
-msgstr "当 auth.method = \"oidc\" 时使用的 OIDC token endpoint URL。"
-
-msgid "Protocol specifies the transport protocol used to connect frpc to frps. Valid values are \"tcp\", \"kcp\", \"quic\" and \"websocket\".<br />By default, this value is \"tcp\"."
-msgstr "Protocol 指定连接 frpc 与 frps 的传输协议。有效值为 \"tcp\"、\"kcp\"、\"quic\" 和 \"websocket\"。<br />默认值为 \"tcp\"。"
-
-msgid "Token specifies the shared authorization token (auth.method=token). Leave empty to disable token authentication."
-msgstr "Token 指定共享授权令牌（auth.method=token）。留空则禁用令牌认证。"
-
-# Batch B 高级代理设置
-msgid "Advanced Settings"
-msgstr "高级设置"
-
-msgid "Bandwidth limit"
-msgstr "带宽限制"
-
-msgid "transport.bandwidthLimit, e.g. 1MB, 100KB, 1GB."
-msgstr "transport.bandwidthLimit，例如 1MB、100KB、1GB。"
-
-msgid "Bandwidth limit mode"
-msgstr "带宽限制模式"
-
-msgid "transport.bandwidthLimitMode."
-msgstr "transport.bandwidthLimitMode。"
-
-msgid "Proxy protocol version"
-msgstr "Proxy Protocol 版本"
-
-msgid "transport.proxyProtocolVersion."
-msgstr "transport.proxyProtocolVersion。"
-
-msgid "LoadBalancer group"
-msgstr "负载均衡组"
-
-msgid "loadBalancer.group name."
-msgstr "loadBalancer.group 名称。"
-
-msgid "LoadBalancer group key"
-msgstr "负载均衡组密钥"
-
-msgid "loadBalancer.groupKey secret."
-msgstr "loadBalancer.groupKey 密钥。"
-
-msgid "Health check type"
-msgstr "健康检查类型"
-
-msgid "healthCheck.type"
-msgstr "healthCheck.type"
-
-msgid "Health check path"
-msgstr "健康检查路径"
-
-msgid "healthCheck.path (HTTP only)."
-msgstr "healthCheck.path（仅 HTTP）。"
-
-msgid "Health check timeout(s)"
-msgstr "健康检查超时(秒)"
-
-msgid "healthCheck.timeoutSeconds"
-msgstr "healthCheck.timeoutSeconds"
-
-msgid "Health check max failed"
-msgstr "健康检查最大失败次数"
-
-msgid "healthCheck.maxFailed"
-msgstr "healthCheck.maxFailed"
-
-msgid "Health check interval(s)"
-msgstr "健康检查间隔(秒)"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
+msgid "frp internal wire protocol. v2 requires frps support and must be enabled explicitly."
+msgstr "frp 内部线路协议。v2 需要 frps 支持，并且必须显式启用。"
 
 msgid "healthCheck.intervalSeconds"
 msgstr "healthCheck.intervalSeconds"
 
-msgid "Server user (visitor)"
-msgstr "服务器用户（visitor）"
+msgid "healthCheck.maxFailed"
+msgstr "healthCheck.maxFailed"
+
+msgid "healthCheck.path (HTTP only)."
+msgstr "healthCheck.path（仅 HTTP）。"
+
+msgid "healthCheck.timeoutSeconds"
+msgstr "healthCheck.timeoutSeconds"
+
+msgid "healthCheck.type"
+msgstr "healthCheck.type"
+
+msgid "loadBalancer.group name."
+msgstr "loadBalancer.group 名称。"
+
+msgid "loadBalancer.groupKey secret."
+msgstr "loadBalancer.groupKey 密钥。"
 
 msgid "serverUser for visitor role"
 msgstr "visitor 角色使用的 serverUser"
 
-msgid "Extra options"
-msgstr "额外选项"
+msgid "transport.bandwidthLimit, e.g. 1MB, 100KB, 1GB."
+msgstr "transport.bandwidthLimit，例如 1MB、100KB、1GB。"
 
-msgid "Append raw key=value lines at end of this proxy block"
-msgstr "追加原始 key=value 行到该代理块末尾"
+msgid "transport.bandwidthLimitMode."
+msgstr "transport.bandwidthLimitMode。"
 
-msgid "Extra plugin options"
-msgstr "插件额外选项"
-
-msgid "Append raw key=value lines inside [proxies.plugin] section"
-msgstr "在 [proxies.plugin] 段内追加原始 key=value 行"
+msgid "transport.proxyProtocolVersion."
+msgstr "transport.proxyProtocolVersion。"

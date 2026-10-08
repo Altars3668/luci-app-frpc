@@ -1,19 +1,21 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-02 17:28+0000\n"
+"PO-Revision-Date: 2024-09-06 19:05+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
-"Language-Team: Irish <https://hosted.weblate.org/projects/openwrt/"
-"luciapplicationsfrpc/ga/>\n"
+"Language-Team: Irish <https://hosted.weblate.org/projects/openwrt/luciapplicationsfrpc/ga/>\n"
 "Language: ga\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1454
 msgid "Add new proxy or visitor..."
 msgstr "Cuir seachfhreastalaí nó cuairteoir nua leis..."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:214
+msgid "Add new proxy..."
+msgstr "Cuir seachfhreastalaí nua leis..."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:360
 msgid "Additional OIDC token endpoint params. Use key=value."
@@ -31,7 +33,7 @@ msgstr "Meiteashonraí breise cliant. Úsáid key=value."
 msgid "Additional config files included by frpc."
 msgstr "Comhaid chumraíochta breise curtha san áireamh ag frpc."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:174
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Additional configs"
 msgstr "Cumraíochtaí breise"
 
@@ -43,9 +45,45 @@ msgstr "Meiteashonraí seachfhreastalaí breise. Úsáid key=value."
 msgid "Additional scopes to include authentication information."
 msgstr "Raointe breise chun faisnéis fíordheimhnithe a áireamh."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "Additional settings"
+msgstr "Socruithe breise"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:187
 msgid "Address of the frps server."
 msgstr "Seoladh an fhreastalaí frps."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "Admin address"
+msgstr "Seoladh riaracháin"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "Admin password"
+msgstr "Pasfhocal riarthóra"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "Admin port"
+msgstr "Port admin"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "Admin user"
+msgstr "Úsáideoir admin"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "AdminAddr specifies the address that the admin server binds to.<br />By default, this value is \"0.0.0.0\"."
+msgstr "Sonraíonn AdminAddr an seoladh a nascann an freastalaí riaracháin leis.<br />De réir réamhshocraithe, is é an luach seo ná \"0.0.0.0\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "AdminPort specifies the port for the admin server to listen on. If this value is 0, the admin server will not be started.<br />By default, this value is 0."
+msgstr "Sonraíonn AdminPort an port a bhféadfaidh an freastalaí admin éisteacht air. Más é 0 an luach seo, ní thosófar an freastalaí riaracháin.<br />De réir réamhshocraithe, is é 0 an luach seo."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "AdminPwd specifies the password that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "Sonraíonn AdminPwd an pasfhocal a úsáidfidh an freastalaí riaracháin le haghaidh logáil isteach.<br />De réir réamhshocraithe, is é an luach seo ná \"admin\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "AdminUser specifies the username that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "Sonraíonn AdminUser an t-ainm úsáideora a úsáidfidh an freastalaí riaracháin chun logáil isteach.<br />De réir réamhshocraithe, is é an luach seo ná \"admin\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1430
 msgid "Advanced"
@@ -63,9 +101,13 @@ msgstr "Anótálacha"
 msgid "Annotations displayed on frps dashboard. Use key=value."
 msgstr "Taispeántar nótaí ar phainéal frps. Úsáid key=value."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:464
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
 msgid "Assets dir"
 msgstr "Sócmhainní dir"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
+msgid "AssetsDir specifies the local directory that the admin server will load resources from. If this value is \"\", assets will be loaded from the bundled executable using statik.<br />By default, this value is \"\"."
+msgstr "Sonraíonn AssetsDir an t-eolaire áitiúil a luchtóidh an freastalaí riaracháin acmhainní uaithi. Más é \" \"an luach seo, déanfar sócmhainní a luchtú ón inrite cuachta le staticí.<br />De réir réamhshocraithe, is \" \" é an luach seo."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1426
 msgid "Authentication"
@@ -115,41 +157,37 @@ msgstr "Aitheantas Cliant"
 msgid "Client metadata"
 msgstr "Meiteashonraí cliant"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1417
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
 msgid "Collecting data ..."
-msgstr "Ag bailiú sonraí ..."
+msgstr "Sonraí á mbailiú ..."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:317
 msgid "Command arguments passed to token source exec."
 msgstr "Argóintí ordaithe curtha chuig feidhmchláir foinse an chomhartha."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:294
-msgid ""
-"Command used to obtain the token. The init script adds --allow-"
-"unsafe=TokenSourceExec when this source type is used."
-msgstr ""
-"An t-ordú a úsáideadh chun an comhartha a fháil. Cuireann an script init --"
-"allow-unsafe=TokenSourceExec leis nuair a úsáidtear an cineál foinse seo."
+msgid "Command used to obtain the token. The init script adds --allow-unsafe=TokenSourceExec when this source type is used."
+msgstr "An t-ordú a úsáideadh chun an comhartha a fháil. Cuireann an script init --allow-unsafe=TokenSourceExec leis nuair a úsáidtear an cineál foinse seo."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1425
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:198
 msgid "Common Settings"
 msgstr "Socruithe Coitianta"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:832
-msgid ""
-"Compatibility field for UCI. Server sections are emitted as proxy entries; "
-"visitor sections are emitted as visitor entries."
-msgstr ""
-"Réimse comhoiriúnachta do UCI. Aistrítear rannóga freastalaí mar iontrálacha "
-"seachfhreastalaí; aistrítear rannóga cuairteoirí mar iontrálacha cuairteoirí."
+msgid "Compatibility field for UCI. Server sections are emitted as proxy entries; visitor sections are emitted as visitor entries."
+msgstr "Réimse comhoiriúnachta do UCI. Aistrítear rannóga freastalaí mar iontrálacha seachfhreastalaí; aistrítear rannóga cuairteoirí mar iontrálacha cuairteoirí."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:693
 msgid "Compress proxy traffic."
 msgstr "Comhbhrúigh trácht seachfhreastalaí."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:692
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
 msgid "Compression"
 msgstr "Comhbhrú"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
+msgid "Config files include in temporary config file"
+msgstr "Áirítear comhaid cumraíochta sa chomhad cumraíochta sealadach"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:348
 msgid "Configuration key: auth.oidc.audience."
@@ -263,7 +301,7 @@ msgstr "Comhad deimhnithe CA saincheaptha do chríochphointe OIDC."
 msgid "Custom DNS server used by frpc."
 msgstr "Freastalaí DNS saincheaptha a úsáideann frpc."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:702
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:57
 msgid "Custom domains"
 msgstr "Fearainn saincheaptha"
 
@@ -289,17 +327,19 @@ msgstr "Díchumasaigh an chéad bheart TLS saincheaptha"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:904
 msgid "Disable local interface assisted addresses for XTCP NAT traversal."
-msgstr ""
-"Díchumasaigh seoltaí le cúnamh comhéadain áitiúil le haghaidh trasnú NAT "
-"XTCP."
+msgstr "Díchumasaigh seoltaí le cúnamh comhéadain áitiúil le haghaidh trasnú NAT XTCP."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:395
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
 msgid "Disable log color"
 msgstr "Díchumasaigh dath an loga"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:396
 msgid "Disable log colors when log output is console."
 msgstr "Díchumasaigh dathanna loga nuair a bhíonn aschur loga sa chonsól."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
+msgid "DisableLogColor disables log colors when LogWay == \"console\" when set to true."
+msgstr "Díchumasaíonn DisableLogColor dathanna loga nuair a bhíonn LogWay == \"consól\" socraithe nuair atá siad fíor."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:258
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:698
@@ -310,9 +350,7 @@ msgstr "Míchumasaithe"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:888
 msgid "Effective when XTCP keep tunnel open is enabled."
-msgstr ""
-"Éifeachtach nuair a bhíonn XTCP chun an tollán a choinneáil ar oscailt "
-"cumasaithe."
+msgstr "Éifeachtach nuair a bhíonn XTCP chun an tollán a choinneáil ar oscailt cumasaithe."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:469
 msgid "Enable Go pprof handlers in web server."
@@ -323,23 +361,16 @@ msgid "Enable HTTP/2 for HTTPS bridge plugins."
 msgstr "Cumasaigh HTTP/2 le haghaidh breiseáin droichid HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:418
-msgid ""
-"Enable HTTPS for the frpc web server. This switch controls whether "
-"webServer.tls.certFile and webServer.tls.keyFile are emitted."
-msgstr ""
-"Cumasaigh HTTPS don fhreastalaí gréasáin frpc. Rialaíonn an lasc seo an "
-"astaítear webServer.tls.certFile agus webServer.tls.keyFile."
+msgid "Enable HTTPS for the frpc web server. This switch controls whether webServer.tls.certFile and webServer.tls.keyFile are emitted."
+msgstr "Cumasaigh HTTPS don fhreastalaí gréasáin frpc. Rialaíonn an lasc seo an astaítear webServer.tls.certFile agus webServer.tls.keyFile."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:499
 msgid "Enable TCP stream multiplexing."
 msgstr "Cumasaigh ilphléacsú srutha TCP."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:541
-msgid ""
-"Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
-msgstr ""
-"Cumasaigh TLS agus tú ag cumarsáid le frps. Ó frp v0.50.0, is fíor an "
-"réamhshocrú."
+msgid "Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
+msgstr "Cumasaigh TLS agus tú ag cumarsáid le frps. Ó frp v0.50.0, is fíor an réamhshocrú."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:648
 msgid "Enable or disable this proxy."
@@ -361,11 +392,11 @@ msgstr "Cumasaithe"
 msgid "Encrypt proxy traffic."
 msgstr "Criptigh trácht seachfhreastalaí."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:688
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid "Encryption"
 msgstr "Criptiú"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "Environment variable"
 msgstr "Athróg timpeallachta"
 
@@ -375,13 +406,15 @@ msgstr "Ní mór don athróg timpeallachta an fhormáid KEY=value a úsáid."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:327
 msgid "Environment variables passed to token source exec. Use KEY=value."
-msgstr ""
-"Athróga timpeallachta a chuirtear chuig feidhmchláir foinse an chomhartha. "
-"Úsáid KEY=luach."
+msgstr "Athróga timpeallachta a chuirtear chuig feidhmchláir foinse an chomhartha. Úsáid KEY=luach."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:202
 msgid "Exit frpc when the first login fails."
 msgstr "Scoir frpc nuair a theipeann ar an gcéad logáil isteach."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "Exit when login fail"
+msgstr "Scoir nuair a theipeann ar logáil isteach"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:201
 msgid "Exit when login fails"
@@ -392,15 +425,8 @@ msgid "Experimental feature gates. Use key=value, for example VirtualNet=true."
 msgstr "Geataí gné turgnamhacha. Úsáid key=value, mar shampla VirtualNet=true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
-msgid ""
-"Extra root-level configuration fragments included before generated proxy and "
-"visitor sections. Use frp includes or per-proxy raw settings for proxy/"
-"visitor tables."
-msgstr ""
-"Blúirí cumraíochta breise ar leibhéal an fhréamh curtha san áireamh roimh na "
-"rannóga seachfhreastalaí agus cuairteoirí a ghintear. Bain úsáid as "
-"socruithe amh in aghaidh an seachfhreastalaí nó as na socruithe in aghaidh "
-"an seachfhreastalaí le haghaidh táblaí seachfhreastalaí/cuairteoirí."
+msgid "Extra root-level configuration fragments included before generated proxy and visitor sections. Use frp includes or per-proxy raw settings for proxy/visitor tables."
+msgstr "Blúirí cumraíochta breise ar leibhéal an fhréamh curtha san áireamh roimh na rannóga seachfhreastalaí agus cuairteoirí a ghintear. Bain úsáid as socruithe amh in aghaidh an seachfhreastalaí nó as na socruithe in aghaidh an seachfhreastalaí le haghaidh táblaí seachfhreastalaí/cuairteoirí."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:900
 msgid "Fallback timeout in milliseconds for XTCP."
@@ -426,7 +452,7 @@ msgstr "Geataí gné"
 msgid "For virtual_net visitor plugin."
 msgstr "Don bhreiseán cuairteoirí virtual_net."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1460
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "General Settings"
 msgstr "Socruithe Ginearálta"
 
@@ -437,6 +463,10 @@ msgstr "Deonaigh rochtain ar app LuCI frpc"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1462
 msgid "HTTP / Domain"
 msgstr "HTTP / Fearann"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:219
+msgid "HTTP Settings"
+msgstr "Socruithe HTTP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:820
 msgid "HTTP health check headers. Use Header=Value."
@@ -454,8 +484,8 @@ msgstr "Pasfhocal údaraithe bunúsach HTTP nó TCPMUX."
 msgid "HTTP or TCPMUX basic auth username."
 msgstr "Ainm úsáideora údaraithe bunúsach HTTP nó TCPMUX."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:746
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:935
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:64
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:78
 msgid "HTTP password"
 msgstr "Pasfhocal HTTP"
 
@@ -463,8 +493,12 @@ msgstr "Pasfhocal HTTP"
 msgid "HTTP path must start with /."
 msgstr "Ní mór do chonair HTTP tosú le /."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:743
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:931
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HTTP proxy"
+msgstr "seachfhreastalaí HTTP"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:63
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:77
 msgid "HTTP user"
 msgstr "Úsáideoir HTTP"
 
@@ -494,9 +528,7 @@ msgstr "Cosán seiceála sláinte"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:813
 msgid "Health check path is required when health check type is http."
-msgstr ""
-"Tá cosán seiceála sláinte ag teastáil nuair is é http an cineál seiceála "
-"sláinte."
+msgstr "Tá cosán seiceála sláinte ag teastáil nuair is é http an cineál seiceála sláinte."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:788
 msgid "Health check timeout"
@@ -514,7 +546,15 @@ msgstr "Cineál seiceála sláinte"
 msgid "Health check type."
 msgstr "Cineál seiceála sláinte."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:530
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
+msgid "HeartBeatInterval specifies at what interval heartbeats are sent to the server, in seconds. It is not recommended to change this value.<br />By default, this value is 30."
+msgstr "Sonraíonn HeartBeatInterval cad iad na buillí croí eatramh a sheoltar chuig an bhfreastalaí, i soicindí. Ní mholtar an luach seo a athrú.<br />De réir réamhshocraithe, is é 30 an luach seo."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
+msgid "HeartBeatTimeout specifies the maximum allowed heartbeat response delay before the connection is terminated, in seconds. It is not recommended to change this value.<br />By default, this value is 90."
+msgstr "Sonraíonn HeartBeatTimeout an t-uasmhoill freagartha buille croí a cheadaítear sula gcuirtear deireadh leis an nasc, i soicindí. Ní mholtar an luach seo a athrú.<br />De réir réamhshocraithe, is é 90 an luach seo."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
 msgid "Heartbeat interval"
 msgstr "Eatramh buille croí"
 
@@ -522,7 +562,7 @@ msgstr "Eatramh buille croí"
 msgid "Heartbeat interval in seconds."
 msgstr "Eatramh buille croí i soicindí."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:534
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
 msgid "Heartbeat timeout"
 msgstr "Teorainn ama buille croí"
 
@@ -530,9 +570,17 @@ msgstr "Teorainn ama buille croí"
 msgid "Heartbeat timeout in seconds."
 msgstr "Am scoir buille croí i soicindí."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:720
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:65
 msgid "Host header rewrite"
 msgstr "Athscríobh ceanntásc an óstaigh"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HttpProxy specifies a proxy address to connect to the server through. If this value is \"\", the server will be connected to directly.<br />By default, this value is read from the \"http_proxy\" environment variable."
+msgstr "Sonraíonn HttpProxy seoladh seachfhreastalaí chun ceangal leis an bhfreastalaí tríd. Más é \" \"an luach seo, nascfar an freastalaí go díreach leis.<br />De réir réamhshocraithe, léitear an luach seo ón athróg timpeallachta \"http_proxy\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+msgid "If remote_port is 0, frps will assign a random port for you"
+msgstr "Más 0 é remote_port, sannfaidh frps port randamach duit"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Include config files"
@@ -560,45 +608,28 @@ msgstr "Grúpa cothromóra ualaigh"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:776
 msgid "Load balancer group is required when group key is set."
-msgstr ""
-"Tá grúpa cothromóra ualaigh ag teastáil nuair a bhíonn eochair ghrúpa "
-"socraithe."
+msgstr "Tá grúpa cothromóra ualaigh ag teastáil nuair a bhíonn eochair ghrúpa socraithe."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:767
 msgid "Load balancer group key"
 msgstr "Eochair ghrúpa cothromóra ualaigh"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:255
-msgid ""
-"Load token from an external source. File reads the token from a local file; "
-"exec runs a command and requires frp unsafe permission. Mutually exclusive "
-"with auth.token."
-msgstr ""
-"Luchtaigh comhartha ó fhoinse sheachtrach. Léann an comhad an comhartha ó "
-"chomhad áitiúil; ritheann exec ordú agus éilíonn sé cead neamhshábháilte "
-"frp. Eisiatach go frithpháirteach le auth.token."
+msgid "Load token from an external source. File reads the token from a local file; exec runs a command and requires frp unsafe permission. Mutually exclusive with auth.token."
+msgstr "Luchtaigh comhartha ó fhoinse sheachtrach. Léann an comhad an comhartha ó chomhad áitiúil; ritheann exec ordú agus éilíonn sé cead neamhshábháilte frp. Eisiatach go frithpháirteach le auth.token."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:659
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:224
 msgid "Local IP"
-msgstr "IP Áitiúil"
+msgstr "IP áitiúil"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:523
-msgid ""
-"Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
-msgstr ""
-"IP áitiúil ceangailte agus ceangal á dhéanamh le frps. Bailí le haghaidh "
-"tcp, websocket nó wss amháin."
+msgid "Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
+msgstr "IP áitiúil ceangailte agus ceangal á dhéanamh le frps. Bailí le haghaidh tcp, websocket nó wss amháin."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:967
-msgid ""
-"Local backend address used by bridge plugins. For https2http, https2https "
-"and tls2raw, this is the local service address reached after frp terminates "
-"external TLS; for http2https/http2http, it is the local upstream address."
-msgstr ""
-"Seoladh cúil áitiúil a úsáideann breiseáin droichid. I gcás https2http, "
-"https2https agus tls2raw, is é seo an seoladh seirbhíse áitiúil a "
-"shroichtear tar éis do frp deireadh a chur le TLS seachtrach; i gcás "
-"http2https/http2http, is é an seoladh áitiúil uas-srutha é."
+msgid "Local backend address used by bridge plugins. For https2http, https2https and tls2raw, this is the local service address reached after frp terminates external TLS; for http2https/http2http, it is the local upstream address."
+msgstr "Seoladh cúil áitiúil a úsáideann breiseáin droichid. I gcás https2http, https2https agus tls2raw, is é seo an seoladh seirbhíse áitiúil a shroichtear tar éis do frp deireadh a chur le TLS seachtrach; i gcás http2https/http2http, is é an seoladh áitiúil uas-srutha é."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:862
 msgid "Local bind address for visitor."
@@ -606,11 +637,10 @@ msgstr "Seoladh ceangail áitiúil don chuairteoir."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:866
 msgid "Local bind port for visitor. Use a negative value to avoid binding."
-msgstr ""
-"Port ceangail áitiúil don chuairteoir. Úsáid luach diúltach chun ceangal a "
-"sheachaint."
+msgstr "Port ceangail áitiúil don chuairteoir. Úsáid luach diúltach chun ceangal a sheachaint."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:663
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Local port"
 msgstr "Port áitiúil"
 
@@ -622,7 +652,15 @@ msgstr "IP nó óstach seirbhíse áitiúil."
 msgid "Local service port."
 msgstr "Calafort seirbhíse áitiúil."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:711
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+msgid "LocalIp specifies the IP address or host name to proxy to."
+msgstr "Sonraíonn LocalIp an seoladh IP nó an t-ainm óstaigh chun an seachfhreastalaí dó."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+msgid "LocalPort specifies the port to proxy to."
+msgstr "Sonraíonn LocalPort an port le seachfhreastalaí chuige."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:62
 msgid "Locations"
 msgstr "Suímh"
 
@@ -630,11 +668,15 @@ msgstr "Suímh"
 msgid "Log Settings"
 msgstr "Socruithe Logála"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:387
-msgid "Log level"
-msgstr "Leibhéal loga"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Log file"
+msgstr "Comhad logála"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:391
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "Log level"
+msgstr "Leibhéal logála"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid "Log max days"
 msgstr "Íoslódáil max laethanta"
 
@@ -646,13 +688,29 @@ msgstr "Aschur loga"
 msgid "Log output path or console."
 msgstr "Cosán aschuir nó consól logála."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:142
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
 msgstr "Logáil isteach stderr"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:132
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:10
 msgid "Log stdout"
 msgstr "Logáil isteach stdout"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "LogFile specifies a file where logs will be written to. This value will only be used if LogWay is set appropriately.<br />By default, this value is \"console\"."
+msgstr "Sonraíonn LogFile comhad a mbeidh logs scríofa chuige. Ní úsáidfear an luach seo ach amháin má tá LogWay socraithe go cuí.<br />De réir réamhshocraithe, is \"consól\" an luach seo."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "LogLevel specifies the minimum log level. Valid values are \"trace\", \"debug\", \"info\", \"warn\", and \"error\".<br />By default, this value is \"info\"."
+msgstr "Sonraíonn LogLevel an t-íosleibhéal logála. Is iad na luachanna bailí \"rian\", \"debug\", \"info\", \"rabhadh\", agus \"earráid\".<br />De réir réamhshocraithe, is é an luach seo \"info\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
+msgid "LogMaxDays specifies the maximum number of days to store log information before deletion. This is only used if LogWay == \"file\".<br />By default, this value is 0."
+msgstr "Sonraíonn LogMaxDays an t-uaslíon laethanta chun faisnéis logála a stóráil roimh scriosadh. Ní úsáidtear é seo ach amháin i gcás LogWay == \"comhad\".<br />De réir réamhshocraithe, is é 0 an luach seo."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "LoginFailExit controls whether or not the client should exit after a failed login attempt. If false, the client will retry until a login attempt succeeds.<br />By default, this value is true."
+msgstr "Rialaíonn LoginFailExit cibé ar cheart don chliant imeacht tar éis theip ar iarracht logáil isteach. Má tá sé bréagach, bainfidh an cliant triail eile as go dtí go n-éireoidh le hiarracht logáil isteach.<br />De réir réamhshocraithe, tá an luach seo fíor."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:887
 msgid "Max retries per hour"
@@ -682,9 +740,9 @@ msgstr "Ilphléacsóir"
 msgid "NAT hole STUN server"
 msgstr "Freastalaí STUN poll NAT"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 msgid "NOT RUNNING"
-msgstr "NÍL AG RITH"
+msgstr "NÍ RÚCHÁN"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:359
 msgid "OIDC additional endpoint params"
@@ -722,17 +780,17 @@ msgstr "URL críochphointe comhartha OIDC"
 msgid "OIDC trusted CA file"
 msgstr "Comhad CA iontaofa OIDC"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
+msgid "OS environments pass to frp for config file template, see <a href=\"https://github.com/fatedier/frp#configuration-file-template\">frp README</a>"
+msgstr "Gabhann timpeallachtaí OS chuig frp le haghaidh teimpléad comhaid cumraíochta, féach <a href=\"https://github.com/fatedier/frp#configuration-file-template\">frp README</a>"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:166
 msgid "OS environments passed to frp for config file template, see %s."
-msgstr ""
-"Timpeallachtaí OS curtha chuig frp le haghaidh teimpléad comhaid "
-"chumraíochta, féach %s."
+msgstr "Timpeallachtaí OS curtha chuig frp le haghaidh teimpléad comhaid chumraíochta, féach %s."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "Only start specified proxies or visitors. Empty means start all."
-msgstr ""
-"Ná cuir tús ach le seachfhreastalaithe nó cuairteoirí sonraithe. Ciallaíonn "
-"folamh go gcuirfí tús le gach ceann."
+msgstr "Ná cuir tús ach le seachfhreastalaithe nó cuairteoirí sonraithe. Ciallaíonn folamh go gcuirfí tús le gach ceann."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1231
 msgid "Only the virtual_net plugin is valid for visitors."
@@ -743,11 +801,8 @@ msgid "Only valid for HTTP proxy."
 msgstr "Bailí le haghaidh seachfhreastalaí HTTP amháin."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:840
-msgid ""
-"Only visitors from specified users can connect. Use * to allow all users."
-msgstr ""
-"Ní féidir ach le cuairteoirí ó úsáideoirí sonraithe ceangal. Úsáid * chun "
-"gach úsáideoir a cheadú."
+msgid "Only visitors from specified users can connect. Use * to allow all users."
+msgstr "Ní féidir ach le cuairteoirí ó úsáideoirí sonraithe ceangal. Úsáid * chun gach úsáideoir a cheadú."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:184
 msgid "Optional unique identifier for this frpc instance."
@@ -767,38 +822,35 @@ msgstr "Cosán chuig an gcomhad eochrach príobháideach TLS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:429
 msgid "Path to the certificate file used by the HTTPS web server."
-msgstr ""
-"Cosán chuig an gcomhad deimhnithe a úsáideann an freastalaí gréasáin HTTPS."
+msgstr "Cosán chuig an gcomhad deimhnithe a úsáideann an freastalaí gréasáin HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:447
 msgid "Path to the private key file used by the HTTPS web server."
-msgstr ""
-"Cosán chuig an gcomhad eochrach príobháideach a úsáideann an freastalaí "
-"gréasáin HTTPS."
+msgstr "Cosán chuig an gcomhad eochrach príobháideach a úsáideann an freastalaí gréasáin HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:561
 msgid "Path to the trusted CA certificate file."
 msgstr "Cosán chuig an gcomhad deimhnithe Údaráis Deimhnithe iontaofa."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:608
-msgid ""
-"Persist runtime proxy and visitor configuration for Web UI or API management."
-msgstr ""
-"Coinnigh cumraíocht seachfhreastalaí agus cuairteoirí ag am rith le haghaidh "
-"bainistíocht Chomhéadan Úsáideora Gréasáin nó API."
+msgid "Persist runtime proxy and visitor configuration for Web UI or API management."
+msgstr "Coinnigh cumraíocht seachfhreastalaí agus cuairteoirí ag am rith le haghaidh bainistíocht Chomhéadan Úsáideora Gréasáin nó API."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1221
 msgid "Please use KEY=value format."
 msgstr "Bain úsáid as an bhformáid KEY=value le do thoil."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:909
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1463
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:76
 msgid "Plugin"
 msgstr "Breiseán"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1015
 msgid "Plugin HTTP/2"
 msgstr "Breiseán HTTP/2"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:220
+msgid "Plugin Settings"
+msgstr "Socruithe Breiseán"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:979
 msgid "Plugin certificate path"
@@ -846,13 +898,23 @@ msgstr "Port an fhreastalaí frps. Is é 7000 an réamhshocrú."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:195
 msgid "Prefix for proxy names. If set, proxy names become {user}.{proxy}."
-msgstr ""
-"Réimír d'ainmneacha seachfhreastalaithe. Má shocraítear é, is iad {user}."
-"{proxy} na hainmneacha seachfhreastalaithe."
+msgstr "Réimír d'ainmneacha seachfhreastalaithe. Má shocraítear é, is iad {user}.{proxy} na hainmneacha seachfhreastalaithe."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol"
+msgstr "Prótacal"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol specifies the protocol to use when interacting with the server. Valid values are \"tcp\", \"kcp\", and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Sonraíonn Prótacal an prótacal atá le húsáid agus tú ag idirghníomhú leis an bhfreastalaí. Is iad na luachanna bailí ná \"tcp\", \"kcp\", agus \"websocket\".<br />De réir réamhshocraithe, is é an luach seo ná \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1449
 msgid "Proxy / Visitor Settings"
 msgstr "Socruithe Seachfhreastalaí / Cuairteoirí"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:210
+msgid "Proxy Settings"
+msgstr "Socruithe Seachfhreastalaí"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:490
 msgid "Proxy URL"
@@ -864,15 +926,14 @@ msgstr "URL seachfhreastalaí do chríochphointe comhartha OIDC."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:491
 msgid "Proxy URL used to connect to frps. Supports http, socks5 and ntlm."
-msgstr ""
-"URL seachfhreastalaí a úsáidtear chun ceangal le frps. Tacaíonn sé le http, "
-"socks5 agus ntlm."
+msgstr "URL seachfhreastalaí a úsáidtear chun ceangal le frps. Tacaíonn sé le http, socks5 agus ntlm."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1059
 msgid "Proxy metadatas"
 msgstr "Meiteashonraí seachfhreastalaí"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:640
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:44
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "Proxy name"
 msgstr "Ainm seachfhreastalaí"
 
@@ -884,13 +945,18 @@ msgstr "Réimír ainm seachfhreastalaí"
 msgid "Proxy protocol version"
 msgstr "Leagan prótacail seachfhreastalaí"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:643
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:223
 msgid "Proxy type"
 msgstr "Cineál seachfhreastalaí"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:644
 msgid "Proxy type."
 msgstr "Cineál seachfhreastalaí."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+msgid "ProxyType specifies the type of this proxy. Valid values include \"tcp\", \"udp\", \"http\", \"https\", \"stcp\", and \"xtcp\".<br />By default, this value is \"tcp\"."
+msgstr "Sonraíonn ProxyType cineál an seachfhreastalaí seo. Áirítear le luachanna bailí \"tcp\", \"udp\", \"http\", \"https\", \"stcp\", agus \"xtcp\".<br />De réir réamhshocraithe, is é an luach seo ná \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:580
 msgid "QUIC keepalive period"
@@ -904,11 +970,12 @@ msgstr "Uasmhéid ama díomhaoin QUIC"
 msgid "QUIC max incoming streams"
 msgstr "Uasmhéid sruthanna isteach QUIC"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
 msgid "RUNNING"
-msgstr "AG RITH"
+msgstr "REATHA"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:667
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:226
 msgid "Remote port"
 msgstr "Port cianda"
 
@@ -924,7 +991,7 @@ msgstr "Bain seachfhreastalaí as frps tar éis teipeanna leanúnacha."
 msgid "Request headers"
 msgstr "Ceanntásca iarratais"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:155
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:14
 msgid "Respawn when crashed"
 msgstr "Respawn nuair a tuairteála"
 
@@ -936,7 +1003,7 @@ msgstr "Ceanntásca freagartha"
 msgid "Rewrite Host header."
 msgstr "Athscríobh ceanntásc an Óstaigh."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:831
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:70
 msgid "Role"
 msgstr "Ról"
 
@@ -948,19 +1015,19 @@ msgstr "Seol iarratais HTTP nó TCPMUX ag úsáideoir údaraithe bunúsach HTTP.
 msgid "Route by HTTP user"
 msgstr "Bealach ag úsáideoir HTTP"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:153
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:13
 msgid "Run daemon as group"
 msgstr "Rith deamhan mar ghrúpa"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:152
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:12
 msgid "Run daemon as user"
 msgstr "Rith deamhan mar úsáideoir"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:943
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:80
 msgid "SOCKS5 password"
 msgstr "Pasfhocal SOCKS5"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:939
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:79
 msgid "SOCKS5 user"
 msgstr "SOCKS5 úsáideora"
 
@@ -978,15 +1045,13 @@ msgstr "Eochair rúnda"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:836
 msgid "Secret key used by STCP/XTCP/SUDP proxies and visitors."
-msgstr ""
-"Eochair rúnda a úsáideann seachfhreastalaithe STCP/XTCP/SUDP agus "
-"cuairteoirí."
+msgstr "Eochair rúnda a úsáideann seachfhreastalaithe STCP/XTCP/SUDP agus cuairteoirí."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:186
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid "Server address"
-msgstr "Seoladh an fhreastalaí"
+msgstr "Seoladh freastalaí"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:847
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:71
 msgid "Server name"
 msgstr "Ainm freastalaí"
 
@@ -998,7 +1063,7 @@ msgstr "Tá ainm an fhreastalaí ag teastáil do chuairteoirí."
 msgid "Server name used for TLS verification."
 msgstr "Ainm an fhreastalaí a úsáidtear le haghaidh fíorú TLS."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid "Server port"
 msgstr "Port freastalaí"
 
@@ -1014,6 +1079,14 @@ msgstr "Úsáideoir freastalaí"
 msgid "Server user for visitor."
 msgstr "Úsáideoir freastalaí don chuairteoir."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
+msgid "ServerAddr specifies the address of the server to connect to.<br />By default, this value is \"127.0.0.1\"."
+msgstr "Sonraíonn ServerAddr seoladh an fhreastalaí le ceangal leis.<br />De réir réamhshocraithe, is é an luach seo ná \"127.0.0.1\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
+msgid "ServerPort specifies the port to connect to the server on.<br />By default, this value is 7000."
+msgstr "Sonraíonn ServerPort an port le ceangal leis an bhfreastalaí air.<br />De réir réamhshocraithe, is é 7000 an luach seo."
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:724
 msgid "Set request headers. Use Header=Value."
 msgstr "Socraigh ceanntásca iarratais. Úsáid Header=Value."
@@ -1026,19 +1099,20 @@ msgstr "Socraigh ceanntásca freagartha. Úsáid Header=Value."
 msgid "Since frp v0.50.0, default is true."
 msgstr "Ó frp v0.50.0, is fíor an réamhshocrú."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:72
+msgid "Sk"
+msgstr "Sk"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:374
-msgid ""
-"Skip TLS verification for OIDC endpoint. Not recommended for production."
-msgstr ""
-"Seachain fíorú TLS le haghaidh críochphointe OIDC. Ní mholtar é le haghaidh "
-"táirgeachta."
+msgid "Skip TLS verification for OIDC endpoint. Not recommended for production."
+msgstr "Seachain fíorú TLS le haghaidh críochphointe OIDC. Ní mholtar é le haghaidh táirgeachta."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:217
 msgid "Start proxies / visitors"
 msgstr "Tosaigh seachfhreastalaithe / cuairteoirí"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1432
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1442
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:199
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:203
 msgid "Startup Settings"
 msgstr "Socruithe Tosaithe"
 
@@ -1054,21 +1128,19 @@ msgstr "Réimír stiall comhaid statach"
 msgid "Store file path"
 msgstr "Stóráil cosán comhaid"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:706
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:58
 msgid "Subdomain"
 msgstr "Fofhearann"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:487
 msgid "TCP keepalive interval in seconds. Negative value disables keepalive."
-msgstr ""
-"Eatramh coinneála TCP i soicindí. Díchumasaíonn luach diúltach an coinneáil "
-"beo."
+msgstr "Eatramh coinneála TCP i soicindí. Díchumasaíonn luach diúltach an coinneáil beo."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:758
 msgid "TCP multiplexer."
 msgstr "Ilphléacsóir TCP."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:498
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
 msgid "TCP mux"
 msgstr "TCP mux"
 
@@ -1076,7 +1148,7 @@ msgstr "TCP mux"
 msgid "TCP mux keepalive interval"
 msgstr "Eatramh coinneála beo TCP mux"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:540
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
 msgid "TLS"
 msgstr "TLS"
 
@@ -1091,8 +1163,7 @@ msgstr "Cosán deimhnithe TLS"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:440
 msgid "TLS certificate path is required when web HTTPS is enabled."
-msgstr ""
-"Tá cosán deimhnithe TLS ag teastáil nuair a bhíonn HTTPS gréasáin cumasaithe."
+msgstr "Tá cosán deimhnithe TLS ag teastáil nuair a bhíonn HTTPS gréasáin cumasaithe."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:446
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:556
@@ -1101,9 +1172,7 @@ msgstr "Cosán eochrach príobháideach TLS"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:458
 msgid "TLS private key path is required when web HTTPS is enabled."
-msgstr ""
-"Tá cosán eochrach príobháideach TLS ag teastáil nuair a bhíonn HTTPS "
-"gréasáin cumasaithe."
+msgstr "Tá cosán eochrach príobháideach TLS ag teastáil nuair a bhíonn HTTPS gréasáin cumasaithe."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:564
 msgid "TLS server name"
@@ -1113,13 +1182,25 @@ msgstr "Ainm freastalaí TLS"
 msgid "TLS trusted CA path"
 msgstr "Cosán iontaofa TLS CA"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
+msgid "TLSEnable specifies whether or not TLS should be used when communicating with the server."
+msgstr "Sonraíonn TLSEnable cé acu ar cheart nó nár cheart TLS a úsáid agus tú i mbun cumarsáide leis an bhfreastalaí."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
+msgid "TcpMux toggles TCP stream multiplexing. This allows multiple requests from a client to share a single TCP connection. If this value is true, the server must have TCP multiplexing enabled as well.<br />By default, this value is true."
+msgstr "Déanann TcpMux ilphléacsáil sruth TCP a scoránú. Ligeann sé seo iarratais iolracha ó chliant chun nasc TCP amháin a roinnt. Má tá an luach seo fíor, caithfidh an freastalaí ilphléacsáil TCP a bheith cumasaithe freisin.<br />De réir réamhshocraithe, tá an luach seo fíor."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "This list can be used to specify some additional parameters which have not been included in this LuCI."
+msgstr "Is féidir an liosta seo a úsáid chun roinnt paraiméadair bhreise nach bhfuil san áireamh sa LUCI seo a shonrú."
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:483
 msgid "Timeout in seconds for connecting to frps."
 msgstr "Am críochnaithe i soicindí le haghaidh ceangal le frps."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:235
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
 msgid "Token"
-msgstr "Comhartha"
+msgstr "Ticéad"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:244
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:264
@@ -1136,9 +1217,7 @@ msgstr "Argóintí ordaithe foinse chomhartha"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:310
 msgid "Token source command is required when token source type is exec."
-msgstr ""
-"Tá an t-ordú foinse comhartha ag teastáil nuair is é an cineál foinse "
-"comhartha exec."
+msgstr "Tá an t-ordú foinse comhartha ag teastáil nuair is é an cineál foinse comhartha exec."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:326
 msgid "Token source environment"
@@ -1150,13 +1229,15 @@ msgstr "Comhad foinse comharthaí"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:287
 msgid "Token source file path is required when token source type is file."
-msgstr ""
-"Tá cosán comhaid foinse an chomhartha ag teastáil nuair is comhad an cineál "
-"foinse comhartha."
+msgstr "Tá cosán comhaid foinse an chomhartha ag teastáil nuair is comhad an cineál foinse comhartha."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:254
 msgid "Token source type"
 msgstr "Cineál foinse comharthaí"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
+msgid "Token specifies the authorization token used to create keys to be sent to the server. The server must have a matching token for authorization to succeed. <br />By default, this value is \"\"."
+msgstr "Sonraíonn Token an comhartha údaraithe a úsáidtear chun eochracha a chruthú a sheolfar chuig an bhfreastalaí. Ní mór comhartha meaitseála a bheith ag an bhfreastalaí le go n-éireoidh leis an údarú. <br />De réir réamhshocraithe, is é \" \"an luach seo."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:236
 msgid "Token used for authentication."
@@ -1184,11 +1265,9 @@ msgstr "Méid an phaicéid UDP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "UDP packet size in bytes. Should match frps. Default is 1500."
-msgstr ""
-"Méid an phaicéid UDP i mbéiteanna. Ba chóir go mbeadh sé mar an gcéanna le "
-"frps. Is é 1500 an réamhshocrú."
+msgstr "Méid an phaicéid UDP i mbéiteanna. Ba chóir go mbeadh sé mar an gcéanna le frps. Is é 1500 an réamhshocrú."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:947
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:81
 msgid "Unix domain socket path"
 msgstr "Conair soicéad fearainn Unix"
 
@@ -1198,9 +1277,23 @@ msgstr "Úsáid Header=Value."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:697
 msgid "Use proxy protocol to transfer connection info to local service."
-msgstr ""
-"Úsáid prótacal seachfhreastalaí chun faisnéis nasc a aistriú chuig seirbhís "
-"áitiúil."
+msgstr "Úsáid prótacal seachfhreastalaí chun faisnéis nasc a aistriú chuig seirbhís áitiúil."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
+msgid "UseCompression controls whether or not communication with the server will be compressed.<br />By default, this value is false."
+msgstr "Rialaíonn UseCompression cé acu an ndéanfar cumarsáid leis an bhfreastalaí a chomhbhrú nó nach ndéanfar.<br />De réir réamhshocraithe, tá an luach seo bréagach."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
+msgid "UseEncryption controls whether or not communication with the server will be encrypted. Encryption is done using the tokens supplied in the server and client configuration.<br />By default, this value is false."
+msgstr "Rialaíonn UseEncryption cibé an mbeidh cumarsáid leis an bhfreastalaí criptithe nó nach mbeidh. Déantar an criptiú trí úsáid a bhaint as na comharthaí a soláthraíodh i gcumraíocht an fhreastalaí agus an chliaint.<br />De réir réamhshocraithe, tá an luach seo bréagach."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User"
+msgstr "Úsáideoir"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User specifies a prefix for proxy names to distinguish them from other clients. If this value is not \"\", proxy names will automatically be changed to \"{user}.{proxy_name}\".<br />By default, this value is \"\"."
+msgstr "Sonraíonn an t-úsáideoir réimír d’ainmneacha seachfhreastalaí chun iad a idirdhealú ó chliaint eile. Mura luach é seo \" \", athrófar ainmneacha seachfhreastalaí go huathoibríoch go \"{user}.{proxy_name}\".<br />De réir réamhshocraithe, is \" \"an luach seo."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:604
 msgid "Virtual network address. Requires VirtualNet feature gate."
@@ -1248,9 +1341,7 @@ msgstr "Port freastalaí gréasáin"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:406
 msgid "Web server port. Leave empty or set to 0 to disable the web server."
-msgstr ""
-"Port freastalaí gréasáin. Fág folamh nó socraigh go 0 chun an freastalaí "
-"gréasáin a dhíchumasú."
+msgstr "Port freastalaí gréasáin. Fág folamh nó socraigh go 0 chun an freastalaí gréasáin a dhíchumasú."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:409
 msgid "Web server user"
@@ -1280,15 +1371,13 @@ msgstr "Prótacal tollán cuairteoirí XTCP."
 msgid "frp"
 msgstr "frp"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1393
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1400
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
+#: applications/luci-app-frpc/root/usr/share/luci/menu.d/luci-app-frpc.json:3
 msgid "frp Client"
 msgstr "frp Cliant"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
-msgstr ""
-"Prótacal sreinge inmheánach frp. Éilíonn v2 tacaíocht frps agus ní mór é a "
-"chumasú go sainráite."
+msgid "frp internal wire protocol. v2 requires frps support and must be enabled explicitly."
+msgstr "Prótacal sreinge inmheánach frp. Éilíonn v2 tacaíocht frps agus ní mór é a chumasú go sainráite."

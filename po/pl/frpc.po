@@ -1,19 +1,21 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-06 03:21+0000\n"
-"Last-Translator: Matthaiks <kitynska@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/openwrt/"
-"luciapplicationsfrpc/pl/>\n"
+"PO-Revision-Date: 2024-10-16 13:01+0000\n"
+"Last-Translator: Piotr Kołtun <pkoltungm@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/openwrt/luciapplicationsfrpc/pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.8-rc\n"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1454
 msgid "Add new proxy or visitor..."
 msgstr "Dodaj nowy wpis typu proxy lub visitor..."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:214
+msgid "Add new proxy..."
+msgstr "Dodaj nowy serwer proxy..."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:360
 msgid "Additional OIDC token endpoint params. Use key=value."
@@ -31,7 +33,7 @@ msgstr "Dodatkowe metadane klienta. Użyj klucz=wartość."
 msgid "Additional config files included by frpc."
 msgstr "Dodatkowe pliki konfiguracyjne dołączone przez frpc."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:174
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
 msgid "Additional configs"
 msgstr "Dodatkowe konfiguracje"
 
@@ -43,9 +45,45 @@ msgstr "Dodatkowe metadane serwera proxy. Użyj klucz=wartość."
 msgid "Additional scopes to include authentication information."
 msgstr "Dodatkowe zakresy do uwzględnienia informacji uwierzytelniających."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "Additional settings"
+msgstr "Dodatkowe ustawienia"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:187
 msgid "Address of the frps server."
 msgstr "Adres serwera frps."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "Admin address"
+msgstr "Adres administratora"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "Admin password"
+msgstr "Hasło administratora"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "Admin port"
+msgstr "Port administratora"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "Admin user"
+msgstr "Login administratora"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:28
+msgid "AdminAddr specifies the address that the admin server binds to.<br />By default, this value is \"0.0.0.0\"."
+msgstr "AdminAddr określa adres, do którego podłączony jest serwer administracyjny.<br />Domyślnie ta wartość to \"0.0.0.0\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:29
+msgid "AdminPort specifies the port for the admin server to listen on. If this value is 0, the admin server will not be started.<br />By default, this value is 0."
+msgstr "AdminPort określa port, na którym serwer administracyjny ma nasłuchiwać. Jeśli ta wartość wynosi 0, serwer administracyjny nie zostanie uruchomiony. <br />Domyślnie ta wartość wynosi 0."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:31
+msgid "AdminPwd specifies the password that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "AdminPwd określa hasło, którego będzie używał serwer administracyjny do logowania. <br />Domyślnie ta wartość to \"admin\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:30
+msgid "AdminUser specifies the username that the admin server will use for login.<br />By default, this value is \"admin\"."
+msgstr "AdminUser określa nazwę użytkownika, która będzie używana przed admina do logowania.<br />Domyślnie ta wartość to \"admin\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1430
 msgid "Advanced"
@@ -63,9 +101,13 @@ msgstr "Adnotacje"
 msgid "Annotations displayed on frps dashboard. Use key=value."
 msgstr "Adnotacje wyświetlane na pulpicie frps. Użyj klucz=wartość."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:464
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
 msgid "Assets dir"
 msgstr "Katalog zasobów"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:32
+msgid "AssetsDir specifies the local directory that the admin server will load resources from. If this value is \"\", assets will be loaded from the bundled executable using statik.<br />By default, this value is \"\"."
+msgstr "AssetsDir określa katalog lokalny, z którego serwer administracyjny będzie ładował zasoby. Jeśli ta wartość to \"\", zasoby zostaną załadowane z pakietu wykonywalnego przy użyciu statik.<br />Domyślnie ta wartość to \"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1426
 msgid "Authentication"
@@ -115,7 +157,7 @@ msgstr "Identyfikator klienta"
 msgid "Client metadata"
 msgstr "Metadane klienta"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1417
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
 msgid "Collecting data ..."
 msgstr "Zbieranie danych..."
 
@@ -124,32 +166,28 @@ msgid "Command arguments passed to token source exec."
 msgstr "Argumenty polecenia przekazane do wykonania źródła tokenu."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:294
-msgid ""
-"Command used to obtain the token. The init script adds --allow-"
-"unsafe=TokenSourceExec when this source type is used."
-msgstr ""
-"Polecenie używane do uzyskania tokena. Skrypt init dodaje --allow-"
-"unsafe=TokenSourceExec, gdy używany jest ten typ źródła."
+msgid "Command used to obtain the token. The init script adds --allow-unsafe=TokenSourceExec when this source type is used."
+msgstr "Polecenie używane do uzyskania tokena. Skrypt init dodaje --allow-unsafe=TokenSourceExec, gdy używany jest ten typ źródła."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1425
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:198
 msgid "Common Settings"
 msgstr "Wspólne ustawienia"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:832
-msgid ""
-"Compatibility field for UCI. Server sections are emitted as proxy entries; "
-"visitor sections are emitted as visitor entries."
-msgstr ""
-"Pole zgodności dla UCI. Sekcje serwera są emitowane jako wpisy serwera "
-"proxy; sekcje odwiedzających są emitowane jako wpisy odwiedzających."
+msgid "Compatibility field for UCI. Server sections are emitted as proxy entries; visitor sections are emitted as visitor entries."
+msgstr "Pole zgodności dla UCI. Sekcje serwera są emitowane jako wpisy serwera proxy; sekcje odwiedzających są emitowane jako wpisy odwiedzających."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:693
 msgid "Compress proxy traffic."
 msgstr "Kompresuj ruch proxy."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:692
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
 msgid "Compression"
 msgstr "Kompresja"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:16
+msgid "Config files include in temporary config file"
+msgstr "Pliki konfiguracyjne znajdują się w tymczasowym pliku konfiguracyjnym"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:348
 msgid "Configuration key: auth.oidc.audience."
@@ -263,7 +301,7 @@ msgstr "Niestandardowy plik certyfikatu CA dla punktu końcowego OIDC."
 msgid "Custom DNS server used by frpc."
 msgstr "Niestandardowy serwer DNS używany przez frpc."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:702
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:57
 msgid "Custom domains"
 msgstr "Własne domeny"
 
@@ -291,13 +329,17 @@ msgstr "Wyłącz niestandardowy pierwszy bajt TLS"
 msgid "Disable local interface assisted addresses for XTCP NAT traversal."
 msgstr "Wyłącz adresy wspomagane interfejsem lokalnym dla omijania NAT w XTCP."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:395
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
 msgid "Disable log color"
 msgstr "Wyłącz kolor dziennika"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:396
 msgid "Disable log colors when log output is console."
 msgstr "Wyłącz kolory dziennika, gdy wyjściem dziennika jest konsola."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:26
+msgid "DisableLogColor disables log colors when LogWay == \"console\" when set to true."
+msgstr "DisableLogColor wyłącza kolory dziennika, gdy LogWay == \"konsola\", jest ustawiona na true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:258
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:698
@@ -319,23 +361,16 @@ msgid "Enable HTTP/2 for HTTPS bridge plugins."
 msgstr "Włącz protokół HTTP/2 dla wtyczek mostka HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:418
-msgid ""
-"Enable HTTPS for the frpc web server. This switch controls whether "
-"webServer.tls.certFile and webServer.tls.keyFile are emitted."
-msgstr ""
-"Włącz HTTPS dla serwera WWW frpc. Ten przełącznik kontroluje, czy pliki "
-"webServer.tls.certFile i webServer.tls.keyFile są emitowane."
+msgid "Enable HTTPS for the frpc web server. This switch controls whether webServer.tls.certFile and webServer.tls.keyFile are emitted."
+msgstr "Włącz HTTPS dla serwera WWW frpc. Ten przełącznik kontroluje, czy pliki webServer.tls.certFile i webServer.tls.keyFile są emitowane."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:499
 msgid "Enable TCP stream multiplexing."
 msgstr "Włącz multipleksowanie strumienia TCP."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:541
-msgid ""
-"Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
-msgstr ""
-"Włącz TLS podczas komunikacji z frps. Od frp v0.50.0 domyślna wartość to "
-"true."
+msgid "Enable TLS when communicating with frps. Since frp v0.50.0, default is true."
+msgstr "Włącz TLS podczas komunikacji z frps. Od frp v0.50.0 domyślna wartość to true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:648
 msgid "Enable or disable this proxy."
@@ -357,11 +392,11 @@ msgstr "Włączone"
 msgid "Encrypt proxy traffic."
 msgstr "Szyfruj ruch proxy."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:688
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
 msgid "Encryption"
 msgstr "Szyfrowanie"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
 msgid "Environment variable"
 msgstr "Zmienna środowiskowa"
 
@@ -371,13 +406,15 @@ msgstr "Zmienna środowiskowa musi używać formatu KLUCZ=wartość."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:327
 msgid "Environment variables passed to token source exec. Use KEY=value."
-msgstr ""
-"Zmienne środowiskowe przekazane do wykonania źródła tokena. Użyj "
-"KLUCZ=wartość."
+msgstr "Zmienne środowiskowe przekazane do wykonania źródła tokena. Użyj KLUCZ=wartość."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:202
 msgid "Exit frpc when the first login fails."
 msgstr "Wyjdź z frpc, jeśli pierwsze logowanie się nie powiedzie."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "Exit when login fail"
+msgstr "Wyjdź, gdy logowanie się nie powiedzie"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:201
 msgid "Exit when login fails"
@@ -385,19 +422,11 @@ msgstr "Wyjdź, gdy logowanie się nie powiedzie"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:595
 msgid "Experimental feature gates. Use key=value, for example VirtualNet=true."
-msgstr ""
-"Eksperymentalne bramki funkcji. Użyj klucz=wartość, na przykład "
-"VirtualNet=true."
+msgstr "Eksperymentalne bramki funkcji. Użyj klucz=wartość, na przykład VirtualNet=true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
-msgid ""
-"Extra root-level configuration fragments included before generated proxy and "
-"visitor sections. Use frp includes or per-proxy raw settings for proxy/"
-"visitor tables."
-msgstr ""
-"Dodatkowe fragmenty konfiguracji na poziomie root, wstawiane przed "
-"wygenerowanymi sekcjami proxy i visitor. Użyj include FRP lub surowych "
-"ustawień per‑proxy dla tabel proxy/visitor."
+msgid "Extra root-level configuration fragments included before generated proxy and visitor sections. Use frp includes or per-proxy raw settings for proxy/visitor tables."
+msgstr "Dodatkowe fragmenty konfiguracji na poziomie root, wstawiane przed wygenerowanymi sekcjami proxy i visitor. Użyj include FRP lub surowych ustawień per‑proxy dla tabel proxy/visitor."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:900
 msgid "Fallback timeout in milliseconds for XTCP."
@@ -423,7 +452,7 @@ msgstr "Bramki funkcji"
 msgid "For virtual_net visitor plugin."
 msgstr "Dla wtyczki odwiedzających virtual_net."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1460
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "General Settings"
 msgstr "Ustawienia główne"
 
@@ -434,6 +463,10 @@ msgstr "Udziel dostępu do aplikacji LuCI frpc"
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1462
 msgid "HTTP / Domain"
 msgstr "HTTP / domena"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:219
+msgid "HTTP Settings"
+msgstr "Ustawienia HTTP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:820
 msgid "HTTP health check headers. Use Header=Value."
@@ -451,8 +484,8 @@ msgstr "Podstawowe hasło uwierzytelniające HTTP lub TCPMUX."
 msgid "HTTP or TCPMUX basic auth username."
 msgstr "Podstawowa nazwa użytkownika uwierzytelniania HTTP lub TCPMUX."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:746
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:935
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:64
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:78
 msgid "HTTP password"
 msgstr "Hasło HTTP"
 
@@ -460,8 +493,12 @@ msgstr "Hasło HTTP"
 msgid "HTTP path must start with /."
 msgstr "Ścieżka HTTP musi zaczynać się od /."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:743
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:931
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HTTP proxy"
+msgstr "HTTP proxy"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:63
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:77
 msgid "HTTP user"
 msgstr "Użytkownik HTTP"
 
@@ -491,8 +528,7 @@ msgstr "Ścieżka kontroli stanu"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:813
 msgid "Health check path is required when health check type is http."
-msgstr ""
-"Ścieżka kontroli stanu jest wymagana, gdy typem kontroli stanu jest http."
+msgstr "Ścieżka kontroli stanu jest wymagana, gdy typem kontroli stanu jest http."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:788
 msgid "Health check timeout"
@@ -510,7 +546,15 @@ msgstr "Typ kontroli stanu"
 msgid "Health check type."
 msgstr "Typ kontroli stanu."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:530
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
+msgid "HeartBeatInterval specifies at what interval heartbeats are sent to the server, in seconds. It is not recommended to change this value.<br />By default, this value is 30."
+msgstr "HeartBeatInterval określa, w jakich odstępach czasu pulsy są wysyłane do serwera, w sekundach. Nie zaleca się zmiany tej wartości. <br /> Domyślnie ta wartość wynosi 30."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
+msgid "HeartBeatTimeout specifies the maximum allowed heartbeat response delay before the connection is terminated, in seconds. It is not recommended to change this value.<br />By default, this value is 90."
+msgstr "HeartBeatTimeout określa maksymalne dozwolone opóźnienie odpowiedzi pulsu przed zakończeniem połączenia (w sekundach). Nie zaleca się zmiany tej wartości. <br /> Domyślnie ta wartość wynosi 90."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:38
 msgid "Heartbeat interval"
 msgstr "Interwał pulsu"
 
@@ -518,7 +562,7 @@ msgstr "Interwał pulsu"
 msgid "Heartbeat interval in seconds."
 msgstr "Interwał pulsu w sekundach."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:534
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:39
 msgid "Heartbeat timeout"
 msgstr "Limit czasu pulsu"
 
@@ -526,9 +570,17 @@ msgstr "Limit czasu pulsu"
 msgid "Heartbeat timeout in seconds."
 msgstr "Czas oczekiwania pulsu w sekundach."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:720
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:65
 msgid "Host header rewrite"
 msgstr "Przepisz nagłówek hosta"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:22
+msgid "HttpProxy specifies a proxy address to connect to the server through. If this value is \"\", the server will be connected to directly.<br />By default, this value is read from the \"http_proxy\" environment variable."
+msgstr "HttpProxy określa adres proxy do połączenia z serwerem. Jeśli ta wartość to \"\", serwer zostanie podłączony bezpośrednio. <br /> Domyślnie ta wartość jest odczytywana ze zmiennej środowiskowej \"http_proxy\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+msgid "If remote_port is 0, frps will assign a random port for you"
+msgstr "Jeśli port_zdalny wynosi 0, frps przypisze Ci losowy port"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Include config files"
@@ -556,45 +608,28 @@ msgstr "Grupa modułu równoważenia obciążenia"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:776
 msgid "Load balancer group is required when group key is set."
-msgstr ""
-"Grupa modułu równoważenia obciążenia jest wymagana, gdy ustawiony jest klucz "
-"grupy."
+msgstr "Grupa modułu równoważenia obciążenia jest wymagana, gdy ustawiony jest klucz grupy."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:767
 msgid "Load balancer group key"
 msgstr "Klucz grupy modułu równoważenia obciążenia"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:255
-msgid ""
-"Load token from an external source. File reads the token from a local file; "
-"exec runs a command and requires frp unsafe permission. Mutually exclusive "
-"with auth.token."
-msgstr ""
-"Załaduj token ze źródła zewnętrznego. Plik odczytuje token z pliku "
-"lokalnego; wykonanie uruchamia polecenie i wymaga uprawnienia frp unsafe. "
-"Wyklucza się wzajemnie z auth.token."
+msgid "Load token from an external source. File reads the token from a local file; exec runs a command and requires frp unsafe permission. Mutually exclusive with auth.token."
+msgstr "Załaduj token ze źródła zewnętrznego. Plik odczytuje token z pliku lokalnego; wykonanie uruchamia polecenie i wymaga uprawnienia frp unsafe. Wyklucza się wzajemnie z auth.token."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:659
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:224
 msgid "Local IP"
 msgstr "Lokalny IP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:523
-msgid ""
-"Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
-msgstr ""
-"Lokalny adres IP jest przypisany do połączenia z frps. Dotyczy tylko tcp, "
-"websocket lub wss."
+msgid "Local IP bound when connecting to frps. Only valid for tcp, websocket or wss."
+msgstr "Lokalny adres IP jest przypisany do połączenia z frps. Dotyczy tylko tcp, websocket lub wss."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:967
-msgid ""
-"Local backend address used by bridge plugins. For https2http, https2https "
-"and tls2raw, this is the local service address reached after frp terminates "
-"external TLS; for http2https/http2http, it is the local upstream address."
-msgstr ""
-"Lokalny adres backendu używany przez wtyczki mostu. W przypadku https2http, "
-"https2https i tls2raw jest to lokalny adres usługi osiągnięty po zakończeniu "
-"zewnętrznego protokołu TLS przez frp; w przypadku http2https/http2http jest "
-"to lokalny adres nadrzędny."
+msgid "Local backend address used by bridge plugins. For https2http, https2https and tls2raw, this is the local service address reached after frp terminates external TLS; for http2https/http2http, it is the local upstream address."
+msgstr "Lokalny adres backendu używany przez wtyczki mostu. W przypadku https2http, https2https i tls2raw jest to lokalny adres usługi osiągnięty po zakończeniu zewnętrznego protokołu TLS przez frp; w przypadku http2https/http2http jest to lokalny adres nadrzędny."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:862
 msgid "Local bind address for visitor."
@@ -602,11 +637,10 @@ msgstr "Lokalny adres wiązania dla odwiedzającego."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:866
 msgid "Local bind port for visitor. Use a negative value to avoid binding."
-msgstr ""
-"Lokalny port wiązania dla odwiedzającego. Użyj wartości ujemnej, aby uniknąć "
-"wiązania."
+msgstr "Lokalny port wiązania dla odwiedzającego. Użyj wartości ujemnej, aby uniknąć wiązania."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:663
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:225
 msgid "Local port"
 msgstr "Port lokalny"
 
@@ -618,7 +652,15 @@ msgstr "Lokalny adres IP usługi lub hosta."
 msgid "Local service port."
 msgstr "Lokalny port usługi."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:711
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:48
+msgid "LocalIp specifies the IP address or host name to proxy to."
+msgstr "LocalIp określa adres IP lub nazwę hosta, do którego ma zostać wysłany proxy."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:49
+msgid "LocalPort specifies the port to proxy to."
+msgstr "LocalPort określa port, do którego należy się zwrócić."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:62
 msgid "Locations"
 msgstr "Lokalizacje"
 
@@ -626,11 +668,15 @@ msgstr "Lokalizacje"
 msgid "Log Settings"
 msgstr "Ustawienia dziennika"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:387
-msgid "Log level"
-msgstr "Poziom rejestrowania"
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "Log file"
+msgstr "Plik dziennika"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:391
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "Log level"
+msgstr "Poziom logowania"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
 msgid "Log max days"
 msgstr "Maks. dni logowania"
 
@@ -642,13 +688,29 @@ msgstr "Dane wyjściowe rejestrowania"
 msgid "Log output path or console."
 msgstr "Ścieżka wyjściowa dziennika lub konsola."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:142
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:11
 msgid "Log stderr"
 msgstr "Dziennik stderr"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:132
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:10
 msgid "Log stdout"
 msgstr "Dziennik stdout"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:23
+msgid "LogFile specifies a file where logs will be written to. This value will only be used if LogWay is set appropriately.<br />By default, this value is \"console\"."
+msgstr "LogFile określa plik, w którym będą zapisywane dzienniki. Ta wartość będzie używana tylko wtedy, gdy LogWay zostanie odpowiednio ustawiony. <br />Domyślnie ta wartość to \"console\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:24
+msgid "LogLevel specifies the minimum log level. Valid values are \"trace\", \"debug\", \"info\", \"warn\", and \"error\".<br />By default, this value is \"info\"."
+msgstr "LogLevel określa minimalny poziom dziennika. Poprawne wartości to \"trace\", \"debug\", \"info\", \"warn\" i \"error\".<br />Domyślnie jest to \"info\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:25
+msgid "LogMaxDays specifies the maximum number of days to store log information before deletion. This is only used if LogWay == \"file\".<br />By default, this value is 0."
+msgstr "LogMaxDays określa maksymalną liczbę dni przechowywania informacji dziennika przed usunięciem. Jest używana tylko wtedy, gdy LogWay == \"file\". <br />Domyślnie ta wartość wynosi 0."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:35
+msgid "LoginFailExit controls whether or not the client should exit after a failed login attempt. If false, the client will retry until a login attempt succeeds.<br />By default, this value is true."
+msgstr "LoginFailExit kontroluje, czy klient powinien zakończyć działanie po nieudanej próbie logowania. Jeśli jest ustawiona na false, klient spróbuje ponownie, dopóki próba logowania nie zakończy się sukcesem.<br />Domyślnie wartość to true."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:887
 msgid "Max retries per hour"
@@ -678,7 +740,7 @@ msgstr "Multiplekser"
 msgid "NAT hole STUN server"
 msgstr "Serwer STUN z dziurawieniem NAT"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
 msgid "NOT RUNNING"
 msgstr "NIEURUCHOMIONE"
 
@@ -718,17 +780,17 @@ msgstr "Adres URL punktu końcowego tokena OIDC"
 msgid "OIDC trusted CA file"
 msgstr "Plik zaufanego CA OIDC"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:15
+msgid "OS environments pass to frp for config file template, see <a href=\"https://github.com/fatedier/frp#configuration-file-template\">frp README</a>"
+msgstr "Środowiska systemu operacyjnego przechodzą do frp w celu uzyskania szablonu pliku konfiguracyjnego, patrz <a href=\"https://github.com/fatedier/frp#configuration-file-template\"> frp README </a>"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:166
 msgid "OS environments passed to frp for config file template, see %s."
-msgstr ""
-"Środowiska systemów operacyjnych przekazane do frp w celu uzyskania szablonu "
-"pliku konfiguracyjnego, patrz %s."
+msgstr "Środowiska systemów operacyjnych przekazane do frp w celu uzyskania szablonu pliku konfiguracyjnego, patrz %s."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:218
 msgid "Only start specified proxies or visitors. Empty means start all."
-msgstr ""
-"Uruchom tylko określone serwery proxy lub odwiedzających. Puste oznacza "
-"uruchomienie wszystkich."
+msgstr "Uruchom tylko określone serwery proxy lub odwiedzających. Puste oznacza uruchomienie wszystkich."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1231
 msgid "Only the virtual_net plugin is valid for visitors."
@@ -739,11 +801,8 @@ msgid "Only valid for HTTP proxy."
 msgstr "Ważne tylko dla serwera proxy HTTP."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:840
-msgid ""
-"Only visitors from specified users can connect. Use * to allow all users."
-msgstr ""
-"Tylko odwiedzający wskazanych użytkowników mogą się połączyć. Użyj *, aby "
-"zezwolić wszystkim użytkownikom."
+msgid "Only visitors from specified users can connect. Use * to allow all users."
+msgstr "Tylko odwiedzający wskazanych użytkowników mogą się połączyć. Użyj *, aby zezwolić wszystkim użytkownikom."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:184
 msgid "Optional unique identifier for this frpc instance."
@@ -774,24 +833,24 @@ msgid "Path to the trusted CA certificate file."
 msgstr "Ścieżka do pliku zaufanego certyfikatu CA."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:608
-msgid ""
-"Persist runtime proxy and visitor configuration for Web UI or API management."
-msgstr ""
-"Trwała konfiguracja serwera proxy i odwiedzającego w celu zarządzania "
-"interfejsem WWW lub API."
+msgid "Persist runtime proxy and visitor configuration for Web UI or API management."
+msgstr "Trwała konfiguracja serwera proxy i odwiedzającego w celu zarządzania interfejsem WWW lub API."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1221
 msgid "Please use KEY=value format."
 msgstr "Użyj formatu KLUCZ=wartość."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:909
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1463
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:76
 msgid "Plugin"
 msgstr "Wtyczka"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1015
 msgid "Plugin HTTP/2"
 msgstr "Wtyczka HTTP/2"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:220
+msgid "Plugin Settings"
+msgstr "Ustawienia wtyczki"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:979
 msgid "Plugin certificate path"
@@ -839,13 +898,23 @@ msgstr "Port serwera frps. Domyślnie to 7000."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:195
 msgid "Prefix for proxy names. If set, proxy names become {user}.{proxy}."
-msgstr ""
-"Prefiks dla nazw serwerów proxy. Jeśli ustawiony, nazwy serwerów proxy będą "
-"miały postać {user}.{proxy}."
+msgstr "Prefiks dla nazw serwerów proxy. Jeśli ustawiony, nazwy serwerów proxy będą miały postać {user}.{proxy}."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol"
+msgstr "Protokół"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:36
+msgid "Protocol specifies the protocol to use when interacting with the server. Valid values are \"tcp\", \"kcp\", and \"websocket\".<br />By default, this value is \"tcp\"."
+msgstr "Protokół określa protokół używany podczas interakcji z serwerem. Prawidłowe wartości to \"tcp\", \"kcp\" i \"websocket\". <br /> Domyślnie ta wartość to \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1449
 msgid "Proxy / Visitor Settings"
 msgstr "Ustawienia proxy / odwiedzającego"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:210
+msgid "Proxy Settings"
+msgstr "Ustawienia proxy"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:490
 msgid "Proxy URL"
@@ -857,15 +926,14 @@ msgstr "Adres URL serwera proxy dla punktu końcowego tokena OIDC."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:491
 msgid "Proxy URL used to connect to frps. Supports http, socks5 and ntlm."
-msgstr ""
-"Adres URL serwera proxy używany do połączenia z frps. Obsługuje http, socks5 "
-"i ntlm."
+msgstr "Adres URL serwera proxy używany do połączenia z frps. Obsługuje http, socks5 i ntlm."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1059
 msgid "Proxy metadatas"
 msgstr "Metadane proxy"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:640
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:44
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "Proxy name"
 msgstr "Nazwa serwera proxy"
 
@@ -877,13 +945,18 @@ msgstr "Prefiks nazwy proxy"
 msgid "Proxy protocol version"
 msgstr "Wersja protokołu proxy"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:643
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:223
 msgid "Proxy type"
 msgstr "Typ proxy"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:644
 msgid "Proxy type."
 msgstr "Typ proxy."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:45
+msgid "ProxyType specifies the type of this proxy. Valid values include \"tcp\", \"udp\", \"http\", \"https\", \"stcp\", and \"xtcp\".<br />By default, this value is \"tcp\"."
+msgstr "ProxyType określa typ tego proxy. Prawidłowe wartości to \"tcp\", \"udp\", \"http\", \"https\", \"stcp\" i \"xtcp\". <br /> Domyślnie ta wartość to \"tcp\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:580
 msgid "QUIC keepalive period"
@@ -897,18 +970,18 @@ msgstr "Maksymalny limit czasu bezczynności QUIC"
 msgid "QUIC max incoming streams"
 msgstr "Maksymalna liczba strumieni przychodzących QUIC"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1390
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
 msgid "RUNNING"
 msgstr "URUCHOMIONE"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:667
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:53
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:226
 msgid "Remote port"
 msgstr "Port zdalny"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:668
 msgid "Remote port listened by frps. If 0, frps assigns a random port."
-msgstr ""
-"Zdalny port nasłuchiwany przez frps. Jeśli 0, fps przypisuje losowy port."
+msgstr "Zdalny port nasłuchiwany przez frps. Jeśli 0, fps przypisuje losowy port."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:793
 msgid "Remove proxy from frps after continuous failures."
@@ -918,7 +991,7 @@ msgstr "Usuń proxy z frps po ciągłych awariach."
 msgid "Request headers"
 msgstr "Nagłówki żądania"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:155
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:14
 msgid "Respawn when crashed"
 msgstr "Odradzaj się po awarii"
 
@@ -930,33 +1003,31 @@ msgstr "Nagłówki odpowiedzi"
 msgid "Rewrite Host header."
 msgstr "Przepisz nagłówek hosta."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:831
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:70
 msgid "Role"
 msgstr "Rola"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:753
 msgid "Route HTTP or TCPMUX requests by HTTP basic auth user."
-msgstr ""
-"Trasuj żądania HTTP lub TCPMUX przy użyciu podstawowego uwierzytelniania "
-"HTTP."
+msgstr "Trasuj żądania HTTP lub TCPMUX przy użyciu podstawowego uwierzytelniania HTTP."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:752
 msgid "Route by HTTP user"
 msgstr "Trasuj według użytkownika HTTP"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:153
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:13
 msgid "Run daemon as group"
 msgstr "Uruchom demona jako grupę"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:152
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:12
 msgid "Run daemon as user"
 msgstr "Uruchom demona jako użytkownik"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:943
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:80
 msgid "SOCKS5 password"
 msgstr "Hasło SOCKS5"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:939
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:79
 msgid "SOCKS5 user"
 msgstr "Użytkownik SOCKS5"
 
@@ -974,14 +1045,13 @@ msgstr "Tajny klucz"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:836
 msgid "Secret key used by STCP/XTCP/SUDP proxies and visitors."
-msgstr ""
-"Tajny klucz używany przez serwery proxy STCP/XTCP/SUDP i odwiedzających."
+msgstr "Tajny klucz używany przez serwery proxy STCP/XTCP/SUDP i odwiedzających."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:186
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
 msgid "Server address"
 msgstr "Adres serwera"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:847
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:71
 msgid "Server name"
 msgstr "Nazwa serwera"
 
@@ -993,7 +1063,7 @@ msgstr "Nazwa serwera jest wymagana dla odwiedzających."
 msgid "Server name used for TLS verification."
 msgstr "Nazwa serwera używana do weryfikacji TLS."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:190
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
 msgid "Server port"
 msgstr "Port serwera"
 
@@ -1009,6 +1079,14 @@ msgstr "Użytkownik serwera"
 msgid "Server user for visitor."
 msgstr "Użytkownik serwera dla odwiedzającego."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:20
+msgid "ServerAddr specifies the address of the server to connect to.<br />By default, this value is \"127.0.0.1\"."
+msgstr "ServerAddr określa adres serwera, z którym należy się połączyć.<br />Domyślnie ta wartość to \"127.0.0.1\"."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:21
+msgid "ServerPort specifies the port to connect to the server on.<br />By default, this value is 7000."
+msgstr "ServerPort określa port do połączenia z serwerem on.<br /> Domyślnie wartość ta wynosi 7000."
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:724
 msgid "Set request headers. Use Header=Value."
 msgstr "Ustaw nagłówki żądania. Użyj nagłówek=wartość."
@@ -1021,19 +1099,20 @@ msgstr "Ustaw nagłówki odpowiedzi. Użyj nagłówek=wartość."
 msgid "Since frp v0.50.0, default is true."
 msgstr "Od frp v0.50.0 wartością domyślną jest true."
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:72
+msgid "Sk"
+msgstr "Sk"
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:374
-msgid ""
-"Skip TLS verification for OIDC endpoint. Not recommended for production."
-msgstr ""
-"Pomiń weryfikację TLS dla punktu końcowego OIDC. Niezalecane w środowisku "
-"produkcyjnym."
+msgid "Skip TLS verification for OIDC endpoint. Not recommended for production."
+msgstr "Pomiń weryfikację TLS dla punktu końcowego OIDC. Niezalecane w środowisku produkcyjnym."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:217
 msgid "Start proxies / visitors"
 msgstr "Uruchom proxy / odwiedzających"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1432
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1442
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:199
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:203
 msgid "Startup Settings"
 msgstr "Ustawienia uruchamiania"
 
@@ -1049,21 +1128,19 @@ msgstr "Usunięty prefiks pliku statycznego"
 msgid "Store file path"
 msgstr "Ścieżka do przechowywanego pliku"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:706
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:58
 msgid "Subdomain"
 msgstr "Subdomena"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:487
 msgid "TCP keepalive interval in seconds. Negative value disables keepalive."
-msgstr ""
-"Interwał utrzymywania połączenia TCP w sekundach. Wartość ujemna wyłącza "
-"utrzymywanie połączenia."
+msgstr "Interwał utrzymywania połączenia TCP w sekundach. Wartość ujemna wyłącza utrzymywanie połączenia."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:758
 msgid "TCP multiplexer."
 msgstr "Multiplekser TCP."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:498
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
 msgid "TCP mux"
 msgstr "Mux TCP"
 
@@ -1071,7 +1148,7 @@ msgstr "Mux TCP"
 msgid "TCP mux keepalive interval"
 msgstr "Interwał utrzymywania aktywności multipleksera TCP"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:540
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
 msgid "TLS"
 msgstr "TLS"
 
@@ -1086,8 +1163,7 @@ msgstr "Ścieżka certyfikatu TLS"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:440
 msgid "TLS certificate path is required when web HTTPS is enabled."
-msgstr ""
-"Ścieżka do certyfikatu TLS jest wymagana, gdy włączony jest protokół HTTPS."
+msgstr "Ścieżka do certyfikatu TLS jest wymagana, gdy włączony jest protokół HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:446
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:556
@@ -1096,9 +1172,7 @@ msgstr "Ścieżka klucza prywatnego TLS"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:458
 msgid "TLS private key path is required when web HTTPS is enabled."
-msgstr ""
-"Ścieżka do prywatnego klucza TLS jest wymagana, gdy włączony jest protokół "
-"HTTPS."
+msgstr "Ścieżka do prywatnego klucza TLS jest wymagana, gdy włączony jest protokół HTTPS."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:564
 msgid "TLS server name"
@@ -1108,11 +1182,23 @@ msgstr "Nazwa serwera TLS"
 msgid "TLS trusted CA path"
 msgstr "Zaufana ścieżka CA TLS"
 
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:37
+msgid "TLSEnable specifies whether or not TLS should be used when communicating with the server."
+msgstr "TLSEnable określa, czy podczas komunikacji z serwerem należy stosować TLS, czy też nie."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:33
+msgid "TcpMux toggles TCP stream multiplexing. This allows multiple requests from a client to share a single TCP connection. If this value is true, the server must have TCP multiplexing enabled as well.<br />By default, this value is true."
+msgstr "TcpMux przełącza multipleksowanie strumienia TCP. Pozwala to wielu żądaniom klienta na współużytkowanie jednego połączenia TCP. Jeśli ta wartość jest prawdą, serwer musi również mieć włączone multipleksowanie TCP. <br /> Domyślnie ta wartość to true."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:40
+msgid "This list can be used to specify some additional parameters which have not been included in this LuCI."
+msgstr "Ta lista może służyć do określenia dodatkowych parametrów, które nie zostały uwzględnione w tym LuCI."
+
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:483
 msgid "Timeout in seconds for connecting to frps."
 msgstr "Limit czasu połączenia z frps (w sekundach)."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:235
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
 msgid "Token"
 msgstr "Token"
 
@@ -1131,9 +1217,7 @@ msgstr "Argumenty polecenia źródła tokena"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:310
 msgid "Token source command is required when token source type is exec."
-msgstr ""
-"Polecenie źródła tokena jest wymagane, gdy typem źródła tokena jest "
-"wykonanie."
+msgstr "Polecenie źródła tokena jest wymagane, gdy typem źródła tokena jest wykonanie."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:326
 msgid "Token source environment"
@@ -1145,13 +1229,15 @@ msgstr "Plik źródła tokena"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:287
 msgid "Token source file path is required when token source type is file."
-msgstr ""
-"Ścieżka do pliku źródła tokena jest wymagana, gdy typem źródła tokena jest "
-"plik."
+msgstr "Ścieżka do pliku źródła tokena jest wymagana, gdy typem źródła tokena jest plik."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:254
 msgid "Token source type"
 msgstr "Typ źródła tokena"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:27
+msgid "Token specifies the authorization token used to create keys to be sent to the server. The server must have a matching token for authorization to succeed. <br />By default, this value is \"\"."
+msgstr "Token określa token autoryzacji używany do tworzenia kluczy, które mają zostać wysłane na serwer. Serwer musi mieć pasujący token, aby autoryzacja zakończyła się powodzeniem. <br /> Domyślnie ta wartość to \"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:236
 msgid "Token used for authentication."
@@ -1179,10 +1265,9 @@ msgstr "Rozmiar pakietu UDP"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:222
 msgid "UDP packet size in bytes. Should match frps. Default is 1500."
-msgstr ""
-"Rozmiar pakietu UDP w bajtach. Powinien być zgodny z frps. Domyślnie to 1500."
+msgstr "Rozmiar pakietu UDP w bajtach. Powinien być zgodny z frps. Domyślnie to 1500."
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:947
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:81
 msgid "Unix domain socket path"
 msgstr "Ścieżka gniazda domeny uniksowej"
 
@@ -1192,9 +1277,23 @@ msgstr "Użyj nagłówek=wartość."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:697
 msgid "Use proxy protocol to transfer connection info to local service."
-msgstr ""
-"Użyj protokołu proxy do przesłania informacji o połączeniu do usługi "
-"lokalnej."
+msgstr "Użyj protokołu proxy do przesłania informacji o połączeniu do usługi lokalnej."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:47
+msgid "UseCompression controls whether or not communication with the server will be compressed.<br />By default, this value is false."
+msgstr "UseCompression kontroluje, czy komunikacja z serwerem będzie kompresowana. <br /> Domyślnie ta wartość to false."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:46
+msgid "UseEncryption controls whether or not communication with the server will be encrypted. Encryption is done using the tokens supplied in the server and client configuration.<br />By default, this value is false."
+msgstr "UseEncryption kontroluje, czy komunikacja z serwerem będzie szyfrowana. Szyfrowanie odbywa się przy użyciu tokenów dostarczonych w konfiguracji serwera i klienta. <br /> Domyślnie ta wartość to false."
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User"
+msgstr "Użytkownik"
+
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:34
+msgid "User specifies a prefix for proxy names to distinguish them from other clients. If this value is not \"\", proxy names will automatically be changed to \"{user}.{proxy_name}\".<br />By default, this value is \"\"."
+msgstr "Użytkownik określa prefiks nazw serwerów proxy, aby odróżnić je od innych klientów. Jeśli ta wartość nie jest \"\", nazwy serwerów proxy zostaną automatycznie zmienione na \"{user}. {proxy_name}\". <br />W razie domyślnie ta wartość to \"\"."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:604
 msgid "Virtual network address. Requires VirtualNet feature gate."
@@ -1210,8 +1309,7 @@ msgstr "Docelowy adres IP VirtualNet"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1245
 msgid "VirtualNet destination IP is required for virtual_net visitors."
-msgstr ""
-"Dla odwiedzających virtual_net wymagany jest docelowy adres IP VirtualNet."
+msgstr "Dla odwiedzających virtual_net wymagany jest docelowy adres IP VirtualNet."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1429
 msgid "Web Server"
@@ -1243,8 +1341,7 @@ msgstr "Port serwera WWW"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:406
 msgid "Web server port. Leave empty or set to 0 to disable the web server."
-msgstr ""
-"Port serwera WWW. Pozostaw pusty lub ustaw na 0, aby wyłączyć serwer WWW."
+msgstr "Port serwera WWW. Pozostaw pusty lub ustaw na 0, aby wyłączyć serwer WWW."
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:409
 msgid "Web server user"
@@ -1274,15 +1371,13 @@ msgstr "Protokół tunelowania odwiedzających XTCP."
 msgid "frp"
 msgstr "frp"
 
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1393
-#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:1400
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:163
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:165
+#: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:175
+#: applications/luci-app-frpc/root/usr/share/luci/menu.d/luci-app-frpc.json:3
 msgid "frp Client"
 msgstr "Klient frp"
 
 #: applications/luci-app-frpc/htdocs/luci-static/resources/view/frpc.js:519
-msgid ""
-"frp internal wire protocol. v2 requires frps support and must be enabled "
-"explicitly."
-msgstr ""
-"Wewnętrzny protokół komunikacyjny frp. Wersja 2 wymaga obsługi frps i musi "
-"zostać wyraźnie włączona."
+msgid "frp internal wire protocol. v2 requires frps support and must be enabled explicitly."
+msgstr "Wewnętrzny protokół komunikacyjny frp. Wersja 2 wymaga obsługi frps i musi zostać wyraźnie włączona."

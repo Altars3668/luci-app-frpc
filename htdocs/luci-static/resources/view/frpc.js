@@ -1,5 +1,6 @@
 'use strict';
 'require view';
+'require ui';
 'require form';
 'require rpc';
 'require fs';
@@ -12,32 +13,9 @@ var startupConf = [
 	[form.Flag, 'stderr', _('Log stderr')],
 	[widgets.UserSelect, 'user', _('Run daemon as user')],
 	[widgets.GroupSelect, 'group', _('Run daemon as group')],
-
-	[form.Flag, 'respawn', _('Respawn when crashed'), null,
-	{
-		enabled: '1',
-		disabled: '0',
-		default: '1',
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.DynamicList, 'env', _('Environment variable'),
-	_('OS environments passed to frp for config file template, see %s.').format('<a href="https://github.com/fatedier/frp#configuration-file-template">frp README</a>'),
-	{
-		placeholder: 'ENV_NAME=value',
-		validate: function (section_id, value) {
-			return validateEnv(value);
-		}
-	}],
-
-	[form.DynamicList, 'conf_inc', _('Additional configs'),
-	_('Extra root-level configuration fragments included before generated proxy and visitor sections. Use frp includes or per-proxy raw settings for proxy/visitor tables.'),
-	{
-		datatype: 'file',
-		placeholder: '/etc/frp/frpc.d/frpc_extra.toml'
-	}]
+	[form.Flag, 'respawn', _('Respawn when crashed')],
+	[form.DynamicList, 'env', _('Environment variable'), _('OS environments pass to frp for config file template, see <a href="https://github.com/fatedier/frp#configuration-file-template">frp README</a>'), {placeholder: 'ENV_NAME=value'}],
+	[form.DynamicList, 'conf_inc', _('Additional configs'), _('Config files include in temporary config file'), {placeholder: '/etc/frp/frpc.d/frpc_full.ini'}]
 ];
 
 // 分页分组：将原 Common Settings 拆分为多个逻辑标签页
@@ -98,395 +76,48 @@ var grpExtra = [
 	[form.DynamicList, 'extra_settings', _('Additional settings'), _('This list can be used to specify some additional parameters which have not been included in this LuCI.'), {placeholder: 'Key-A=Value-A'}]
 ];
 
-const commonAuthConf = [
-	[form.ListValue, 'authentication_method', _('Authentication method'),
-	_('Authentication method.'),
-	{ values: [['token', 'token'], ['oidc', 'oidc']], default: 'token' }],
-
-	[form.Value, 'token', _('Token'),
-	_('Token used for authentication.'),
-	{
-		depends: { authentication_method: 'token' },
-		password: true,
-		validate: function (section_id, value) {
-			const tokenSourceType = this.section.getOption('token_source_type');
-
-			if (value && tokenSourceType && tokenSourceType.formvalue(section_id))
-				return _('Token and token source are mutually exclusive.');
-
-			return true;
-		}
-	}],
-
-	[form.MultiValue, 'auth_additional_scopes', _('Additional auth scopes'),
-	_('Additional scopes to include authentication information.'),
-	{ values: ['HeartBeats', 'NewWorkConns'] }],
-
-	[form.ListValue, 'token_source_type', _('Token source type'),
-	_('Load token from an external source. File reads the token from a local file; exec runs a command and requires frp unsafe permission. Mutually exclusive with auth.token.'),
-	{
-		depends: { authentication_method: 'token' },
-		values: [['', _('Disabled')], ['file', 'file'], ['exec', 'exec']],
-		rmempty: true,
-		validate: function (section_id, value) {
-			const token = this.section.getOption('token');
-
-			if (value && token && token.formvalue(section_id))
-				return _('Token and token source are mutually exclusive.');
-
-			return true;
-		}
-	}],
-
-	[form.Value, 'token_source_file_path', _('Token source file'),
-	_('Path of token file.'),
-	{
-		depends: {
-			authentication_method: 'token',
-			token_source_type: 'file'
-		},
-		datatype: 'file',
-		rmempty: false,
-		validate: function (section_id, value) {
-			const tokenSourceType = this.section.getOption('token_source_type');
-
-			if (
-				tokenSourceType &&
-				tokenSourceType.formvalue(section_id) === 'file' &&
-				!String(value || '').trim()
-			)
-				return _('Token source file path is required when token source type is file.');
-
-			return true;
-		}
-	}],
-
-	[form.Value, 'token_source_exec_command', _('Token source command'),
-	_('Command used to obtain the token. The init script adds --allow-unsafe=TokenSourceExec when this source type is used.'),
-	{
-		depends: {
-			authentication_method: 'token',
-			token_source_type: 'exec'
-		},
-		datatype: 'file',
-		rmempty: false,
-		validate: function (section_id, value) {
-			const tokenSourceType = this.section.getOption('token_source_type');
-
-			if (
-				tokenSourceType &&
-				tokenSourceType.formvalue(section_id) === 'exec' &&
-				!String(value || '').trim()
-			)
-				return _('Token source command is required when token source type is exec.');
-
-			return true;
-		}
-	}],
-
-	[form.DynamicList, 'token_source_exec_args', _('Token source command arguments'),
-	_('Command arguments passed to token source exec.'),
-	{
-		depends: {
-			authentication_method: 'token',
-			token_source_type: 'exec'
-		},
-		placeholder: '--format'
-	}],
-
-	[form.DynamicList, 'token_source_exec_env', _('Token source environment'),
-	_('Environment variables passed to token source exec. Use KEY=value.'),
-	{
-		depends: {
-			authentication_method: 'token',
-			token_source_type: 'exec'
-		},
-		placeholder: 'TOKEN_SERVICE=production',
-		validate: function (section_id, value) {
-			return validateEnv(value);
-		}
-	}],
-
-	[form.Value, 'oidc_client_id', _('OIDC client ID'),
-	_('Configuration key: auth.oidc.clientID.'),
-	{ depends: { authentication_method: 'oidc' } }],
-
-	[form.Value, 'oidc_client_secret', _('OIDC client secret'),
-	_('Configuration key: auth.oidc.clientSecret.'),
-	{ depends: { authentication_method: 'oidc' }, password: true }],
-
-	[form.Value, 'oidc_audience', _('OIDC audience'),
-	_('Configuration key: auth.oidc.audience.'),
-	{ depends: { authentication_method: 'oidc' } }],
-
-	[form.Value, 'oidc_scope', _('OIDC scope'),
-	_('Configuration key: auth.oidc.scope.'),
-	{ depends: { authentication_method: 'oidc' } }],
-
-	[form.Value, 'oidc_token_endpoint_url', _('OIDC token endpoint URL'),
-	_('Configuration key: auth.oidc.tokenEndpointURL.'),
-	{ depends: { authentication_method: 'oidc' }, datatype: 'url' }],
-
-	[form.DynamicList, 'oidc_additional_endpoint_params', _('OIDC additional endpoint params'),
-	_('Additional OIDC token endpoint params. Use key=value.'),
-	{
-		depends: { authentication_method: 'oidc' },
-		placeholder: 'audience=https://dev.auth.com/api/v2/',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}],
-
-	[form.Value, 'oidc_trusted_ca_file', _('OIDC trusted CA file'),
-	_('Custom CA certificate file for OIDC endpoint.'),
-	{ depends: { authentication_method: 'oidc' }, datatype: 'file' }],
-
-	[form.Flag, 'oidc_insecure_skip_verify', _('OIDC insecure skip verify'),
-	_('Skip TLS verification for OIDC endpoint. Not recommended for production.'),
-	{ depends: { authentication_method: 'oidc' }, datatype: 'bool', default: 'false' }],
-
-	[form.Value, 'oidc_proxy_url', _('OIDC proxy URL'),
-	_('Proxy URL for OIDC token endpoint.'),
-	{ depends: { authentication_method: 'oidc' }, datatype: 'url', placeholder: 'http://proxy.example.com:8080' }]
+var baseProxyConf = [
+	[form.Value, 'name', _('Proxy name'), undefined, {rmempty: false, optional: false, modalonly: false}],
+	[form.ListValue, 'type', _('Proxy type'), _('ProxyType specifies the type of this proxy. Valid values include "tcp", "udp", "http", "https", "stcp", and "xtcp".<br />By default, this value is "tcp".'), {values: ['tcp', 'udp', 'http', 'https', 'stcp', 'xtcp'], modalonly: false}],
+	[form.Flag, 'use_encryption', _('Encryption'), _('UseEncryption controls whether or not communication with the server will be encrypted. Encryption is done using the tokens supplied in the server and client configuration.<br />By default, this value is false.'), {datatype: 'bool'}],
+	[form.Flag, 'use_compression', _('Compression'), _('UseCompression controls whether or not communication with the server will be compressed.<br />By default, this value is false.'), {datatype: 'bool'}],
+	[form.Value, 'local_ip', _('Local IP'), _('LocalIp specifies the IP address or host name to proxy to.'), {datatype: 'host', modalonly: false}],
+	[form.Value, 'local_port', _('Local port'), _('LocalPort specifies the port to proxy to.'), {datatype: 'port', modalonly: false}],
 ];
 
-const commonLogConf = [
-	[form.Value, 'log_file', _('Log output'),
-	_('Log output path or console.'),
-	{ placeholder: 'console' }],
-
-	[form.ListValue, 'log_level', _('Log level'),
-	_('Configuration key: log.level.'),
-	{ values: ['trace', 'debug', 'info', 'warn', 'error'], default: 'info' }],
-
-	[form.Value, 'log_max_days', _('Log max days'),
-	_('Maximum number of days to keep logs.'),
-	{ datatype: 'uinteger', placeholder: '3' }],
-
-	[form.Flag, 'disable_log_color', _('Disable log color'),
-	_('Disable log colors when log output is console.'),
-	{ datatype: 'bool', default: 'false' }]
+var bindInfoConf = [
+	[form.Value, 'remote_port', _('Remote port'), _('If remote_port is 0, frps will assign a random port for you'), {datatype: 'port', modalonly: false}]
 ];
 
-const commonWebConf = [
-	[form.Value, 'admin_addr', _('Web server address'),
-	_('Web server bind address.'),
-	{ datatype: 'host', placeholder: '127.0.0.1' }],
-
-	[form.Value, 'admin_port', _('Web server port'),
-	_('Web server port. Leave empty or set to 0 to disable the web server.'),
-	{ validate: validatePortOrZero, placeholder: '7400' }],
-
-	[form.Value, 'admin_user', _('Web server user'),
-	_('Web server username.'),
-	{ placeholder: 'admin' }],
-
-	[form.Value, 'admin_pwd', _('Web server password'),
-	_('Web server password.'),
-	{ password: true, placeholder: 'change_me_to_a_strong_password' }],
-
-	[form.Flag, 'admin_tls_enable', _('Enable web HTTPS'),
-	_('Enable HTTPS for the frpc web server. This switch controls whether webServer.tls.certFile and webServer.tls.keyFile are emitted.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'false',
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Value, 'admin_tls_cert_file', _('TLS certificate path'),
-	_('Path to the certificate file used by the HTTPS web server.'),
-	{
-		datatype: 'file',
-		placeholder: '/etc/ssl/acme/example.com.fullchain.crt',
-		retain: true,
-		validate: function (section_id, value) {
-			if (
-				adminWebEnabled(this.section, section_id) &&
-				adminHttpsEnabled(this.section, section_id) &&
-				!String(value || '').trim()
-			)
-				return _('TLS certificate path is required when web HTTPS is enabled.');
-
-			return true;
-		}
-	}],
-
-	[form.Value, 'admin_tls_key_file', _('TLS private key path'),
-	_('Path to the private key file used by the HTTPS web server.'),
-	{
-		datatype: 'file',
-		placeholder: '/etc/ssl/acme/example.com.key',
-		retain: true,
-		validate: function (section_id, value) {
-			if (
-				adminWebEnabled(this.section, section_id) &&
-				adminHttpsEnabled(this.section, section_id) &&
-				!String(value || '').trim()
-			)
-				return _('TLS private key path is required when web HTTPS is enabled.');
-
-			return true;
-		}
-	}],
-
-	[form.Value, 'assets_dir', _('Assets dir'),
-	_('Web server assets directory.'),
-	{ datatype: 'directory' }],
-
-	[form.Flag, 'pprof_enable', _('Enable pprof'),
-	_('Enable Go pprof handlers in web server.'),
-	{
-		datatype: 'bool',
-		enabled: 'true',
-		disabled: 'false',
-		default: 'false',
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}]
+var domainConf = [
+	[form.Value, 'custom_domains', _('Custom domains')],
+	[form.Value, 'subdomain', _('Subdomain')],
 ];
 
-const commonTransportConf = [
-	[form.Value, 'dial_server_timeout', _('Dial server timeout'),
-	_('Timeout in seconds for connecting to frps.'),
-	{ datatype: 'uinteger', placeholder: '10' }],
-
-	[form.Value, 'dial_server_keepalive', _('Dial server keepalive'),
-	_('TCP keepalive interval in seconds. Negative value disables keepalive.'),
-	{ datatype: 'integer', placeholder: '7200' }],
-
-	[form.Value, 'http_proxy', _('Proxy URL'),
-	_('Proxy URL used to connect to frps. Supports http, socks5 and ntlm.'),
-	{ placeholder: 'http://user:passwd@192.168.1.128:8080' }],
-
-	[form.Value, 'pool_count', _('Connection pool count'),
-	_('Connections established in advance.'),
-	{ datatype: 'uinteger', placeholder: '1' }],
-
-	[form.Flag, 'tcp_mux', _('TCP mux'),
-	_('Enable TCP stream multiplexing.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Value, 'tcp_mux_keepalive_interval', _('TCP mux keepalive interval'),
-	_('Keepalive interval for TCP mux.'),
-	{ datatype: 'uinteger', placeholder: '30' }],
-
-	[form.ListValue, 'protocol', _('Transport protocol'),
-	_('Transport protocol used to connect to frps.'),
-	{ values: ['tcp', 'kcp', 'quic', 'websocket', 'wss'], default: 'tcp' }],
-
-	[form.ListValue, 'wire_protocol', _('Wire protocol'),
-	_('frp internal wire protocol. v2 requires frps support and must be enabled explicitly.'),
-	{ values: ['v1', 'v2'], default: 'v1' }],
-
-	[form.Value, 'connect_server_local_ip', _('Connect server local IP'),
-	_('Local IP bound when connecting to frps. Only valid for tcp, websocket or wss.'),
-	{
-		datatype: 'ipaddr',
-		depends: [{ protocol: 'tcp' }, { protocol: 'websocket' }, { protocol: 'wss' }],
-		placeholder: '0.0.0.0'
-	}],
-
-	[form.Value, 'heartbeat_interval', _('Heartbeat interval'),
-	_('Heartbeat interval in seconds.'),
-	{ datatype: 'integer', placeholder: '30' }],
-
-	[form.Value, 'heartbeat_timeout', _('Heartbeat timeout'),
-	_('Heartbeat timeout in seconds.'),
-	{ datatype: 'integer', placeholder: '90' }]
+var httpProxyConf = [
+	[form.Value, 'locations', _('Locations')],
+	[form.Value, 'http_user', _('HTTP user')],
+	[form.Value, 'http_pwd', _('HTTP password')],
+	[form.Value, 'host_header_rewrite', _('Host header rewrite')],
+	// [form.Value, 'headers', _('Headers')], // FIXME
 ];
 
-const commonTlsQuicConf = [
-	[form.Flag, 'tls_enable', _('TLS'),
-	_('Enable TLS when communicating with frps. Since frp v0.50.0, default is true.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Value, 'tls_cert_file', _('TLS certificate path'),
-	_('Path to the TLS certificate file.'),
-	{ datatype: 'file', placeholder: '/etc/ssl/frp/client.crt' }],
-
-	[form.Value, 'tls_key_file', _('TLS private key path'),
-	_('Path to the TLS private key file.'),
-	{ datatype: 'file', placeholder: '/etc/ssl/frp/client.key' }],
-
-	[form.Value, 'tls_trusted_ca_file', _('TLS trusted CA path'),
-	_('Path to the trusted CA certificate file.'),
-	{ datatype: 'file', placeholder: '/etc/ssl/frp/ca.crt' }],
-
-	[form.Value, 'tls_server_name', _('TLS server name'),
-	_('Server name used for TLS verification.'),
-	{ placeholder: 'example.com' }],
-
-	[form.Flag, 'disable_custom_tls_first_byte', _('Disable custom TLS first byte'),
-	_('Since frp v0.50.0, default is true.'),
-	{
-		enabled: 'true',
-		disabled: 'false',
-		default: 'true',
-		optional: false,
-		rmempty: false,
-		retain: true,
-		remove: writeFlagDisabled
-	}],
-
-	[form.Value, 'quic_keepalive_period', _('QUIC keepalive period'),
-	_('Configuration key: transport.quic.keepalivePeriod.'),
-	{ datatype: 'uinteger', depends: { protocol: 'quic' }, placeholder: '10' }],
-
-	[form.Value, 'quic_max_idle_timeout', _('QUIC max idle timeout'),
-	_('Configuration key: transport.quic.maxIdleTimeout.'),
-	{ datatype: 'uinteger', depends: { protocol: 'quic' }, placeholder: '30' }],
-
-	[form.Value, 'quic_max_incoming_streams', _('QUIC max incoming streams'),
-	_('Configuration key: transport.quic.maxIncomingStreams.'),
-	{ datatype: 'uinteger', depends: { protocol: 'quic' }, placeholder: '100000' }]
+var stcpProxyConf = [
+	[form.ListValue, 'role', _('Role'), undefined, {values: ['server', 'visitor']}],
+	[form.Value, 'server_name', _('Server name'), undefined, {depends: [{role: 'visitor'}]}],
+	[form.Value, 'sk', _('Sk'), undefined, {password: true}],
+	[form.Value, 'bind_addr', _('Bind address'), undefined, {datatype: 'ipaddr', depends: {role: 'visitor'}}],
+	[form.Value, 'bind_port', _('Bind port'), undefined, {validate: validateVisitorBindPort, depends: {role: 'visitor'}}],
 ];
 
-const commonAdvancedConf = [
-	[form.DynamicList, 'feature_gates', _('Feature gates'),
-	_('Experimental feature gates. Use key=value, for example VirtualNet=true.'),
-	{
-		placeholder: 'VirtualNet=true',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}],
-
-	[form.Value, 'virtual_net_address', _('VirtualNet address'),
-	_('Virtual network address. Requires VirtualNet feature gate.'),
-	{ placeholder: '100.86.1.1/24' }],
-
-	[form.Value, 'store_path', _('Store file path'),
-	_('Persist runtime proxy and visitor configuration for Web UI or API management.'),
-	{ datatype: 'file', placeholder: '/etc/frp/frpc_store.json' }],
-
-	[form.DynamicList, 'metadatas', _('Client metadata'),
-	_('Additional client metadata. Use key=value.'),
-	{
-		placeholder: 'var1=abc',
-		validate: function (section_id, value) {
-			return validateKeyValue(value);
-		}
-	}]
+var pluginConf = [
+	[form.ListValue, 'plugin', _('Plugin'), undefined, {values: ['', 'http_proxy', 'socks5', 'unix_domain_socket'], rmempty: true}],
+	[form.Value, 'plugin_http_user', _('HTTP user'), undefined, {depends: {plugin: 'http_proxy'}}],
+	[form.Value, 'plugin_http_passwd', _('HTTP password'), undefined, {depends: {plugin: 'http_proxy'}}],
+	[form.Value, 'plugin_user', _('SOCKS5 user'), undefined, {depends: {plugin: 'socks5'}}],
+	[form.Value, 'plugin_passwd', _('SOCKS5 password'), undefined, {depends: {plugin: 'socks5'}}],
+	[form.Value, 'plugin_unix_path', _('Unix domain socket path'), undefined, {depends: {plugin: 'unix_domain_socket'}, optional: false, rmempty: false,
+		datatype: 'file', placeholder: '/var/run/docker.sock', default: '/var/run/docker.sock'}],
 ];
 
 // Batch B advanced proxy parameters
@@ -505,6 +136,137 @@ var advProxyConf = [
 	[form.DynamicList, 'extra_options', _('Extra options'), _('Append raw key=value lines at end of this proxy block'), {placeholder: 'foo.bar=value', modalonly: true}],
 	[form.DynamicList, 'extra_options_plugin', _('Extra plugin options'), _('Append raw key=value lines inside [proxies.plugin] section'), {placeholder: 'extraKey=extraValue', modalonly: true, depends: {plugin: 'http_proxy'}}]
 ];
+
+function writeFlagDisabled(section_id) {
+	return this.write(section_id, this.disabled || 'false');
+}
+
+function removeIfPresent(section_id) {
+	const this_cfg = this.uciconfig || this.section.uciconfig || this.map.config;
+	const this_sid = this.ucisection || section_id;
+	const this_opt = this.ucioption || this.option;
+
+	for (let i = 0; i < this.section.children.length; i++) {
+		const sibling = this.section.children[i];
+
+		if (sibling === this || sibling.ucioption == null)
+			continue;
+
+		const sibling_cfg = sibling.uciconfig || sibling.section.uciconfig || sibling.map.config;
+		const sibling_sid = sibling.ucisection || section_id;
+		const sibling_opt = sibling.ucioption || sibling.option;
+
+		if (this_cfg != sibling_cfg || this_sid != sibling_sid || this_opt != sibling_opt)
+			continue;
+
+		if (typeof sibling.isActive === 'function' && sibling.isActive(section_id))
+			return Promise.resolve();
+	}
+
+	if (this.map.data.get(this_cfg, this_sid, this_opt) == null)
+		return Promise.resolve();
+
+	return this.map.data.unset(this_cfg, this_sid, this_opt);
+}
+
+function isUciDeleteNotFoundError(err) {
+	const message = err && err.message ? err.message : String(err);
+
+	return /uci\/delete/.test(message) && /ubus code 4/.test(message);
+}
+
+function guardUciDeleteNotFound(data, config) {
+	data._frpIgnoreMissingDeleteConfigs ??= {};
+	data._frpIgnoreMissingDeleteConfigs[config] = true;
+
+	if (data._frpIgnoreMissingDeleteInstalled)
+		return;
+
+	const callDelete = data.callDelete;
+
+	data.callDelete = function(conf, sid, options) {
+		const guarded = this._frpIgnoreMissingDeleteConfigs && this._frpIgnoreMissingDeleteConfigs[conf];
+
+		return callDelete.apply(this, arguments).catch(L.bind(function(err) {
+			if (!guarded || !isUciDeleteNotFoundError(err))
+				return Promise.reject(err);
+
+			if (!Array.isArray(options) || options.length <= 1)
+				return null;
+
+			return Promise.all(options.map(L.bind(function(opt) {
+				return callDelete.call(this, conf, sid, [ opt ]).catch(function(e) {
+					return isUciDeleteNotFoundError(e) ? null : Promise.reject(e);
+				});
+			}, this)));
+		}, this));
+	};
+
+	data._frpIgnoreMissingDeleteInstalled = true;
+}
+
+function validateVisitorBindPort(section_id, value) {
+	if (!value)
+		return true;
+
+	value = String(value).trim();
+
+	if (/^-\d+$/.test(value) && Number(value) < 0)
+		return true;
+
+	if (!/^\d+$/.test(value))
+		return _('Port must be negative or a number between 1 and 65535.');
+
+	const port = Number(value);
+	if (port < 1 || port > 65535)
+		return _('Port must be negative or between 1 and 65535.');
+
+	return true;
+}
+
+function normalizeDepends(depends) {
+	if (depends == null)
+		return [];
+
+	return Array.isArray(depends) ? depends : [ depends ];
+}
+
+function mergeDepends(existing, next) {
+	const current = normalizeDepends(existing);
+	const incoming = normalizeDepends(next);
+
+	if (current.length === 0)
+		return incoming;
+
+	if (incoming.length === 0)
+		return current;
+
+	const merged = [];
+
+	for (let oldDep of current) {
+		for (let newDep of incoming) {
+			const dep = {};
+			let conflict = false;
+
+			for (let key in oldDep)
+				dep[key] = oldDep[key];
+
+			for (let key in newDep) {
+				if (Object.prototype.hasOwnProperty.call(dep, key) && dep[key] !== newDep[key]) {
+					conflict = true;
+					break;
+				}
+
+				dep[key] = newDep[key];
+			}
+
+			if (!conflict)
+				merged.push(dep);
+		}
+	}
+
+	return merged;
+}
 
 function setParams(o, params) {
 	if (!params)
@@ -535,33 +297,37 @@ function setParams(o, params) {
 	}
 }
 
-
 function defTabOpts(s, t, opts, params) {
 	for (let opt of opts) {
 		const o = s.taboption(t, opt[0], opt[1], opt[2], opt[3]);
 
 		setParams(o, opt[4]);
 		setParams(o, params);
-		if (typeof o.remove === 'function') {
-			(function(orig) {
-				o.remove = function(section_id) {
-					if (this.option) {
-						var cur = this.map.data.get(this.map.config, section_id, this.option);
-						if (cur == null)
-							return Promise.resolve();
-					}
-					var res = orig.apply(this, arguments);
-					return Promise.resolve(res).catch(function(err) {
-						var msg = err && err.message ? err.message : err;
-						if (msg) {
-							var text = '' + msg;
-							if (text.indexOf('uci/delete') !== -1 || text.indexOf('Not found') !== -1 || text.indexOf('code 4') !== -1)
-								return Promise.resolve();
-						}
-						throw err;
-					});
-				};
-			})(o.remove);
+
+		/*
+		 * Per-option optional must win over tab-wide optional.
+		 * This is important for form.Flag with default='true',
+		 * otherwise LuCI may treat checked state as default and call remove().
+		 */
+		// 保留定制表格中逐字段的可见性设置。
+		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'modalonly'))
+			o.modalonly = opt[4].modalonly;
+
+		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'optional'))
+			o.optional = opt[4].optional;
+
+		if (
+			!(opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'remove')) &&
+			!(params && Object.prototype.hasOwnProperty.call(params, 'remove'))
+		) {
+			if (opt[0] === form.Flag) {
+				// 关闭开关必须保存 disabled，不能删除后被服务默认值重新启用。
+				o.rmempty = false;
+				o.retain = true;
+				o.remove = writeFlagDisabled;
+			} else {
+				o.remove = removeIfPresent;
+			}
 		}
 	}
 }
@@ -595,26 +361,26 @@ function defOpts(s, opts, params) {
 
 		setParams(o, opt[4]);
 		setParams(o, params);
-		if (typeof o.remove === 'function') {
-			(function(orig) {
-				o.remove = function(section_id) {
-					if (this.option) {
-						var cur = this.map.data.get(this.map.config, section_id, this.option);
-						if (cur == null)
-							return Promise.resolve();
-					}
-					var res = orig.apply(this, arguments);
-					return Promise.resolve(res).catch(function(err) {
-						var msg = err && err.message ? err.message : err;
-						if (msg) {
-							var text = '' + msg;
-							if (text.indexOf('uci/delete') !== -1 || text.indexOf('Not found') !== -1 || text.indexOf('code 4') !== -1)
-								return Promise.resolve();
-						}
-						throw err;
-					});
-				};
-			})(o.remove);
+
+		// 保留定制表格中逐字段的可见性设置。
+		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'modalonly'))
+			o.modalonly = opt[4].modalonly;
+
+		if (opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'optional'))
+			o.optional = opt[4].optional;
+
+		if (
+			!(opt[4] && Object.prototype.hasOwnProperty.call(opt[4], 'remove')) &&
+			!(params && Object.prototype.hasOwnProperty.call(params, 'remove'))
+		) {
+			if (opt[0] === form.Flag) {
+				// 关闭开关必须保存 disabled，不能删除后被服务默认值重新启用。
+				o.rmempty = false;
+				o.retain = true;
+				o.remove = writeFlagDisabled;
+			} else {
+				o.remove = removeIfPresent;
+			}
 		}
 	}
 }
@@ -643,11 +409,16 @@ function getServiceStatus() {
 }
 
 function renderStatus(isRunning) {
-	const color = isRunning ? 'green' : 'red';
-	const status = isRunning ? _('RUNNING') : _('NOT RUNNING');
+	var renderHTML = "";
+	var spanTemp = '<em><span style="color:%s"><strong>%s %s</strong></span></em>';
 
-	return String.format('<em><span style="color:%s"><strong>%s %s</strong></span></em>',
-		color, _('frp Client'), status);
+	if (isRunning) {
+		renderHTML += String.format(spanTemp, 'green', _("frp Client"), _("RUNNING"));
+	} else {
+		renderHTML += String.format(spanTemp, 'red', _("frp Client"), _("NOT RUNNING"));
+	}
+
+	return renderHTML;
 }
 
 var callRcInit = rpc.declare({
@@ -683,7 +454,7 @@ function updateActionStatus(action, res) {
 }
 
 return view.extend({
-	render() {
+	render: function() {
 		let m, s, o;
 
 		m = new form.Map('frpc', _('frp Client'));
@@ -714,7 +485,7 @@ return view.extend({
 					])
 				])
 			);
-		};
+		}
 
 		s = m.section(form.NamedSection, 'common', 'conf');
 		s.dynamic = true;
@@ -749,85 +520,34 @@ return view.extend({
 
 		defOpts(s, startupConf);
 
-		s = m.section(form.GridSection, 'conf', _('Proxy / Visitor Settings'));
+		s = m.section(form.GridSection, 'conf', _('Proxy Settings'));
 		s.anonymous = true;
 		s.addremove = true;
 		s.sortable = true;
-		s.nodescriptions = true;
-		s.addbtntitle = _('Add new proxy or visitor...');
+		s.addbtntitle = _('Add new proxy...');
 
-		s.filter = function (section_id) {
-			return section_id !== 'common';
-		};
+		s.filter = function(s) { return s !== 'common'; };
 
 		s.tab('general', _('General Settings'));
-		s.tab('transport', _('Transport'));
-		s.tab('http', _('HTTP / Domain'));
-		s.tab('plugin', _('Plugin'));
-		s.tab('stcp_xtcp', _('STCP / XTCP / SUDP'));
-		s.tab('health', _('Health Check'));
-		s.tab('lb', _('Load Balancer'));
-		s.tab('metadata', _('Metadata'));
+		s.tab('http', _('HTTP Settings'));
+		s.tab('plugin', _('Plugin Settings'));
 
-		defTabOpts(s, 'general', baseProxyConf, { modalonly: null });
-		defTabOpts(s, 'transport', proxyTransportConf, { optional: true, modalonly: true });
+		defTabOpts(s, 'general', baseProxyConf, {modalonly: true});
 
-		defTabOpts(s, 'http', domainConf, {
-			optional: true,
-			modalonly: true,
-			depends: [{ type: 'http' }, { type: 'https' }, { type: 'tcpmux' }]
-		});
+		// TCP and UDP
+		defTabOpts(s, 'general', bindInfoConf, {optional: true, modalonly: true, depends: [{type: 'tcp'}, {type: 'udp'}]});
 
-		defTabOpts(s, 'http', httpProxyConf, {
-			optional: true,
-			modalonly: true,
-			depends: { type: 'http' }
-		});
+		// HTTP and HTTPS
+		defTabOpts(s, 'http', domainConf, {optional: true, modalonly: true, depends: [{type: 'http'}, {type: 'https'}]});
 
-		defTabOpts(s, 'http', httpAuthConf, {
-			optional: true,
-			modalonly: true,
-			depends: [{ type: 'http' }, { type: 'tcpmux' }]
-		});
+		// HTTP
+		defTabOpts(s, 'http', httpProxyConf, {optional: true, modalonly: true, depends: {type: 'http'}});
 
-		defTabOpts(s, 'http', routeByHTTPUserConf, {
-			optional: true,
-			modalonly: true,
-			depends: [{ type: 'http' }, { type: 'tcpmux' }]
-		});
+		// STCP and XTCP
+		defTabOpts(s, 'general', stcpProxyConf, {modalonly: true, depends: [{type: 'stcp'}, {type: 'xtcp'}]});
 
-		defTabOpts(s, 'http', tcpmuxConf, {
-			optional: true,
-			modalonly: true,
-			depends: { type: 'tcpmux' }
-		});
-
-		defTabOpts(s, 'plugin', pluginConf, {
-			optional: true,
-			modalonly: true
-		});
-
-		defTabOpts(s, 'stcp_xtcp', stcpXtcpConf, {
-			optional: true,
-			modalonly: true,
-			depends: [{ type: 'stcp' }, { type: 'xtcp' }, { type: 'sudp' }]
-		});
-
-		defTabOpts(s, 'health', healthCheckConf, {
-			optional: true,
-			modalonly: true,
-			depends: healthCheckDepends
-		});
-
-		defTabOpts(s, 'lb', loadBalancerConf, {
-			optional: true,
-			modalonly: true
-		});
-
-		defTabOpts(s, 'metadata', metadataConf, {
-			optional: true,
-			modalonly: true
-		});
+		// Plugin
+		defTabOpts(s, 'plugin', pluginConf, {modalonly: true});
 
 		// Advanced
 		s.tab('advanced', _('Advanced Settings'));

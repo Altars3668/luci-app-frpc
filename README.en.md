@@ -42,7 +42,7 @@ Keep only one copy of this LuCI package in `package/` and the feeds. Outputs are
 ## Usage
 
 1. Back up `/etc/config/frpc`, then install packages matching your target and their dependencies.
-2. Open **Services → frp Client** and configure the server address, port and authentication.
+2. Open **Services → frp → Client** and configure the server address, port and authentication.
 3. Add proxy entries, distinguishing the public remote port from the local service port. STCP / XTCP visitors also require the matching service name and secret.
 4. Enable and apply the service. Check both the startup section's `enabled` option and init autostart state.
 5. Diagnose using service status, `logread -e frpc` and the engine's configuration check.
@@ -67,3 +67,9 @@ logread -e frpc
 An OpenWrt frp integration maintained by Altars3668; the client snapshot's import provenance is retained in Git history. The engine comes from [fatedier/frp](https://github.com/fatedier/frp). This package's [Makefile](Makefile) declares **Apache-2.0**; dependencies retain their own licenses.
 
 Related: [FRPS server UI](https://github.com/Altars3668/luci-app-frps) · [firmware CI](https://github.com/Altars3668/OpenWRT-CI).
+
+## Upstream baseline and regression checks
+
+The verified source is [`immortalwrt/luci/applications/luci-app-frpc`](https://github.com/immortalwrt/luci/tree/5fc1fac5684cac6eee2c7fbff78c65b867980dd8/applications/luci-app-frpc), pinned to `5fc1fac5684c`. [UPSTREAM.md](UPSTREAM.md) explains provenance, imported history and retained customisations.
+
+`node tests/upstream-regression.mjs` and `python3 -I tests/config-generation.py`; generation tests use a temporary UCI stub and never start services.

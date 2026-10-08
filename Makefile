@@ -5,6 +5,10 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=LuCI Support for frp client
 LUCI_DEPENDS:=+luci-base +frpc
 
+PKG_VERSION:=99.1.0
+PKG_RELEASE:=1
+PKG_PO_VERSION:=$(PKG_VERSION)
+
 PKG_LICENSE:=Apache-2.0
 
 # 解决与上游 frpc 包的文件冲突

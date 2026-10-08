@@ -12,6 +12,41 @@ CONFIG_UCI=frpc
 RUNTIME_DIR=/var/run/$NAME
 TMP_CONFIG_TOML=$RUNTIME_DIR/$NAME.toml
 
+_toml_escape() {
+	printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
+}
+
+_toml_quote() {
+	printf '"%s"' "$(_toml_escape "$1")"
+}
+
+_toml_bool() {
+	local v
+	v="$(printf '%s' "$1" | tr 'A-Z' 'a-z')"
+
+	case "$v" in
+		1|true|yes|on|enabled)
+			printf 'true'
+		;;
+		0|false|no|off|disabled)
+			printf 'false'
+		;;
+		*)
+			printf 'false'
+		;;
+	esac
+}
+
+_is_uinteger() {
+	case "$1" in
+		''|*[!0-9]*)
+			return 1
+		;;
+	esac
+
+	return 0
+}
+
 # Helper: read a single option with default
 uci_get() {
 	local __v
@@ -98,18 +133,28 @@ gen_config() {
 		[ "$log_to" = "" ] || echo "log.to = \"$log_to\""
 		[ "$log_level" = "" ] || echo "log.level = \"$log_level\""
 		[ "$log_max_days" = "" ] || echo "log.maxDays = $log_max_days"
-		[ "$disable_log_color" = "" ] || echo "log.disablePrintColor = $( [ "$disable_log_color" = 1 ] && echo true || echo false )"
+		[ "$disable_log_color" = "" ] || echo "log.disablePrintColor = $(_toml_bool "$disable_log_color")"
 
 		echo "serverAddr = \"$server_addr\""
 		echo "serverPort = $server_port"
 		[ "$protocol" = "" ] || echo "transport.protocol = \"$protocol\""
 		[ "$tcp_mux_keepalive_interval" = "" ] || echo "transport.tcpMuxKeepaliveInterval = $tcp_mux_keepalive_interval"
-		[ "$tcp_mux" = "" ] || echo "transport.tcpMux = $( [ "$tcp_mux" = 1 ] && echo true || echo false )"
-		[ "$tls_enable" = "" ] || echo "transport.tls.enable = $( [ "$tls_enable" = 1 ] && echo true || echo false )"
+		[ "$tcp_mux" = "" ] || echo "transport.tcpMux = $(_toml_bool "$tcp_mux")"
+		[ "$tls_enable" = "" ] || echo "transport.tls.enable = $(_toml_bool "$tls_enable")"
 		[ "$heartbeat_interval" = "" ] && [ "$heartbeat_timeout" = "" ] || {
 			[ "$heartbeat_interval" = "" ] || echo "transport.heartbeatInterval = $heartbeat_interval"
 			[ "$heartbeat_timeout" = "" ] || echo "transport.heartbeatTimeout = $heartbeat_timeout"
 		}
+
+		# 保留定制 UCI 名称，按上游 frp 的 TOML 字段实际生成 TLS / QUIC 配置。
+		[ -z "$tls_cert_file" ] || printf 'transport.tls.certFile = %s\n' "$(_toml_quote "$tls_cert_file")"
+		[ -z "$tls_key_file" ] || printf 'transport.tls.keyFile = %s\n' "$(_toml_quote "$tls_key_file")"
+		[ -z "$tls_trusted_ca_file" ] || printf 'transport.tls.trustedCaFile = %s\n' "$(_toml_quote "$tls_trusted_ca_file")"
+		[ -z "$tls_server_name" ] || printf 'transport.tls.serverName = %s\n' "$(_toml_quote "$tls_server_name")"
+		[ -z "$tls_disable_custom_first_byte" ] || printf 'transport.tls.disableCustomTLSFirstByte = %s\n' "$(_toml_bool "$tls_disable_custom_first_byte")"
+		[ -z "$quic_keepalive_period" ] || { _is_uinteger "$quic_keepalive_period" || return 1; printf 'transport.quic.keepalivePeriod = %s\n' "$quic_keepalive_period"; }
+		[ -z "$quic_max_idle_timeout" ] || { _is_uinteger "$quic_max_idle_timeout" || return 1; printf 'transport.quic.maxIdleTimeout = %s\n' "$quic_max_idle_timeout"; }
+		[ -z "$quic_max_incoming_streams" ] || { _is_uinteger "$quic_max_incoming_streams" || return 1; printf 'transport.quic.maxIncomingStreams = %s\n' "$quic_max_incoming_streams"; }
 
 		if [ "$auth_method" = "oidc" ]; then
 			# Minimal required fields: clientID, clientSecret, audience, tokenEndpointURL
@@ -126,7 +171,7 @@ gen_config() {
 		fi
 		[ "$user" = "" ] || echo "user = \"$user\""
 		[ "$http_proxy" = "" ] || echo "transport.proxyURL = \"$http_proxy\""
-		[ "$login_fail_exit" = "" ] || echo "loginFailExit = $( [ "$login_fail_exit" = 1 ] && echo true || echo false )"
+		[ "$login_fail_exit" = "" ] || echo "loginFailExit = $(_toml_bool "$login_fail_exit")"
 		[ "$admin_addr" = "" ] || [ "$admin_port" = "" ] || {
 			echo "webServer.addr = \"$admin_addr\""
 			echo "webServer.port = $admin_port"
@@ -190,6 +235,9 @@ gen_config() {
 			hc_timeout=$(uci -q get $CONFIG_UCI.$sec.hc_timeout)
 			hc_max_failed=$(uci -q get $CONFIG_UCI.$sec.hc_max_failed)
 			hc_interval=$(uci -q get $CONFIG_UCI.$sec.hc_interval)
+			local bind_addr bind_port
+			bind_addr=$(uci_get "$sec" bind_addr "")
+			bind_port=$(uci_get "$sec" bind_port "")
 			local visitor_flag="0"; [ "$role" = "visitor" ] && visitor_flag="1"
 
 			if [ "$visitor_flag" = "1" ]; then
@@ -202,13 +250,17 @@ gen_config() {
 			[ -n "$local_ip" ] && [ "$visitor_flag" = "0" ] && echo "localIP = \"$local_ip\""
 			[ -n "$local_port" ] && [ "$visitor_flag" = "0" ] && echo "localPort = $local_port"
 			[ -n "$remote_port" ] && [ "$remote_port" != '#' ] && [ "$visitor_flag" = "0" ] && echo "remotePort = $remote_port"
-			[ "$use_encryption" = 1 ] && echo "transport.useEncryption = true"
-			[ "$use_compression" = 1 ] && echo "transport.useCompression = true"
+			[ "$(_toml_bool "$use_encryption")" = true ] && echo "transport.useEncryption = true"
+			[ "$(_toml_bool "$use_compression")" = true ] && echo "transport.useCompression = true"
 			[ "$visitor_flag" = "1" ] && [ -n "$server_name" ] && echo "serverName = \"$server_name\""
 			[ "$visitor_flag" = "1" ] && [ -n "$server_user" ] && echo "serverUser = \"$server_user\""
 			[ "$visitor_flag" = "0" ] && [ -n "$role" ] && echo "role = \"$role\""
 			[ "$visitor_flag" = "0" ] && [ -n "$server_name" ] && echo "serverName = \"$server_name\""
 			[ -n "$sk" ] && echo "secretKey = \"$sk\""
+			if [ "$visitor_flag" = "1" ]; then
+				[ -z "$bind_addr" ] || printf 'bindAddr = %s\n' "$(_toml_quote "$bind_addr")"
+				[ -z "$bind_port" ] || printf 'bindPort = %s\n' "$bind_port"
+			fi
 			if [ -n "$custom_domains" ]; then
 				local _cd_line=""; custom_domains=${custom_domains//,/ } ; for X in $custom_domains; do [ -n "$_cd_line" ] && _cd_line="$_cd_line, "; _cd_line="$_cd_line\"$X\""; done; [ -n "$_cd_line" ] && echo "customDomains = [$_cd_line]"; fi
 			[ -n "$subdomain" ] && echo "subdomain = \"$subdomain\""
